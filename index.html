@@ -38,16 +38,24 @@
                 <h2>Obesity Rates Across Australia</h2>
                 <p>Obesity rates vary between Australian states and territories. A choropleth map helps identify geographic patterns quickly, while interactive tooltips allow users to inspect each state or territory in more detail.</p>
             </div>
-            <div class="chart-card">
-                <h3>Adult obesity by state and territory</h3>
-                <div id="obesity-map" class="chart chart-map"></div>
-                <p class="caption">Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON. Colour uses a quantitative scale for adult obesity percentage.</p>
-            </div>
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h3>Adult obesity by state and territory</h3>
+                    <div id="obesity-map" class="chart chart-map"></div>
+                    <p class="caption">Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON.</p>
+                </div>
 
-            <div class="chart-card">
-                <h3>Interactive health risk map</h3>
-                <div id="interactive-health-map" class="chart chart-map"></div>
-                <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity rates. The zoom slider changes the map scale without changing the data.</p>
+                <div class="chart-card">
+                    <h3>Interactive health risk map</h3>
+                    <div id="interactive-health-map" class="chart chart-map"></div>
+                    <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity rates.</p>
+                </div>
+
+                <div class="chart-card chart-card-wide">
+                    <h3>Obesity rate ranking</h3>
+                    <div id="state-obesity-ranking" class="chart chart-short"></div>
+                    <p class="caption">A ranked view makes state and territory differences easier to compare than the map alone.</p>
+                </div>
             </div>
         </section>
 
@@ -68,6 +76,12 @@
                     <div id="food-stacked" class="chart"></div>
                     <p class="caption">Source: ABS Apparent Consumption of Selected Foodstuffs, Australia, 2023-24. Category colour is nominal; y-values are mL per capita per day.</p>
                 </div>
+
+                <div class="chart-card chart-card-wide">
+                    <h3>Latest beverage category comparison</h3>
+                    <div id="latest-food-category" class="chart chart-short"></div>
+                    <p class="caption">Shows which selected beverage categories contributed most in the latest ABS financial year.</p>
+                </div>
             </div>
         </section>
 
@@ -76,10 +90,18 @@
                 <h2>Physical Activity and Obesity</h2>
                 <p>Lower physical activity may relate to higher obesity rates, although the relationship is not the only factor affecting public health outcomes. A scatterplot helps compare two variables at once, showing how each state and territory sits against the broader pattern.</p>
             </div>
-            <div class="chart-card">
-                <h3>Physical activity vs obesity</h3>
-                <div id="activity-obesity" class="chart"></div>
-                <p class="caption">Source: ABS National Health Survey: State and territory findings, 2022, and ABS population at 30 June 2022. Point size represents estimated resident population.</p>
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h3>Physical activity vs obesity</h3>
+                    <div id="activity-obesity" class="chart"></div>
+                    <p class="caption">Source: ABS National Health Survey: State and territory findings, 2022, and ABS population at 30 June 2022.</p>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Physical activity ranking</h3>
+                    <div id="activity-ranking" class="chart chart-short"></div>
+                    <p class="caption">A ranked bar chart highlights differences in guideline achievement across states and territories.</p>
+                </div>
             </div>
         </section>
 

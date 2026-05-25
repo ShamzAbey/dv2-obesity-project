@@ -10,7 +10,7 @@
     --risk:#8b4fd3;
     --food:#a66bd8;
     --activity:#5e63c7;
-    --gap:16px;
+    --gap:10px;
 }
 
 *{box-sizing:border-box}
@@ -28,9 +28,9 @@ body {
 }
 
 .hero-inner{
-    max-width:calc(100vw - 48px);
+    max-width:calc(100vw - 20px);
     margin:0 auto;
-    padding:28px 12px 24px;
+    padding:18px 8px 16px;
 }
 
 .hero-inner h1{
@@ -60,13 +60,13 @@ body {
 }
 
 .story-container{
-    max-width:calc(100vw - 48px);
+    max-width:calc(100vw - 20px);
     margin:0 auto;
-    padding:14px 12px 28px;
+    padding:10px 8px 22px;
 }
 
 .story-section{
-    margin:0 0 12px;
+    margin:0 0 10px;
 }
 
 .section-copy{
@@ -74,8 +74,8 @@ body {
     border:1px solid var(--border);
     border-left:5px solid var(--accent);
     border-radius:8px;
-    padding:14px 16px;
-    margin-bottom:10px;
+    padding:10px 12px;
+    margin-bottom:8px;
 }
 
 .section-copy h2{
@@ -109,22 +109,22 @@ body {
     border-top:4px solid var(--accent);
     border-radius:8px;
     box-shadow:0 6px 18px rgba(70,45,105,0.08);
-    padding:12px;
+    padding:8px 10px;
     overflow-x:auto;
 }
 
 .kpi-chart{
-    min-height:145px;
+    min-height:130px;
 }
 
 .chart-card{
     background:var(--card);
-    padding:14px;
+    padding:10px;
     border:1px solid var(--border);
     border-top:4px solid var(--accent);
     border-radius:8px;
     box-shadow:0 6px 18px rgba(70,45,105,0.08);
-    min-height:300px;
+    min-height:260px;
     display:flex;
     flex-direction:column;
 }
@@ -160,9 +160,10 @@ body {
     border-top-color:#6f4bb2;
 }
 
-.chart{flex:1;min-height:260px}
-.chart-map{min-height:510px}
-.chart-tall{min-height:430px}
+.chart{flex:1;min-height:235px}
+.chart-map{min-height:390px}
+.chart-tall{min-height:380px}
+.chart-short{min-height:250px}
 .chart-card-wide{grid-column:1 / -1}
 .caption{
     margin:8px 0 0;

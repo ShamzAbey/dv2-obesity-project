@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Latest selected beverage apparent consumption by category from ABS 2023-24 data.",
+  "title": "Latest selected beverage consumption, 2023-24",
+  "width": "container",
+  "height": 260,
+  "data": {"url": "../data/food_consumption.csv"},
+  "transform": [{"filter": "datum.year == '2023-24'"}],
+  "mark": {"type": "bar", "cornerRadiusEnd": 3},
+  "encoding": {
+    "y": {
+      "field": "category",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "Category"
+    },
+    "x": {
+      "field": "ml_per_capita_per_day",
+      "type": "quantitative",
+      "title": "mL per capita per day"
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "legend": null,
+      "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Financial year"},
+      {"field": "category", "type": "nominal", "title": "Category"},
+      {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"}
+  }
+}
