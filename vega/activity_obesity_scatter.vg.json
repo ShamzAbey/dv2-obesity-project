@@ -7,6 +7,19 @@
   "data": {"url": "../data/physical_activity.csv"},
   "layer": [
     {
+      "mark": {"type": "line", "stroke": "#4b2a78", "strokeWidth": 2, "strokeDash": [5, 4], "opacity": 0.75},
+      "transform": [
+        {
+          "regression": "obesity_percent",
+          "on": "met_guidelines_percent"
+        }
+      ],
+      "encoding": {
+        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
+        "y": {"field": "obesity_percent", "type": "quantitative"}
+      }
+    },
+    {
       "mark": {"type": "circle", "filled": true, "opacity": 0.84},
       "encoding": {
         "x": {
@@ -48,6 +61,15 @@
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"},
         "text": {"field": "state", "type": "nominal"}
+      }
+    },
+    {
+      "data": {"values": [{"met_guidelines_percent": 19.4, "obesity_percent": 38.4, "label": "Trend line shows broad association, not causation"}]},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "color": "#665f72"},
+      "encoding": {
+        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
+        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "text": {"field": "label", "type": "nominal"}
       }
     }
   ],

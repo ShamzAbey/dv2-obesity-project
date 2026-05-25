@@ -5,32 +5,34 @@
   "width": "container",
   "height": 260,
   "data": {"url": "../data/physical_activity.csv"},
-  "mark": {"type": "bar", "cornerRadiusEnd": 3},
-  "encoding": {
-    "y": {
-      "field": "state",
-      "type": "ordinal",
-      "sort": "-x",
-      "title": "State/territory"
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 3},
+      "encoding": {
+        "y": {"field": "state", "type": "ordinal", "sort": "-x", "title": "State/territory"},
+        "x": {"field": "met_guidelines_percent", "type": "quantitative", "title": "People aged 15+ meeting guidelines (%)", "scale": {"domain": [0, 30]}},
+        "color": {"field": "met_guidelines_percent", "type": "quantitative", "legend": null, "scale": {"range": ["#ede2f8", "#8d89dd", "#5e63c7"], "domain": [20, 23, 26]}},
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
+        ]
+      }
     },
-    "x": {
-      "field": "met_guidelines_percent",
-      "type": "quantitative",
-      "title": "People aged 15+ meeting guidelines (%)",
-      "scale": {"domain": [0, 30]}
+    {
+      "mark": {"type": "rule", "stroke": "#5e63c7", "strokeDash": [4, 4], "strokeWidth": 2},
+      "encoding": {
+        "x": {"aggregate": "mean", "field": "met_guidelines_percent", "type": "quantitative"}
+      }
     },
-    "color": {
-      "field": "met_guidelines_percent",
-      "type": "quantitative",
-      "legend": null,
-      "scale": {"range": ["#ede2f8", "#8d89dd", "#5e63c7"], "domain": [20, 23, 26]}
-    },
-    "tooltip": [
-      {"field": "state_full", "type": "nominal", "title": "State/territory"},
-      {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
-      {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
-    ]
-  },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 5, "dy": -104, "fontSize": 11, "fontStyle": "italic", "color": "#5e63c7"},
+      "encoding": {
+        "x": {"aggregate": "mean", "field": "met_guidelines_percent", "type": "quantitative"},
+        "text": {"value": "Mean"}
+      }
+    }
+  ],
   "config": {
     "view": {"stroke": null},
     "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"}

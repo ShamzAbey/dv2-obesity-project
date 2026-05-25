@@ -78,6 +78,6 @@
   "resolve": {"scale": {"x": "independent"}},
   "config": {
     "view": {"stroke": null},
-    "facet": {"spacing": 12}
+    "facet": {"spacing": 10}
   }
 }
