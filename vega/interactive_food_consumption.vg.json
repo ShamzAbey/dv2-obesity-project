@@ -24,7 +24,7 @@
           "field": "category",
           "type": "nominal",
           "title": "Beverage category",
-          "scale": {"range": ["#1b9e77", "#377eb8", "#e6ab02", "#7570b3", "#e7298a", "#66a61e", "#a6761d"]}
+          "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
         },
         "tooltip": [
           {"field": "year", "type": "ordinal", "title": "Financial year"},
@@ -60,15 +60,15 @@
           "field": "category",
           "type": "nominal",
           "legend": null,
-          "scale": {"range": ["#1b9e77", "#377eb8", "#e6ab02", "#7570b3", "#e7298a", "#66a61e", "#a6761d"]}
+          "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
         }
       }
     }
   ],
   "resolve": {"scale": {"x": "shared", "color": "shared"}},
   "config": {
-    "view": {"stroke": "#d9dde2"},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"},
+    "view": {"stroke": "#ddd3ec"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
   }
 }

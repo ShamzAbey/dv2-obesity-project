@@ -31,7 +31,7 @@
           "field": "state",
           "type": "nominal",
           "title": "State/territory",
-          "scale": {"range": ["#0f6f73", "#2f6f9f", "#b37a16", "#8056a3", "#c94f2d", "#5b8f4d", "#8a6f3f", "#5f6f73"]}
+          "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd", "#665f72"]}
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
@@ -43,7 +43,7 @@
     },
     {
       "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT'"}],
-      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontWeight": "bold", "color": "#263238"},
+      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontWeight": "bold", "color": "#261f33"},
       "encoding": {
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"},
@@ -53,7 +53,7 @@
   ],
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }

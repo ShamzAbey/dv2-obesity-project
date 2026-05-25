@@ -34,6 +34,6 @@
   },
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"}
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"}
   }
 }

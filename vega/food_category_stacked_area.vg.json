@@ -23,7 +23,7 @@
       "field": "category",
       "type": "nominal",
       "title": "Food/beverage category",
-      "scale": {"range": ["#0f6f73", "#b37a16", "#d9a441", "#8056a3", "#c94f2d", "#5b8f4d", "#8a6f3f"]}
+      "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
     },
     "order": {"field": "category", "type": "nominal"},
     "tooltip": [
@@ -34,7 +34,7 @@
   },
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
   }
 }

@@ -33,7 +33,7 @@
         "field": "sex",
         "type": "nominal",
         "legend": null,
-        "scale": {"range": ["#1f77b4", "#d95f02"]}
+        "scale": {"range": ["#6f4bb2", "#c29be6"]}
       },
       "tooltip": [
         {"field": "sex", "type": "nominal", "title": "Sex"},
@@ -46,6 +46,6 @@
   "resolve": {"scale": {"y": "shared"}},
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e6e8eb"}
+    "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#eee8f7"}
   }
 }
