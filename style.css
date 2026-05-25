@@ -158,6 +158,10 @@ body {
     height:190px;
 }
 
+.image-card-slim img{
+    height:150px;
+}
+
 .chart-card{
     background:var(--card);
     padding:10px;
