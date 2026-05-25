@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "KPI overview tiles showing key values from real CSV data.",
+  "data": {"url": "../data/kpi_summary.csv"},
+  "facet": {
+    "column": {
+      "field": "metric",
+      "type": "nominal",
+      "title": null,
+      "header": {"labelFontSize": 0, "labelPadding": 0}
+    }
+  },
+  "spec": {
+    "width": 280,
+    "height": 118,
+    "layer": [
+      {
+        "mark": {"type": "rect", "cornerRadius": 8, "fill": "#ffffff", "stroke": "#ddd3ec"}
+      },
+      {
+        "mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 13, "fontWeight": "bold", "color": "#665f72"},
+        "encoding": {
+          "x": {"value": 12},
+          "y": {"value": 10},
+          "text": {"field": "metric", "type": "nominal"}
+        }
+      },
+      {
+        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 36, "fontWeight": "bold", "color": "#4b2a78"},
+        "encoding": {
+          "x": {"value": 12},
+          "y": {"value": 58},
+          "text": {"field": "value", "type": "quantitative", "format": ".1f"}
+        }
+      },
+      {
+        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 15, "fontWeight": "bold", "color": "#4b2a78"},
+        "encoding": {
+          "x": {"value": 104},
+          "y": {"value": 61},
+          "text": {"field": "unit", "type": "nominal"}
+        }
+      },
+      {
+        "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 12, "color": "#665f72"},
+        "encoding": {
+          "x": {"value": 12},
+          "y": {"value": 96},
+          "text": {"field": "detail", "type": "nominal"}
+        }
+      },
+      {
+        "mark": {"type": "bar", "cornerRadius": 3, "color": "#ece6f8"},
+        "encoding": {
+          "x": {"value": 12},
+          "x2": {"value": 266},
+          "y": {"value": 106},
+          "y2": {"value": 112}
+        }
+      },
+      {
+        "mark": {"type": "bar", "cornerRadius": 3, "color": "#8b4fd3"},
+        "encoding": {
+          "x": {"value": 12},
+          "x2": {"expr": "12 + min(datum.value / datum.benchmark, 1) * 254"},
+          "y": {"value": 106},
+          "y2": {"value": 112},
+          "tooltip": [
+            {"field": "metric", "type": "nominal", "title": "Metric"},
+            {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"},
+            {"field": "unit", "type": "nominal", "title": "Unit"},
+            {"field": "detail", "type": "nominal", "title": "Detail"}
+          ]
+        }
+      }
+    ]
+  },
+  "resolve": {"scale": {"x": "independent"}},
+  "config": {
+    "view": {"stroke": null},
+    "facet": {"spacing": 12}
+  }
+}

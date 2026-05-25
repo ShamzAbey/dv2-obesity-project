@@ -103,23 +103,18 @@ body {
     gap:var(--gap);
 }
 
-.kpi-grid{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    gap:var(--gap);
-}
-
 .kpi-card{
     background:var(--card);
     border:1px solid var(--border);
     border-top:4px solid var(--accent);
     border-radius:8px;
     box-shadow:0 6px 18px rgba(70,45,105,0.08);
-    padding:10px 12px;
+    padding:12px;
+    overflow-x:auto;
 }
 
 .kpi-chart{
-    min-height:92px;
+    min-height:145px;
 }
 
 .chart-card{
@@ -193,18 +188,8 @@ body {
         grid-template-columns:1fr;
     }
 
-    .kpi-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-    }
-
     .section-copy{
         padding:14px;
-    }
-}
-
-@media (max-width:560px){
-    .kpi-grid{
-        grid-template-columns:1fr;
     }
 }
 
