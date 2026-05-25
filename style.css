@@ -134,6 +134,10 @@ body {
     margin-bottom:10px;
 }
 
+.image-grid-three{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+
 .image-card{
     margin:0 0 10px;
     background:var(--card);
@@ -164,6 +168,14 @@ body {
 
 .image-card-slim img{
     height:150px;
+}
+
+.image-card-compact img{
+    height:130px;
+}
+
+.image-card-compact figcaption{
+    min-height:46px;
 }
 
 .chart-card{
