@@ -1,0 +1,31 @@
+Data sources used in this project
+
+1. Australian Bureau of Statistics (ABS), National Health Survey: State and territory findings, 2022.
+   Used for adult overweight/obesity, overweight, obesity and physical activity guideline rates by state and territory.
+   URL: https://www.abs.gov.au/statistics/health/health-conditions-and-risks/national-health-survey-state-and-territory-findings/2022
+
+2. Australian Institute of Health and Welfare (AIHW), Overweight and obesity, 2024.
+   Used for the age/sex trend framing; values are from the ABS 2022 NHS BMI table cited by AIHW for Figure 1.
+   URL: https://www.aihw.gov.au/reports/overweight-obesity/overweight-and-obesity/contents/summary
+
+3. Australian Bureau of Statistics (ABS), National Health Survey, 2022.
+   Used as the official survey source for national BMI Table 8.3 proportions and physical activity definitions and tables.
+   URL: https://www.abs.gov.au/statistics/health/health-conditions-and-risks/national-health-survey/2022
+
+4. Australian Bureau of Statistics (ABS), Apparent Consumption of Selected Foodstuffs, Australia, 2023-24 financial year.
+   Used for selected non-alcoholic beverage apparent consumption, 2018-19 to 2023-24.
+   URL: https://www.abs.gov.au/statistics/health/food-and-nutrition/apparent-consumption-selected-foodstuffs-australia/latest-release
+
+5. Australian Bureau of Statistics (ABS), National, state and territory population, June 2022.
+   Used for state/territory estimated resident population in the physical activity scatter plot point sizing.
+   URL: https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/jun-2022
+
+6. cartdeco/Australia-json-data, Australian TopoJSON geometry.
+   Used only for local Australian state/territory map geometry. Health rates are joined from CSV files above.
+   URL: https://github.com/cartdeco/Australia-json-data
+
+Notes:
+- All percentages are proportions reported by ABS/AIHW and are manually transcribed from the public tables/text listed above.
+- obesity_gender.csv and obesity_age.csv use adult age groups from ABS Table 8.3 Body Mass Index proportions.
+- obesity_age_annotation.csv contains a text-only annotation derived from obesity_age.csv.
+- australia_states.topojson is geometry only and does not contain obesity, physical activity or food consumption values.

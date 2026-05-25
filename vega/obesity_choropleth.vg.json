@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map of adult obesity rates by Australian state and territory using ABS NHS 2022 CSV data joined to local Australian TopoJSON geometry.",
+  "title": "Adult obesity rates by Australian state and territory, 2022",
+  "width": "container",
+  "height": 500,
+  "data": {
+    "url": "../data/australia_states.topojson",
+    "format": {"type": "topojson", "feature": "collection"}
+  },
+  "transform": [
+    {"calculate": "toNumber(datum.properties.STATE)", "as": "state_code"},
+    {
+      "lookup": "state_code",
+      "from": {
+        "data": {"url": "../data/obesity_state.csv"},
+        "key": "state_code",
+        "fields": ["state", "state_full", "obese_percent", "overweight_obese_percent"]
+      }
+    },
+    {"filter": "isValid(datum.obese_percent)"}
+  ],
+  "projection": {"type": "mercator"},
+  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.7},
+  "encoding": {
+    "color": {
+      "field": "obese_percent",
+      "type": "quantitative",
+      "title": "Adults obese (%)",
+      "scale": {"range": ["#f6c9a8", "#e9784f", "#a9361f"], "domain": [28, 33, 38]}
+    },
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}

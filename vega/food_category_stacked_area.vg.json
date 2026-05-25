@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stacked area chart showing selected beverage category contributions to apparent consumption over time.",
+  "title": "Selected beverage category contribution over time",
+  "width": "container",
+  "height": 320,
+  "data": {"url": "../data/food_consumption.csv"},
+  "mark": {"type": "area", "line": true, "opacity": 0.88},
+  "encoding": {
+    "x": {
+      "field": "year_start",
+      "type": "quantitative",
+      "title": "Financial year beginning",
+      "axis": {"format": "d", "tickMinStep": 1}
+    },
+    "y": {
+      "field": "ml_per_capita_per_day",
+      "type": "quantitative",
+      "title": "Stacked mL per capita per day",
+      "stack": "zero"
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Food/beverage category",
+      "scale": {"range": ["#0f6f73", "#b37a16", "#d9a441", "#8056a3", "#c94f2d", "#5b8f4d", "#8a6f3f"]}
+    },
+    "order": {"field": "category", "type": "nominal"},
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Financial year"},
+      {"field": "category", "type": "nominal", "title": "Category"},
+      {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
+  }
+}

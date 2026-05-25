@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Compatibility CSV-backed physical activity and obesity scatter plot.",
+  "title": "Physical activity and obesity by state and territory",
+  "width": "container",
+  "height": 340,
+  "data": {"url": "../data/physical_activity.csv"},
+  "mark": {"type": "circle", "filled": true, "opacity": 0.84},
+  "encoding": {
+    "x": {
+      "field": "met_guidelines_percent",
+      "type": "quantitative",
+      "title": "People aged 15+ meeting physical activity guidelines (%)"
+    },
+    "y": {
+      "field": "obesity_percent",
+      "type": "quantitative",
+      "title": "Adults obese (%)"
+    },
+    "size": {
+      "field": "population_thousands",
+      "type": "quantitative",
+      "title": "Population ('000)"
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State/territory"
+    },
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
+      {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+      {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
+    ]
+  }
+}

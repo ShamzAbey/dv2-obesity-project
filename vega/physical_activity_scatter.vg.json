@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "ABS NHS 2022 physical activity guideline achievement compared with obesity by state and territory.",
+  "width": "container",
+  "height": 320,
+  "data": {"url": "../data/physical_activity.csv"},
+  "mark": {"type": "circle", "filled": true, "size": 130, "opacity": 0.88},
+  "encoding": {
+    "x": {
+      "field": "met_guidelines_percent",
+      "type": "quantitative",
+      "title": "People aged 15+ meeting physical activity guidelines (%)",
+      "scale": {"domain": [19, 26]}
+    },
+    "y": {
+      "field": "obesity_percent",
+      "type": "quantitative",
+      "title": "Adults obese (%)",
+      "scale": {"domain": [28, 39]}
+    },
+    "color": {
+      "field": "overweight_obese_percent",
+      "type": "quantitative",
+      "title": "Overweight/obese (%)",
+      "scale": {"scheme": "viridis"}
+    },
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
+      {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}

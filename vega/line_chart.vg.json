@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Compatibility CSV-backed line chart for selected beverage consumption.",
+  "title": "Selected beverage consumption over time",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/food_consumption.csv"},
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {
+      "field": "year_start",
+      "type": "quantitative",
+      "title": "Financial year beginning",
+      "axis": {"format": "d", "tickMinStep": 1}
+    },
+    "y": {
+      "field": "ml_per_capita_per_day",
+      "type": "quantitative",
+      "title": "mL per capita per day"
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Food/beverage category"
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Financial year"},
+      {"field": "category", "type": "nominal", "title": "Category"},
+      {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+    ]
+  }
+}

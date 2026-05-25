@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Fast Food & Obesity</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="hero-section">
+        <div class="hero-inner">
+            <h1>Australian Fast Food &amp; Obesity</h1>
+            <p>Exploring the relationship between obesity, food consumption, and physical activity across Australia.</p>
+        </div>
+    </header>
+
+    <main class="story-container">
+        <section class="story-section">
+            <div class="section-copy">
+                <h2>Introduction</h2>
+                <p>Obesity is a growing public health issue in Australia, with long-term impacts on chronic disease, wellbeing, and health services. Lifestyle factors such as food consumption, physical activity, and demographic differences all contribute to obesity patterns. This visualisation explores these patterns across states, genders, and age groups using Australian government data from the ABS and AIHW.</p>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="section-copy">
+                <h2>Obesity Rates Across Australia</h2>
+                <p>Obesity rates vary between Australian states and territories. A choropleth map helps identify geographic patterns quickly, while interactive tooltips allow users to inspect each state or territory in more detail.</p>
+            </div>
+            <div class="chart-card">
+                <h3>Adult obesity by state and territory</h3>
+                <div id="obesity-map" class="chart chart-map"></div>
+                <p class="caption">Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON. Colour uses a quantitative scale for adult obesity percentage.</p>
+            </div>
+
+            <div class="chart-card">
+                <h3>Interactive health risk map</h3>
+                <div id="interactive-health-map" class="chart chart-map"></div>
+                <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity rates. The zoom slider changes the map scale without changing the data.</p>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="section-copy">
+                <h2>Changes in Food Consumption Over Time</h2>
+                <p>Processed, convenience, and takeaway-style food consumption patterns have changed over time. These trends may relate to rising obesity rates because food environments influence the everyday choices available to Australians.</p>
+            </div>
+            <div class="chart-grid">
+                <div class="chart-card chart-card-wide">
+                    <h3>Overview and detail: selected beverage consumption</h3>
+                    <div id="food-overview-detail" class="chart chart-tall"></div>
+                    <p class="caption">Source: ABS Apparent Consumption of Selected Foodstuffs, Australia, 2023-24. The lower overview uses interval brushing to filter the detailed chart above.</p>
+                </div>
+
+                <div class="chart-card chart-card-wide">
+                    <h3>Stacked contribution by category</h3>
+                    <div id="food-stacked" class="chart"></div>
+                    <p class="caption">Source: ABS Apparent Consumption of Selected Foodstuffs, Australia, 2023-24. Category colour is nominal; y-values are mL per capita per day.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="section-copy">
+                <h2>Physical Activity and Obesity</h2>
+                <p>Lower physical activity may relate to higher obesity rates, although the relationship is not the only factor affecting public health outcomes. A scatterplot helps compare two variables at once, showing how each state and territory sits against the broader pattern.</p>
+            </div>
+            <div class="chart-card">
+                <h3>Physical activity vs obesity</h3>
+                <div id="activity-obesity" class="chart"></div>
+                <p class="caption">Source: ABS National Health Survey: State and territory findings, 2022, and ABS population at 30 June 2022. Point size represents estimated resident population.</p>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="section-copy">
+                <h2>Obesity Across Gender and Age Groups</h2>
+                <p>Obesity affects demographic groups differently. Comparing age and gender reveals important patterns that are hidden in national averages, especially where older age groups experience higher obesity rates.</p>
+            </div>
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h3>Obesity by age group</h3>
+                    <div id="obesity-age" class="chart"></div>
+                    <p class="caption">Source: ABS National Health Survey 2022 Table 8.3 measured BMI proportions. Labels show adult obesity percentage.</p>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Obesity by sex across age groups</h3>
+                    <div id="gender-facets" class="chart"></div>
+                    <p class="caption">Source: ABS National Health Survey 2022 Table 8.3 measured BMI proportions, cited by AIHW Overweight and obesity 2024. Facets keep a shared y-axis for comparison.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="section-copy">
+                <h2>Key Findings</h2>
+                <p>Obesity is influenced by multiple lifestyle factors, including food consumption, physical activity, geography, age, and gender. The visualisations show that geographic and demographic patterns are visible in Australian public health data, and that data visualisation can communicate complex health trends in a clear and accessible way.</p>
+            </div>
+        </section>
+
+        <section class="story-section sources-section">
+            <div class="section-copy">
+                <h2>Data Sources</h2>
+                <ul>
+                    <li>Australian Bureau of Statistics (ABS)</li>
+                    <li>Australian Institute of Health and Welfare (AIHW)</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>

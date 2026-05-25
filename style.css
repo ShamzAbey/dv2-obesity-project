@@ -1,0 +1,183 @@
+:root{
+    --bg:#eef3f2;
+    --card:#ffffff;
+    --panel:#f8fbfa;
+    --muted:#5f6f73;
+    --text:#18262b;
+    --border:#cfdcda;
+    --accent:#0f6f73;
+    --accent-dark:#0b4f54;
+    --risk:#c94f2d;
+    --food:#b37a16;
+    --activity:#2f6f9f;
+    --gap:16px;
+}
+
+*{box-sizing:border-box}
+body {
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+}
+
+.hero-section{
+    background:linear-gradient(135deg, #f7fbfa 0%, #e5efed 58%, #f8f3ea 100%);
+    border-bottom:1px solid var(--border);
+}
+
+.hero-inner{
+    max-width:calc(100vw - 48px);
+    margin:0 auto;
+    padding:28px 12px 24px;
+}
+
+.hero-inner h1{
+    margin:0 0 8px;
+    font-size:clamp(2rem, 3.4vw, 3.4rem);
+    line-height:1.05;
+    font-weight:800;
+    color:var(--accent-dark);
+}
+
+.hero-inner p{
+    max-width:760px;
+    margin:0;
+    color:var(--muted);
+    font-size:1.15rem;
+}
+
+.hero-inner::before{
+    content:"FIT2179 DV2 | Australian public health data";
+    display:inline-block;
+    margin-bottom:8px;
+    color:var(--accent);
+    font-size:0.78rem;
+    font-weight:800;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+}
+
+.story-container{
+    max-width:calc(100vw - 48px);
+    margin:0 auto;
+    padding:14px 12px 28px;
+}
+
+.story-section{
+    margin:0 0 12px;
+}
+
+.section-copy{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-left:5px solid var(--accent);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:10px;
+}
+
+.section-copy h2{
+    margin:0 0 6px;
+    font-size:1.28rem;
+    line-height:1.2;
+    color:var(--accent-dark);
+}
+
+.section-copy p{
+    margin:0;
+    max-width:1100px;
+    color:#3f4852;
+}
+
+.section-copy ul{
+    margin:8px 0 0;
+    padding-left:22px;
+    color:#3f4852;
+}
+
+.chart-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:var(--gap);
+}
+
+.chart-card{
+    background:var(--card);
+    padding:14px;
+    border:1px solid var(--border);
+    border-top:4px solid var(--accent);
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(22,45,48,0.06);
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+}
+
+.chart-card h3{
+    margin:0 0 6px;
+    font-size:1rem;
+    line-height:1.25;
+    color:#203238;
+}
+
+.story-section:nth-of-type(2) .section-copy,
+.story-section:nth-of-type(2) .chart-card{
+    border-left-color:var(--risk);
+    border-top-color:var(--risk);
+}
+
+.story-section:nth-of-type(3) .section-copy,
+.story-section:nth-of-type(3) .chart-card{
+    border-left-color:var(--food);
+    border-top-color:var(--food);
+}
+
+.story-section:nth-of-type(4) .section-copy,
+.story-section:nth-of-type(4) .chart-card{
+    border-left-color:var(--activity);
+    border-top-color:var(--activity);
+}
+
+.story-section:nth-of-type(5) .section-copy,
+.story-section:nth-of-type(5) .chart-card{
+    border-left-color:#8056a3;
+    border-top-color:#8056a3;
+}
+
+.chart{flex:1;min-height:260px}
+.chart-map{min-height:510px}
+.chart-tall{min-height:430px}
+.chart-card-wide{grid-column:1 / -1}
+.caption{
+    margin:8px 0 0;
+    color:var(--muted);
+    font-size:0.92rem;
+    border-top:1px solid #edf1f0;
+    padding-top:7px;
+}
+
+.sources-section{
+    margin-bottom:0;
+}
+
+@media (max-width:900px){
+    .hero-inner,
+    .story-container{
+        max-width:calc(100vw - 16px);
+        padding-left:4px;
+        padding-right:4px;
+    }
+
+    .chart-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-copy{
+        padding:14px;
+    }
+}
+
+/* small helper to give the embedded SVG room */
+.chart > div{width:100%}

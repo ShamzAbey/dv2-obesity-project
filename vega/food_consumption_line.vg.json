@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "ABS Apparent Consumption of Selected Foodstuffs selected non-alcoholic beverage consumption.",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/food_consumption.csv"},
+  "mark": {"type": "line", "point": {"filled": true, "size": 45}, "strokeWidth": 2.5},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Financial year",
+      "sort": ["2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24"]
+    },
+    "y": {
+      "field": "ml_per_capita_per_day",
+      "type": "quantitative",
+      "title": "mL per capita per day"
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Beverage category",
+      "scale": {"range": ["#1b9e77", "#377eb8", "#e6ab02", "#7570b3", "#e7298a", "#66a61e", "#a6761d"]}
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Financial year"},
+      {"field": "category", "type": "nominal", "title": "Category"},
+      {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
+  }
+}

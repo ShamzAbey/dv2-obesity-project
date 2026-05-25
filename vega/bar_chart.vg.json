@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Compatibility CSV-backed age group obesity bar chart.",
+  "title": "Adult obesity by age group, 2022",
+  "width": "container",
+  "height": 310,
+  "data": {"url": "../data/obesity_age.csv"},
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "age_group",
+      "type": "ordinal",
+      "title": "Age group",
+      "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+    },
+    "y": {
+      "field": "obesity_percent",
+      "type": "quantitative",
+      "title": "Adults obese (%)"
+    },
+    "color": {
+      "field": "obesity_percent",
+      "type": "quantitative",
+      "legend": null,
+      "scale": {"range": ["#f6c9a8", "#e9784f", "#a9361f"]}
+    },
+    "tooltip": [
+      {"field": "age_group", "type": "ordinal", "title": "Age group"},
+      {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
+    ]
+  }
+}

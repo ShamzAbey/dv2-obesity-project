@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive multiple views using ABS Apparent Consumption of Selected Foodstuffs beverage data. Brush the lower overview chart to filter the upper detailed chart.",
+  "data": {"url": "../data/food_consumption.csv"},
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 360,
+      "transform": [{"filter": {"param": "yearBrush"}}],
+      "mark": {"type": "line", "point": {"filled": true, "size": 60}, "strokeWidth": 3},
+      "encoding": {
+        "x": {
+          "field": "year_start",
+          "type": "quantitative",
+          "title": "Financial year beginning",
+          "axis": {"format": "d", "tickMinStep": 1}
+        },
+        "y": {
+          "field": "ml_per_capita_per_day",
+          "type": "quantitative",
+          "title": "mL per capita per day"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Beverage category",
+          "scale": {"range": ["#1b9e77", "#377eb8", "#e6ab02", "#7570b3", "#e7298a", "#66a61e", "#a6761d"]}
+        },
+        "tooltip": [
+          {"field": "year", "type": "ordinal", "title": "Financial year"},
+          {"field": "category", "type": "nominal", "title": "Category"},
+          {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "width": "container",
+      "height": 90,
+      "params": [
+        {
+          "name": "yearBrush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
+      "mark": {"type": "line", "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "year_start",
+          "type": "quantitative",
+          "title": "Brush this overview to filter the detailed chart",
+          "axis": {"format": "d", "tickMinStep": 1}
+        },
+        "y": {
+          "field": "ml_per_capita_per_day",
+          "type": "quantitative",
+          "title": null,
+          "axis": {"labels": false, "ticks": false}
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#1b9e77", "#377eb8", "#e6ab02", "#7570b3", "#e7298a", "#66a61e", "#a6761d"]}
+        }
+      }
+    }
+  ],
+  "resolve": {"scale": {"x": "shared", "color": "shared"}},
+  "config": {
+    "view": {"stroke": "#d9dde2"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
+  }
+}

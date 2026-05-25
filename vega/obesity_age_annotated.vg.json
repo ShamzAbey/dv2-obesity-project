@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Layered bar and text annotation chart of adult obesity by age group using ABS NHS 2022 BMI proportions.",
+  "title": "Adult obesity by age group, 2022",
+  "width": "container",
+  "height": 310,
+  "data": {"url": "../data/obesity_age.csv"},
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "title": "Age group",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+        },
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"domain": [0, 45]}
+        },
+        "color": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "legend": null,
+          "scale": {"range": ["#f6c9a8", "#e9784f", "#a9361f"], "domain": [14, 28, 40]}
+        },
+        "tooltip": [
+          {"field": "age_group", "type": "ordinal", "title": "Age group"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -8, "fontWeight": "bold", "color": "#263238"},
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+        },
+        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "text": {"field": "obesity_percent", "type": "quantitative", "format": ".1f"}
+      }
+    },
+    {
+      "data": {
+        "url": "../data/obesity_age_annotation.csv"
+      },
+      "mark": {"type": "text", "align": "center", "baseline": "bottom", "fontStyle": "italic", "fontWeight": "bold", "color": "#8c2d04"},
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+        },
+        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "text": {"field": "label", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"}
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "ABS NHS 2022 adult BMI classification by Australian state and territory.",
+  "width": "container",
+  "height": 300,
+  "data": {"url": "../data/obesity_state.csv"},
+  "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "ordinal",
+      "sort": "-y",
+      "title": null,
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "overweight_obese_percent",
+      "type": "quantitative",
+      "title": "Adults overweight or obese (%)",
+      "scale": {"domain": [0, 80]}
+    },
+    "color": {
+      "field": "overweight_obese_percent",
+      "type": "quantitative",
+      "legend": null,
+      "scale": {"scheme": "tealblues"}
+    },
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"},
+      {"field": "overweight_percent", "type": "quantitative", "title": "Overweight (%)", "format": ".1f"},
+      {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#e6e8eb"}
+  }
+}

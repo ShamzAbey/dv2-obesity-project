@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive choropleth map with a metric selector and zoom control using real ABS state and territory health risk data.",
+  "title": "Interactive health risk map by state and territory",
+  "width": "container",
+  "height": 520,
+  "params": [
+    {
+      "name": "selectedMetric",
+      "value": "obese_percent",
+      "bind": {
+        "input": "select",
+        "name": "Indicator: ",
+        "options": [
+          "obese_percent",
+          "overweight_obese_percent",
+          "met_guidelines_percent"
+        ],
+        "labels": [
+          "Adults obese (%)",
+          "Adults overweight or obese (%)",
+          "People meeting physical activity guidelines (%)"
+        ]
+      }
+    },
+    {
+      "name": "mapScale",
+      "value": 900,
+      "bind": {
+        "input": "range",
+        "name": "Zoom: ",
+        "min": 650,
+        "max": 1500,
+        "step": 25
+      }
+    }
+  ],
+  "data": {
+    "url": "../data/australia_states.topojson",
+    "format": {"type": "topojson", "feature": "collection"}
+  },
+  "transform": [
+    {"calculate": "toNumber(datum.properties.STATE)", "as": "state_code"},
+    {
+      "lookup": "state_code",
+      "from": {
+        "data": {"url": "../data/obesity_state.csv"},
+        "key": "state_code",
+        "fields": ["state", "state_full", "obese_percent", "overweight_obese_percent"]
+      }
+    },
+    {
+      "lookup": "state",
+      "from": {
+        "data": {"url": "../data/physical_activity.csv"},
+        "key": "state",
+        "fields": ["met_guidelines_percent"]
+      }
+    },
+    {"filter": "isValid(datum.obese_percent)"},
+    {"calculate": "datum[selectedMetric]", "as": "metric_value"},
+    {
+      "calculate": "selectedMetric == 'obese_percent' ? 'Adults obese (%)' : selectedMetric == 'overweight_obese_percent' ? 'Adults overweight or obese (%)' : 'People meeting physical activity guidelines (%)'",
+      "as": "metric_label"
+    }
+  ],
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": {"expr": "mapScale"}
+  },
+  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.7},
+  "encoding": {
+    "color": {
+      "field": "metric_value",
+      "type": "quantitative",
+      "title": "Selected indicator (%)",
+      "scale": {"range": ["#f6c9a8", "#e9784f", "#a9361f"]}
+    },
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "metric_label", "type": "nominal", "title": "Selected indicator"},
+      {"field": "metric_value", "type": "quantitative", "title": "Value (%)", "format": ".1f"},
+      {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"},
+      {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met activity guidelines (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}
