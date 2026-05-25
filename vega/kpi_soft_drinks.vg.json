@@ -1,0 +1,15 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "KPI tile showing latest soft drink apparent consumption from ABS foodstuffs data.",
+  "width": "container",
+  "height": 92,
+  "data": {"url": "../data/kpi_summary.csv"},
+  "transform": [{"filter": "datum.metric == 'Latest soft drink consumption'"}],
+  "layer": [
+    {"mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 13, "fontWeight": "bold", "color": "#665f72"}, "encoding": {"x": {"value": 8}, "y": {"value": 6}, "text": {"field": "metric", "type": "nominal"}}},
+    {"mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 34, "fontWeight": "bold", "color": "#8b4fd3"}, "encoding": {"x": {"value": 8}, "y": {"value": 48}, "text": {"field": "value", "type": "quantitative", "format": ".1f"}}},
+    {"mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 16, "fontWeight": "bold", "color": "#8b4fd3"}, "encoding": {"x": {"value": 116}, "y": {"value": 50}, "text": {"field": "unit", "type": "nominal"}}},
+    {"mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 12, "color": "#665f72"}, "encoding": {"x": {"value": 8}, "y": {"value": 88}, "text": {"field": "detail", "type": "nominal"}}}
+  ],
+  "config": {"view": {"stroke": null}}
+}

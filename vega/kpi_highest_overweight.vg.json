@@ -1,0 +1,15 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "KPI tile showing the highest adult overweight or obese rate from ABS NHS 2022 state data.",
+  "width": "container",
+  "height": 92,
+  "data": {"url": "../data/kpi_summary.csv"},
+  "transform": [{"filter": "datum.metric == 'Highest overweight or obese rate'"}],
+  "layer": [
+    {"mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 13, "fontWeight": "bold", "color": "#665f72"}, "encoding": {"x": {"value": 8}, "y": {"value": 6}, "text": {"field": "metric", "type": "nominal"}}},
+    {"mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 34, "fontWeight": "bold", "color": "#6f4bb2"}, "encoding": {"x": {"value": 8}, "y": {"value": 48}, "text": {"field": "value", "type": "quantitative", "format": ".1f"}}},
+    {"mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 19, "fontWeight": "bold", "color": "#6f4bb2"}, "encoding": {"x": {"value": 82}, "y": {"value": 50}, "text": {"field": "unit", "type": "nominal"}}},
+    {"mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 12, "color": "#665f72"}, "encoding": {"x": {"value": 8}, "y": {"value": 88}, "text": {"field": "detail", "type": "nominal"}}}
+  ],
+  "config": {"view": {"stroke": null}}
+}
