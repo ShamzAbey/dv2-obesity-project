@@ -249,7 +249,7 @@ body {
 .chart{flex:1;min-height:235px}
 .chart-map{min-height:390px}
 .chart-tall{min-height:380px}
-.chart-short{min-height:275px}
+.chart-short{min-height:330px}
 .chart-card-wide{grid-column:1 / -1}
 .caption{
     margin:8px 0 0;

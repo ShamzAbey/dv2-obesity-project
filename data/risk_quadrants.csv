@@ -1,0 +1,5 @@
+x_min,x_max,y_min,y_max,zone
+19.0,23.5,33.0,39.0,Higher obesity / lower activity
+23.5,26.0,33.0,39.0,Higher obesity / higher activity
+19.0,23.5,28.0,33.0,Lower obesity / lower activity
+23.5,26.0,28.0,33.0,Lower obesity / higher activity

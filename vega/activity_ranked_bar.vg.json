@@ -1,97 +1,105 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Bubble matrix comparing physical activity guideline achievement and adult obesity by state and territory. Colour shows rate and bubble size shows population.",
-  "title": "Physical activity and obesity bubble matrix",
+  "description": "Lifestyle risk quadrant chart comparing physical activity and adult obesity by state and territory.",
+  "title": "Lifestyle risk quadrant: activity and obesity",
   "width": "container",
-  "height": 250,
-  "data": {"url": "../data/physical_activity.csv"},
-  "transform": [
-    {
-      "fold": ["met_guidelines_percent", "obesity_percent"],
-      "as": ["metric", "value"]
-    },
-    {
-      "calculate": "datum.metric == 'met_guidelines_percent' ? 'Met activity guidelines' : 'Adults obese'",
-      "as": "metric_label"
-    }
-  ],
+  "height": 320,
   "params": [
     {
-      "name": "hoverTile",
-      "select": {"type": "point", "fields": ["state", "metric_label"], "on": "mouseover", "clear": "mouseout"}
+      "name": "hoverState",
+      "select": {"type": "point", "fields": ["state"], "on": "mouseover", "clear": "mouseout"}
     }
   ],
   "layer": [
     {
-      "mark": {"type": "circle", "filled": true, "opacity": 0.86},
+      "data": {"url": "../data/risk_quadrants.csv"},
+      "mark": {"type": "rect", "opacity": 0.16},
       "encoding": {
-        "x": {"field": "state", "type": "ordinal", "title": "State/territory", "axis": {"labelAngle": 0}},
-        "y": {
-          "field": "metric_label",
-          "type": "nominal",
-          "title": null,
-          "sort": ["Met activity guidelines", "Adults obese"]
-        },
+        "x": {"field": "x_min", "type": "quantitative", "scale": {"domain": [19, 26]}, "title": "People aged 15+ meeting physical activity guidelines (%)"},
+        "x2": {"field": "x_max"},
+        "y": {"field": "y_min", "type": "quantitative", "scale": {"domain": [28, 39]}, "title": "Adults obese (%)"},
+        "y2": {"field": "y_max"},
         "color": {
-          "field": "value",
-          "type": "quantitative",
-          "title": "Rate (%)",
-          "scale": {"range": ["#ede2f8", "#8d89dd", "#4b2a78"], "domain": [20, 28, 38]}
+          "field": "zone",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#8b4fd3", "#a66bd8", "#c29be6", "#ede2f8"]}
         },
+        "tooltip": [{"field": "zone", "type": "nominal", "title": "Quadrant"}]
+      }
+    },
+    {
+      "data": {"url": "../data/physical_activity.csv"},
+      "mark": {"type": "rule", "stroke": "#4b2a78", "strokeDash": [4, 4], "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"aggregate": "mean", "field": "met_guidelines_percent", "type": "quantitative"}
+      }
+    },
+    {
+      "data": {"url": "../data/physical_activity.csv"},
+      "mark": {"type": "rule", "stroke": "#4b2a78", "strokeDash": [4, 4], "strokeWidth": 1.5},
+      "encoding": {
+        "y": {"aggregate": "mean", "field": "obesity_percent", "type": "quantitative"}
+      }
+    },
+    {
+      "data": {"url": "../data/physical_activity.csv"},
+      "mark": {"type": "circle", "filled": true, "opacity": 0.9},
+      "encoding": {
+        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
+        "y": {"field": "obesity_percent", "type": "quantitative"},
         "size": {
           "field": "population_thousands",
           "type": "quantitative",
           "title": "Population ('000)",
-          "scale": {"range": [700, 4200]}
+          "scale": {"range": [180, 2200]}
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State/territory",
+          "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd", "#665f72"]}
         },
         "stroke": {
-          "condition": {"param": "hoverTile", "value": "#261f33"},
+          "condition": {"param": "hoverState", "value": "#261f33"},
           "value": "#ffffff"
         },
         "strokeWidth": {
-          "condition": {"param": "hoverTile", "value": 2},
+          "condition": {"param": "hoverState", "value": 2},
           "value": 0.7
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
-          {"field": "metric_label", "type": "nominal", "title": "Indicator"},
-          {"field": "value", "type": "quantitative", "title": "Rate (%)", "format": ".1f"},
+          {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met activity guidelines (%)", "format": ".1f"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
           {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#261f33"},
+      "data": {"url": "../data/physical_activity.csv"},
+      "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT' || datum.state == 'Qld'"}],
+      "mark": {"type": "text", "align": "left", "dx": 9, "dy": -8, "fontWeight": "bold", "fontSize": 11, "color": "#261f33"},
       "encoding": {
-        "x": {"field": "state", "type": "ordinal"},
-        "y": {
-          "field": "metric_label",
-          "type": "nominal",
-          "sort": ["Met activity guidelines", "Adults obese"]
-        },
-        "text": {"field": "value", "type": "quantitative", "format": ".1f"}
+        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
+        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
       }
     },
     {
-      "data": {
-        "values": [
-          {"state": "Tas", "metric_label": "Adults obese", "label": "Highest obesity"}
-        ]
-      },
-      "mark": {"type": "text", "dy": 36, "fontSize": 10, "fontStyle": "italic", "fontWeight": "bold", "color": "#4b2a78"},
+      "data": {"url": "../data/risk_quadrants.csv"},
+      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#665f72"},
       "encoding": {
-        "x": {"field": "state", "type": "ordinal"},
-        "y": {
-          "field": "metric_label",
-          "type": "nominal",
-          "sort": ["Met activity guidelines", "Adults obese"]
-        },
-        "text": {"field": "label", "type": "nominal"}
+        "x": {"field": "x_max", "type": "quantitative"},
+        "y": {"field": "y_max", "type": "quantitative"},
+        "text": {"field": "zone", "type": "nominal"}
       }
     }
   ],
+  "resolve": {"scale": {"color": "independent"}},
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"}
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }
