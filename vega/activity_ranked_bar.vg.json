@@ -1,98 +1,108 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Lifestyle risk quadrant chart comparing physical activity and adult obesity by state and territory.",
-  "title": "Lifestyle risk quadrant: activity and obesity",
+  "description": "Lifestyle risk index bullet chart combining adult obesity and low physical activity by state and territory.",
+  "title": "Lifestyle risk index: obesity plus low activity",
   "width": "container",
   "height": 320,
-  "params": [
-    {
-      "name": "hoverState",
-      "select": {"type": "point", "fields": ["state"], "on": "mouseover", "clear": "mouseout"}
-    }
-  ],
   "layer": [
     {
-      "data": {"url": "../data/risk_quadrants.csv"},
-      "mark": {"type": "rect", "opacity": 0.16},
+      "data": {"url": "../data/lifestyle_risk_bands.csv"},
+      "mark": {"type": "rect", "opacity": 0.28},
       "encoding": {
-        "x": {"field": "x_min", "type": "quantitative", "scale": {"domain": [19, 26]}, "title": "People aged 15+ meeting physical activity guidelines (%)"},
-        "x2": {"field": "x_max"},
-        "y": {"field": "y_min", "type": "quantitative", "scale": {"domain": [28, 39]}, "title": "Adults obese (%)"},
-        "y2": {"field": "y_max"},
-        "color": {
-          "field": "zone",
-          "type": "nominal",
-          "legend": null,
-          "scale": {"range": ["#8b4fd3", "#a66bd8", "#c29be6", "#ede2f8"]}
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {"domain": [52, 58], "nice": false},
+          "title": "Lifestyle risk index"
         },
-        "tooltip": [{"field": "zone", "type": "nominal", "title": "Quadrant"}]
+        "x2": {"field": "x1"},
+        "y": {"value": 0},
+        "y2": {"value": 320},
+        "color": {
+          "field": "band",
+          "type": "nominal",
+          "legend": {"title": "Risk band", "orient": "bottom"},
+          "scale": {"range": ["#eee5f9", "#d4baf2", "#a879dc"]}
+        },
+        "tooltip": [
+          {"field": "band", "type": "nominal", "title": "Risk band"},
+          {"field": "x0", "type": "quantitative", "title": "From", "format": ".0f"},
+          {"field": "x1", "type": "quantitative", "title": "To", "format": ".0f"}
+        ]
       }
     },
     {
-      "data": {"url": "../data/physical_activity.csv"},
-      "mark": {"type": "rule", "stroke": "#4b2a78", "strokeDash": [4, 4], "strokeWidth": 1.5},
+      "data": {"url": "../data/lifestyle_risk_index.csv"},
+      "transform": [{"calculate": "52", "as": "baseline"}],
+      "mark": {"type": "rule", "stroke": "#b58be7", "strokeWidth": 6, "opacity": 0.9},
       "encoding": {
-        "x": {"aggregate": "mean", "field": "met_guidelines_percent", "type": "quantitative"}
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {"field": "risk_index", "order": "descending"},
+          "title": "State/territory"
+        },
+        "x": {"field": "baseline", "type": "quantitative"},
+        "x2": {"field": "risk_index", "type": "quantitative"}
       }
     },
     {
-      "data": {"url": "../data/physical_activity.csv"},
-      "mark": {"type": "rule", "stroke": "#4b2a78", "strokeDash": [4, 4], "strokeWidth": 1.5},
+      "data": {"url": "../data/lifestyle_risk_index.csv"},
+      "mark": {"type": "circle", "filled": true, "opacity": 0.95, "stroke": "white", "strokeWidth": 1.5},
       "encoding": {
-        "y": {"aggregate": "mean", "field": "obesity_percent", "type": "quantitative"}
-      }
-    },
-    {
-      "data": {"url": "../data/physical_activity.csv"},
-      "mark": {"type": "circle", "filled": true, "opacity": 0.9},
-      "encoding": {
-        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
-        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {"field": "risk_index", "order": "descending"}
+        },
+        "x": {"field": "risk_index", "type": "quantitative"},
         "size": {
           "field": "population_thousands",
           "type": "quantitative",
           "title": "Population ('000)",
-          "scale": {"range": [180, 2200]}
+          "scale": {"range": [120, 900]}
         },
         "color": {
-          "field": "state",
-          "type": "nominal",
-          "title": "State/territory",
-          "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd", "#665f72"]}
-        },
-        "stroke": {
-          "condition": {"param": "hoverState", "value": "#261f33"},
-          "value": "#ffffff"
-        },
-        "strokeWidth": {
-          "condition": {"param": "hoverState", "value": 2},
-          "value": 0.7
+          "field": "risk_index",
+          "type": "quantitative",
+          "title": "Risk index",
+          "scale": {"range": ["#d8c5f4", "#8b4fd3", "#4b2a78"], "domain": [53, 55, 57]}
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
-          {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met activity guidelines (%)", "format": ".1f"},
-          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "risk_index", "type": "quantitative", "title": "Risk index", "format": ".1f"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Adults obese (%)", "format": ".1f"},
+          {"field": "inactive_percent", "type": "quantitative", "title": "Not meeting activity guidelines (%)", "format": ".1f"},
           {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
         ]
       }
     },
     {
-      "data": {"url": "../data/physical_activity.csv"},
-      "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT' || datum.state == 'Qld'"}],
-      "mark": {"type": "text", "align": "left", "dx": 9, "dy": -8, "fontWeight": "bold", "fontSize": 11, "color": "#261f33"},
+      "data": {"url": "../data/lifestyle_risk_index.csv"},
+      "mark": {"type": "rule", "stroke": "#4b2a78", "strokeDash": [5, 4], "strokeWidth": 2},
       "encoding": {
-        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
-        "y": {"field": "obesity_percent", "type": "quantitative"},
-        "text": {"field": "state", "type": "nominal"}
+        "x": {"aggregate": "mean", "field": "risk_index", "type": "quantitative"}
       }
     },
     {
-      "data": {"url": "../data/risk_quadrants.csv"},
-      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#665f72"},
+      "data": {"url": "../data/lifestyle_risk_index.csv"},
+      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 12, "fontWeight": "bold", "color": "#261f33"},
       "encoding": {
-        "x": {"field": "x_max", "type": "quantitative"},
-        "y": {"field": "y_max", "type": "quantitative"},
-        "text": {"field": "zone", "type": "nominal"}
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {"field": "risk_index", "order": "descending"}
+        },
+        "x": {"field": "risk_index", "type": "quantitative"},
+        "text": {"field": "risk_index", "type": "quantitative", "format": ".1f"}
+      }
+    },
+    {
+      "data": {"url": "../data/lifestyle_risk_index.csv"},
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -142, "fontSize": 11, "fontStyle": "italic", "color": "#4b2a78"},
+      "encoding": {
+        "x": {"aggregate": "mean", "field": "risk_index", "type": "quantitative"},
+        "text": {"value": "Mean"}
       }
     }
   ],

@@ -28,4 +28,6 @@ Notes:
 - All percentages are proportions reported by ABS/AIHW and are manually transcribed from the public tables/text listed above.
 - obesity_gender.csv and obesity_age.csv use adult age groups from ABS Table 8.3 Body Mass Index proportions.
 - obesity_age_annotation.csv contains a text-only annotation derived from obesity_age.csv.
+- lifestyle_risk_index.csv is a derived index calculated from ABS adult obesity rates and the share not meeting physical activity guidelines.
+- lifestyle_risk_bands.csv contains display bands for the derived lifestyle risk index chart.
 - australia_states.topojson is geometry only and does not contain obesity, physical activity or food consumption values.
