@@ -57,21 +57,6 @@
           "y": {"value": 114},
           "text": {"field": "context", "type": "nominal"}
         }
-      },
-      {
-        "mark": {"type": "rule", "stroke": "#ece6f8", "strokeWidth": 2},
-        "encoding": {
-          "x": {"value": 12},
-          "x2": {"value": 390},
-          "y": {"value": 103},
-          "tooltip": [
-            {"field": "metric", "type": "nominal", "title": "Metric"},
-            {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"},
-            {"field": "unit", "type": "nominal", "title": "Unit"},
-            {"field": "detail", "type": "nominal", "title": "Detail"},
-            {"field": "context", "type": "nominal", "title": "Context"}
-          ]
-        }
       }
     ]
   },
