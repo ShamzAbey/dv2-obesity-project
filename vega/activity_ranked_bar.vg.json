@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Compact tile heatmap comparing physical activity guideline achievement and adult obesity by state and territory.",
-  "title": "Physical activity and obesity tile heatmap",
+  "description": "Bubble matrix comparing physical activity guideline achievement and adult obesity by state and territory. Colour shows rate and bubble size shows population.",
+  "title": "Physical activity and obesity bubble matrix",
   "width": "container",
-  "height": 170,
+  "height": 250,
   "data": {"url": "../data/physical_activity.csv"},
   "transform": [
     {
@@ -15,9 +15,15 @@
       "as": "metric_label"
     }
   ],
+  "params": [
+    {
+      "name": "hoverTile",
+      "select": {"type": "point", "fields": ["state", "metric_label"], "on": "mouseover", "clear": "mouseout"}
+    }
+  ],
   "layer": [
     {
-      "mark": {"type": "rect", "cornerRadius": 5},
+      "mark": {"type": "circle", "filled": true, "opacity": 0.86},
       "encoding": {
         "x": {"field": "state", "type": "ordinal", "title": "State/territory", "axis": {"labelAngle": 0}},
         "y": {
@@ -32,15 +38,30 @@
           "title": "Rate (%)",
           "scale": {"range": ["#ede2f8", "#8d89dd", "#4b2a78"], "domain": [20, 28, 38]}
         },
+        "size": {
+          "field": "population_thousands",
+          "type": "quantitative",
+          "title": "Population ('000)",
+          "scale": {"range": [700, 4200]}
+        },
+        "stroke": {
+          "condition": {"param": "hoverTile", "value": "#261f33"},
+          "value": "#ffffff"
+        },
+        "strokeWidth": {
+          "condition": {"param": "hoverTile", "value": 2},
+          "value": 0.7
+        },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "metric_label", "type": "nominal", "title": "Indicator"},
-          {"field": "value", "type": "quantitative", "title": "Rate (%)", "format": ".1f"}
+          {"field": "value", "type": "quantitative", "title": "Rate (%)", "format": ".1f"},
+          {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "#261f33"},
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#261f33"},
       "encoding": {
         "x": {"field": "state", "type": "ordinal"},
         "y": {
@@ -49,6 +70,23 @@
           "sort": ["Met activity guidelines", "Adults obese"]
         },
         "text": {"field": "value", "type": "quantitative", "format": ".1f"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "Tas", "metric_label": "Adults obese", "label": "Highest obesity"}
+        ]
+      },
+      "mark": {"type": "text", "dy": 36, "fontSize": 10, "fontStyle": "italic", "fontWeight": "bold", "color": "#4b2a78"},
+      "encoding": {
+        "x": {"field": "state", "type": "ordinal"},
+        "y": {
+          "field": "metric_label",
+          "type": "nominal",
+          "sort": ["Met activity guidelines", "Adults obese"]
+        },
+        "text": {"field": "label", "type": "nominal"}
       }
     }
   ],
