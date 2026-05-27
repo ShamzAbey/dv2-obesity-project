@@ -1,21 +1,34 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Ranked bar chart of adult obesity rates by state and territory.",
-  "title": "Adult obesity ranking by state and territory",
+  "description": "Lollipop chart of adult obesity rates by state and territory.",
+  "title": "Adult obesity lollipop comparison by state and territory",
   "width": "container",
   "height": 260,
   "data": {"url": "../data/obesity_state.csv"},
+  "transform": [{"calculate": "0", "as": "baseline"}],
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 3},
+      "mark": {"type": "rule", "stroke": "#c29be6", "strokeWidth": 4},
       "encoding": {
         "y": {"field": "state", "type": "ordinal", "sort": "-x", "title": "State/territory"},
-        "x": {"field": "obese_percent", "type": "quantitative", "title": "Adults obese (%)", "scale": {"domain": [0, 40]}},
-        "color": {"field": "obese_percent", "type": "quantitative", "legend": null, "scale": {"range": ["#ede2f8", "#a66bd8", "#4b2a78"], "domain": [28, 33, 38]}},
+        "x": {"field": "baseline", "type": "quantitative", "title": "Adults obese (%)", "scale": {"domain": [0, 40]}},
+        "x2": {"field": "obese_percent"},
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
           {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "circle", "filled": true, "size": 170},
+      "encoding": {
+        "y": {"field": "state", "type": "ordinal", "sort": "-x"},
+        "x": {"field": "obese_percent", "type": "quantitative"},
+        "color": {"field": "obese_percent", "type": "quantitative", "legend": null, "scale": {"range": ["#ede2f8", "#a66bd8", "#4b2a78"], "domain": [28, 33, 38]}},
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
         ]
       }
     },

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart comparing male and female adult obesity rates across age groups.",
+  "title": "Gender difference in obesity by age group",
+  "width": "container",
+  "height": 320,
+  "data": {"url": "../data/obesity_gender.csv"},
+  "layer": [
+    {
+      "transform": [
+        {
+          "pivot": "sex",
+          "value": "obesity_percent",
+          "groupby": ["age_group"]
+        }
+      ],
+      "mark": {"type": "rule", "stroke": "#c29be6", "strokeWidth": 4},
+      "encoding": {
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "title": "Age group",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+        },
+        "x": {
+          "field": "Men",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"domain": [10, 42]}
+        },
+        "x2": {"field": "Women"}
+      }
+    },
+    {
+      "mark": {"type": "circle", "filled": true, "size": 150},
+      "encoding": {
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+        },
+        "x": {"field": "obesity_percent", "type": "quantitative"},
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "title": "Sex",
+          "scale": {"range": ["#4b2a78", "#c29be6"]}
+        },
+        "tooltip": [
+          {"field": "age_group", "type": "ordinal", "title": "Age group"},
+          {"field": "sex", "type": "nominal", "title": "Sex"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

@@ -1,28 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Latest selected beverage apparent consumption by category from ABS 2023-24 data.",
-  "title": "Latest selected beverage consumption, 2023-24",
+  "description": "Donut chart of latest selected beverage apparent consumption by category from ABS 2023-24 data.",
+  "title": "Latest selected beverage consumption share, 2023-24",
   "width": "container",
   "height": 260,
   "data": {"url": "../data/food_consumption.csv"},
   "transform": [{"filter": "datum.year == '2023-24'"}],
-  "mark": {"type": "bar", "cornerRadiusEnd": 3},
+  "mark": {"type": "arc", "innerRadius": 70, "outerRadius": 130},
   "encoding": {
-    "y": {
-      "field": "category",
-      "type": "nominal",
-      "sort": "-x",
-      "title": "Category"
-    },
-    "x": {
+    "theta": {
       "field": "ml_per_capita_per_day",
       "type": "quantitative",
-      "title": "mL per capita per day"
+      "title": "mL per capita per day",
+      "stack": true
     },
     "color": {
       "field": "category",
       "type": "nominal",
-      "legend": null,
+      "title": "Category",
       "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
     },
     "tooltip": [
