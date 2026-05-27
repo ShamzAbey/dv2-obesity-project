@@ -117,14 +117,14 @@ body {
     box-shadow:0 6px 18px rgba(70,45,105,0.08);
     padding:8px 10px;
     overflow-x:auto;
-    max-width:1180px;
-    margin:0 auto;
+    width:100%;
+    margin:0;
 }
 
 .kpi-chart{
     min-height:130px;
     display:flex;
-    justify-content:center;
+    justify-content:stretch;
 }
 
 .image-grid{

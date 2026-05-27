@@ -11,7 +11,7 @@
     }
   },
   "spec": {
-    "width": 280,
+    "width": 405,
     "height": 118,
     "layer": [
       {
@@ -53,7 +53,7 @@
         "mark": {"type": "bar", "cornerRadius": 3, "color": "#ece6f8"},
         "encoding": {
           "x": {"value": 12},
-          "x2": {"value": 266},
+          "x2": {"value": 390},
           "y": {"value": 106},
           "y2": {"value": 112}
         }
@@ -62,7 +62,7 @@
         "mark": {"type": "bar", "cornerRadius": 3, "color": "#8b4fd3"},
         "encoding": {
           "x": {"value": 12},
-          "x2": {"expr": "12 + min(datum.value / datum.benchmark, 1) * 254"},
+          "x2": {"expr": "12 + min(datum.value / datum.benchmark, 1) * 378"},
           "y": {"value": 106},
           "y2": {"value": 112},
           "tooltip": [
