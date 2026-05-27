@@ -1,27 +1,57 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Tile heatmap of physical activity guideline achievement by state and territory.",
-  "title": "Physical activity guideline achievement tile heatmap",
+  "description": "Compact tile heatmap comparing physical activity guideline achievement and adult obesity by state and territory.",
+  "title": "Physical activity and obesity tile heatmap",
   "width": "container",
-  "height": 260,
+  "height": 170,
   "data": {"url": "../data/physical_activity.csv"},
-  "transform": [{"calculate": "'Met guidelines'", "as": "metric"}],
-  "mark": {"type": "rect", "cornerRadius": 6},
-  "encoding": {
-    "x": {"field": "state", "type": "ordinal", "title": "State/territory", "axis": {"labelAngle": 0}},
-    "y": {"field": "metric", "type": "nominal", "title": null},
-    "color": {
-      "field": "met_guidelines_percent",
-      "type": "quantitative",
-      "title": "Met guidelines (%)",
-      "scale": {"range": ["#ede2f8", "#8d89dd", "#5e63c7"], "domain": [20, 23, 26]}
+  "transform": [
+    {
+      "fold": ["met_guidelines_percent", "obesity_percent"],
+      "as": ["metric", "value"]
     },
-    "tooltip": [
-      {"field": "state_full", "type": "nominal", "title": "State/territory"},
-      {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
-      {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
-    ]
-  },
+    {
+      "calculate": "datum.metric == 'met_guidelines_percent' ? 'Met activity guidelines' : 'Adults obese'",
+      "as": "metric_label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rect", "cornerRadius": 5},
+      "encoding": {
+        "x": {"field": "state", "type": "ordinal", "title": "State/territory", "axis": {"labelAngle": 0}},
+        "y": {
+          "field": "metric_label",
+          "type": "nominal",
+          "title": null,
+          "sort": ["Met activity guidelines", "Adults obese"]
+        },
+        "color": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Rate (%)",
+          "scale": {"range": ["#ede2f8", "#8d89dd", "#4b2a78"], "domain": [20, 28, 38]}
+        },
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "metric_label", "type": "nominal", "title": "Indicator"},
+          {"field": "value", "type": "quantitative", "title": "Rate (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "#261f33"},
+      "encoding": {
+        "x": {"field": "state", "type": "ordinal"},
+        "y": {
+          "field": "metric_label",
+          "type": "nominal",
+          "sort": ["Met activity guidelines", "Adults obese"]
+        },
+        "text": {"field": "value", "type": "quantitative", "format": ".1f"}
+      }
+    }
+  ],
   "config": {
     "view": {"stroke": null},
     "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"}
