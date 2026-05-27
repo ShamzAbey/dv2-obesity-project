@@ -1,5 +1,5 @@
-metric,value,unit,detail,benchmark,category
-Highest adult obesity rate,37.0,%,Tasmania,40,Obesity
-Lowest adult obesity rate,29.7,%,Australian Capital Territory,40,Obesity
-Highest overweight or obese rate,70.5,%,Tasmania,80,Overweight/obesity
-Latest soft drink consumption,164.8,mL/day,2023-24,180,Food consumption
+order,metric,value,unit,detail,context
+1,Highest adult obesity rate,37.0,%,Tasmania,ABS NHS 2022 state/territory finding
+2,Lowest adult obesity rate,29.7,%,Australian Capital Territory,ABS NHS 2022 state/territory finding
+3,State obesity gap,7.3,percentage points,Tasmania minus ACT,37.0% compared with 29.7%
+4,Soft drink consumption change,4.3,mL/day increase,2018-19 to 2023-24,164.8 minus 160.5 mL per capita per day

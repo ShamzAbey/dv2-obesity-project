@@ -7,6 +7,7 @@
       "field": "metric",
       "type": "nominal",
       "title": null,
+      "sort": {"field": "order", "order": "ascending"},
       "header": {"labelFontSize": 0, "labelPadding": 0}
     }
   },
@@ -34,9 +35,9 @@
         }
       },
       {
-        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 15, "fontWeight": "bold", "color": "#4b2a78"},
+        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 14, "fontWeight": "bold", "color": "#4b2a78"},
         "encoding": {
-          "x": {"value": 104},
+          "x": {"value": 112},
           "y": {"value": 61},
           "text": {"field": "unit", "type": "nominal"}
         }
@@ -50,26 +51,25 @@
         }
       },
       {
-        "mark": {"type": "bar", "cornerRadius": 3, "color": "#ece6f8"},
+        "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 10, "color": "#8a8197"},
         "encoding": {
           "x": {"value": 12},
-          "x2": {"value": 390},
-          "y": {"value": 106},
-          "y2": {"value": 112}
+          "y": {"value": 114},
+          "text": {"field": "context", "type": "nominal"}
         }
       },
       {
-        "mark": {"type": "bar", "cornerRadius": 3, "color": "#8b4fd3"},
+        "mark": {"type": "rule", "stroke": "#ece6f8", "strokeWidth": 2},
         "encoding": {
           "x": {"value": 12},
-          "x2": {"expr": "12 + min(datum.value / datum.benchmark, 1) * 378"},
-          "y": {"value": 106},
-          "y2": {"value": 112},
+          "x2": {"value": 390},
+          "y": {"value": 103},
           "tooltip": [
             {"field": "metric", "type": "nominal", "title": "Metric"},
             {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"},
             {"field": "unit", "type": "nominal", "title": "Unit"},
-            {"field": "detail", "type": "nominal", "title": "Detail"}
+            {"field": "detail", "type": "nominal", "title": "Detail"},
+            {"field": "context", "type": "nominal", "title": "Context"}
           ]
         }
       }
