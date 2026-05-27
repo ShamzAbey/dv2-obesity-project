@@ -43,9 +43,16 @@
             <div class="kpi-card">
                 <div id="kpi-tiles" class="kpi-chart"></div>
             </div>
+            <nav class="visual-index" aria-label="Visualisation index">
+                <a href="#geo">Geography</a>
+                <a href="#food">Food Trends</a>
+                <a href="#activity">Activity</a>
+                <a href="#demographics">Demographics</a>
+                <a href="#sources">Sources</a>
+            </nav>
         </section>
 
-        <section class="story-section">
+        <section id="geo" class="story-section">
             <div class="section-copy">
                 <h2>Obesity Rates Across Australia</h2>
                 <p>Obesity rates vary between Australian states and territories. A choropleth map helps identify geographic patterns quickly, while interactive tooltips allow users to inspect each state or territory in more detail.</p>
@@ -69,7 +76,7 @@
             </div>
         </section>
 
-        <section class="story-section">
+        <section id="food" class="story-section">
             <div class="section-copy">
                 <h2>Changes in Food Consumption Over Time</h2>
                 <p>Processed, convenience, and takeaway-style food consumption patterns have changed over time. These trends may relate to rising obesity rates because food environments influence the everyday choices available to Australians.</p>
@@ -113,7 +120,7 @@
             </div>
         </section>
 
-        <section class="story-section">
+        <section id="activity" class="story-section">
             <div class="section-copy">
                 <h2>Physical Activity and Obesity</h2>
                 <p>Lower physical activity may relate to higher obesity rates, although the relationship is not the only factor affecting public health outcomes. A scatterplot helps compare two variables at once, showing how each state and territory sits against the broader pattern.</p>
@@ -134,10 +141,16 @@
                     <div id="activity-ranking" class="chart chart-short"></div>
                     <p class="caption">A tile heatmap highlights differences in guideline achievement across states and territories.</p>
                 </div>
+
+                <div class="chart-card chart-card-wide">
+                    <h3>State health profile: parallel coordinates</h3>
+                    <div id="state-profile" class="chart"></div>
+                    <p class="caption">Hover over a state line to compare obesity, overweight/obesity, and physical activity in one profile.</p>
+                </div>
             </div>
         </section>
 
-        <section class="story-section">
+        <section id="demographics" class="story-section">
             <div class="section-copy">
                 <h2>Obesity Across Gender and Age Groups</h2>
                 <p>Obesity affects demographic groups differently. Comparing age and gender reveals important patterns that are hidden in national averages, especially where older age groups experience higher obesity rates.</p>
@@ -168,7 +181,7 @@
             </div>
         </section>
 
-        <section class="story-section sources-section">
+        <section id="sources" class="story-section sources-section">
             <div class="section-copy">
                 <h2>Data Sources</h2>
                 <ul>

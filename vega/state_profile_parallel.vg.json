@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Parallel coordinates profile comparing obesity, overweight/obesity, and physical activity rates by state and territory.",
+  "title": "State health profile: obesity, overweight/obesity and activity",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/physical_activity.csv"},
+  "transform": [
+    {
+      "fold": [
+        "obesity_percent",
+        "overweight_obese_percent",
+        "met_guidelines_percent"
+      ],
+      "as": ["indicator", "value"]
+    },
+    {
+      "calculate": "datum.indicator == 'obesity_percent' ? 'Obese' : datum.indicator == 'overweight_obese_percent' ? 'Overweight/obese' : 'Met activity guidelines'",
+      "as": "indicator_label"
+    }
+  ],
+  "params": [
+    {
+      "name": "hoverState",
+      "select": {"type": "point", "fields": ["state"], "on": "mouseover", "clear": "mouseout"}
+    }
+  ],
+  "mark": {"type": "line", "point": {"filled": true, "size": 70}, "strokeWidth": 2.5},
+  "encoding": {
+    "x": {
+      "field": "indicator_label",
+      "type": "nominal",
+      "title": "Indicator",
+      "sort": ["Obese", "Overweight/obese", "Met activity guidelines"],
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Percentage (%)",
+      "scale": {"domain": [0, 75]}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State/territory",
+      "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd", "#665f72"]}
+    },
+    "opacity": {
+      "condition": {"param": "hoverState", "value": 1},
+      "value": 0.28
+    },
+    "detail": {"field": "state"},
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "indicator_label", "type": "nominal", "title": "Indicator"},
+      {"field": "value", "type": "quantitative", "title": "Value (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

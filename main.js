@@ -20,5 +20,6 @@ vegaEmbed("#latest-food-category", "vega/latest_food_category_bar.vg.json", embe
 vegaEmbed("#obesity-age", "vega/obesity_age_annotated.vg.json", embedOpts).catch(console.error);
 vegaEmbed("#activity-obesity", "vega/activity_obesity_scatter.vg.json", embedOpts).catch(console.error);
 vegaEmbed("#activity-ranking", "vega/activity_ranked_bar.vg.json", embedOpts).catch(console.error);
+vegaEmbed("#state-profile", "vega/state_profile_parallel.vg.json", embedOpts).catch(console.error);
 vegaEmbed("#gender-dumbbell", "vega/gender_age_dumbbell.vg.json", embedOpts).catch(console.error);
 vegaEmbed("#food-stacked", "vega/food_category_stacked_area.vg.json", embedOpts).catch(console.error);
