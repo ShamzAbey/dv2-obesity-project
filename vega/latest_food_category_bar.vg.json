@@ -1,33 +1,102 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Donut chart of latest selected beverage apparent consumption by category from ABS 2023-24 data.",
+  "description": "Composite donut and ranked bar chart of latest selected beverage apparent consumption by category from ABS 2023-24 data.",
   "title": "Latest selected beverage consumption share, 2023-24",
-  "width": "container",
-  "height": 260,
   "data": {"url": "../data/food_consumption.csv"},
   "transform": [{"filter": "datum.year == '2023-24'"}],
-  "mark": {"type": "arc", "innerRadius": 70, "outerRadius": 130},
-  "encoding": {
-    "theta": {
-      "field": "ml_per_capita_per_day",
-      "type": "quantitative",
-      "title": "mL per capita per day",
-      "stack": true
+  "hconcat": [
+    {
+      "width": 430,
+      "height": 340,
+      "layer": [
+        {
+          "mark": {"type": "arc", "innerRadius": 92, "outerRadius": 165, "stroke": "#ffffff", "strokeWidth": 1},
+          "encoding": {
+            "theta": {
+              "field": "ml_per_capita_per_day",
+              "type": "quantitative",
+              "title": "mL per capita per day",
+              "stack": true
+            },
+            "color": {
+              "field": "category",
+              "type": "nominal",
+              "title": "Category",
+              "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
+            },
+            "tooltip": [
+              {"field": "year", "type": "ordinal", "title": "Financial year"},
+              {"field": "category", "type": "nominal", "title": "Category"},
+              {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {"op": "sum", "field": "ml_per_capita_per_day", "as": "total_ml"}
+              ]
+            }
+          ],
+          "mark": {"type": "text", "fontSize": 24, "fontWeight": "bold", "color": "#4b2a78"},
+          "encoding": {
+            "text": {"field": "total_ml", "type": "quantitative", "format": ".0f"}
+          }
+        },
+        {
+          "mark": {"type": "text", "dy": 25, "fontSize": 12, "color": "#665f72"},
+          "encoding": {"text": {"value": "mL/capita/day"}}
+        }
+      ]
     },
-    "color": {
-      "field": "category",
-      "type": "nominal",
-      "title": "Category",
-      "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
-    },
-    "tooltip": [
-      {"field": "year", "type": "ordinal", "title": "Financial year"},
-      {"field": "category", "type": "nominal", "title": "Category"},
-      {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
-    ]
-  },
+    {
+      "width": "container",
+      "height": 340,
+      "layer": [
+        {
+          "mark": {"type": "bar", "cornerRadiusEnd": 4},
+          "encoding": {
+            "y": {
+              "field": "category",
+              "type": "nominal",
+              "sort": "-x",
+              "title": null
+            },
+            "x": {
+              "field": "ml_per_capita_per_day",
+              "type": "quantitative",
+              "title": "mL per capita per day"
+            },
+            "color": {
+              "field": "category",
+              "type": "nominal",
+              "legend": null,
+              "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
+            },
+            "tooltip": [
+              {"field": "year", "type": "ordinal", "title": "Financial year"},
+              {"field": "category", "type": "nominal", "title": "Category"},
+              {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "left", "dx": 5, "fontWeight": "bold", "color": "#261f33"},
+          "encoding": {
+            "y": {"field": "category", "type": "nominal", "sort": "-x"},
+            "x": {"field": "ml_per_capita_per_day", "type": "quantitative"},
+            "text": {"field": "ml_per_capita_per_day", "type": "quantitative", "format": ".1f"}
+          }
+        }
+      ],
+      "title": "Ranked category amount"
+    }
+  ],
+  "resolve": {"scale": {"color": "shared"}},
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"}
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
   }
 }

@@ -3,7 +3,7 @@
   "description": "Choropleth map of adult obesity rates by Australian state and territory using ABS NHS 2022 CSV data joined to local Australian TopoJSON geometry.",
   "title": "Adult obesity rates by Australian state and territory, 2022",
   "width": "container",
-  "height": 500,
+  "height": 430,
   "data": {
     "url": "../data/australia_states.topojson",
     "format": {"type": "topojson", "feature": "collection"}
@@ -21,7 +21,7 @@
     {"filter": "isValid(datum.obese_percent)"}
   ],
   "projection": {"type": "mercator"},
-  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.7},
+  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.8},
   "encoding": {
     "color": {
       "field": "obese_percent",
@@ -37,6 +37,6 @@
   },
   "config": {
     "view": {"stroke": null},
-    "legend": {"labelFontSize": 12, "titleFontSize": 12}
+    "legend": {"labelFontSize": 12, "titleFontSize": 12, "orient": "right"}
   }
 }
