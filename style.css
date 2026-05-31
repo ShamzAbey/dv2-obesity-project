@@ -27,6 +27,7 @@ body {
         linear-gradient(90deg, rgba(15,76,117,0.86) 0%, rgba(47,143,194,0.70) 48%, rgba(65,182,196,0.20) 100%),
         url("https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=2200&q=80") center/cover;
     border-bottom:1px solid var(--border);
+    animation:hero-drift 18s ease-in-out infinite alternate;
 }
 
 .hero-inner{
@@ -215,6 +216,22 @@ body {
     flex-direction:column;
 }
 
+.chart-card,
+.image-card,
+.kpi-card,
+.section-copy,
+.visual-index a{
+    transition:transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.chart-card:hover,
+.image-card:hover,
+.kpi-card:hover,
+.visual-index a:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(15,76,117,0.14);
+}
+
 .chart-card h3{
     margin:0 0 6px;
     font-size:1rem;
@@ -261,6 +278,59 @@ body {
 
 .sources-section{
     margin-bottom:0;
+}
+
+.js-enabled .story-section,
+.js-enabled .chart-card,
+.js-enabled .image-card,
+.js-enabled .kpi-card{
+    opacity:0;
+    transform:translateY(14px);
+}
+
+.js-enabled .story-section.is-visible,
+.js-enabled .chart-card.is-visible,
+.js-enabled .image-card.is-visible,
+.js-enabled .kpi-card.is-visible{
+    opacity:1;
+    transform:translateY(0);
+    transition:opacity 520ms ease, transform 520ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.chart .vega-embed{
+    opacity:0;
+    transform:translateY(8px);
+    transition:opacity 420ms ease, transform 420ms ease;
+}
+
+.chart.chart-loaded .vega-embed{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@keyframes hero-drift{
+    from{background-position:center center}
+    to{background-position:center 42%}
+}
+
+@media (prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:0.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:0.01ms !important;
+    }
+
+    .js-enabled .story-section,
+    .js-enabled .chart-card,
+    .js-enabled .image-card,
+    .js-enabled .kpi-card,
+    .chart .vega-embed{
+        opacity:1;
+        transform:none;
+    }
 }
 
 @media (max-width:900px){
