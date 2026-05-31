@@ -14,6 +14,16 @@ const kpiEmbedOpts = {
 
 document.documentElement.classList.add('js-enabled');
 
+const updateScrollProgress = () => {
+	const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+	const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+	document.documentElement.style.setProperty('--scroll-progress', `${Math.min(progress, 100)}%`);
+};
+
+window.addEventListener('scroll', updateScrollProgress, {passive: true});
+window.addEventListener('resize', updateScrollProgress);
+updateScrollProgress();
+
 const charts = [
 	["#obesity-map", "vega/obesity_choropleth.vg.json", embedOpts],
 	["#kpi-tiles", "vega/kpi_tiles.vg.json", kpiEmbedOpts],

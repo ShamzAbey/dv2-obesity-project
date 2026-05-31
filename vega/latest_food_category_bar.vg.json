@@ -4,93 +4,98 @@
   "title": "Latest selected beverage consumption share, 2023-24",
   "data": {"url": "../data/food_consumption.csv"},
   "transform": [{"filter": "datum.year == '2023-24'"}],
-  "hconcat": [
+  "vconcat": [
     {
-      "width": 430,
-      "height": 340,
-      "layer": [
+      "hconcat": [
         {
-          "mark": {"type": "arc", "innerRadius": 92, "outerRadius": 165, "stroke": "#ffffff", "strokeWidth": 1},
-          "encoding": {
-            "theta": {
-              "field": "ml_per_capita_per_day",
-              "type": "quantitative",
-              "title": "mL per capita per day",
-              "stack": true
+          "width": 360,
+          "height": 300,
+          "layer": [
+            {
+              "mark": {"type": "arc", "innerRadius": 82, "outerRadius": 145, "stroke": "#ffffff", "strokeWidth": 1},
+              "encoding": {
+                "theta": {
+                  "field": "ml_per_capita_per_day",
+                  "type": "quantitative",
+                  "title": "mL per capita per day",
+                  "stack": true
+                },
+                "color": {
+                  "field": "category",
+                  "type": "nominal",
+                  "title": "Category",
+                  "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
+                },
+                "tooltip": [
+                  {"field": "year", "type": "ordinal", "title": "Financial year"},
+                  {"field": "category", "type": "nominal", "title": "Category"},
+                  {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+                ]
+              }
             },
-            "color": {
-              "field": "category",
-              "type": "nominal",
-              "title": "Category",
-              "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
+            {
+              "transform": [
+                {
+                  "aggregate": [
+                    {"op": "sum", "field": "ml_per_capita_per_day", "as": "total_ml"}
+                  ]
+                }
+              ],
+              "mark": {"type": "text", "fontSize": 24, "fontWeight": "bold", "color": "#0f4c75"},
+              "encoding": {
+                "text": {"field": "total_ml", "type": "quantitative", "format": ".0f"}
+              }
             },
-            "tooltip": [
-              {"field": "year", "type": "ordinal", "title": "Financial year"},
-              {"field": "category", "type": "nominal", "title": "Category"},
-              {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
-            ]
-          }
+            {
+              "mark": {"type": "text", "dy": 25, "fontSize": 12, "color": "#5d6f7d"},
+              "encoding": {"text": {"value": "mL/capita/day"}}
+            }
+          ]
         },
         {
-          "transform": [
+          "width": 880,
+          "height": 300,
+          "layer": [
             {
-              "aggregate": [
-                {"op": "sum", "field": "ml_per_capita_per_day", "as": "total_ml"}
-              ]
+              "mark": {"type": "bar", "cornerRadiusEnd": 4},
+              "encoding": {
+                "y": {
+                  "field": "category",
+                  "type": "nominal",
+                  "sort": "-x",
+                  "title": null
+                },
+                "x": {
+                  "field": "ml_per_capita_per_day",
+                  "type": "quantitative",
+                  "title": "mL per capita per day",
+                  "scale": {"domain": [0, 170]}
+                },
+                "color": {
+                  "field": "category",
+                  "type": "nominal",
+                  "legend": null,
+                  "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
+                },
+                "tooltip": [
+                  {"field": "year", "type": "ordinal", "title": "Financial year"},
+                  {"field": "category", "type": "nominal", "title": "Category"},
+                  {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+                ]
+              }
+            },
+            {
+              "mark": {"type": "text", "align": "left", "dx": 5, "fontWeight": "bold", "color": "#183242"},
+              "encoding": {
+                "y": {"field": "category", "type": "nominal", "sort": "-x"},
+                "x": {"field": "ml_per_capita_per_day", "type": "quantitative"},
+                "text": {"field": "ml_per_capita_per_day", "type": "quantitative", "format": ".1f"}
+              }
             }
           ],
-          "mark": {"type": "text", "fontSize": 24, "fontWeight": "bold", "color": "#0f4c75"},
-          "encoding": {
-            "text": {"field": "total_ml", "type": "quantitative", "format": ".0f"}
-          }
-        },
-        {
-          "mark": {"type": "text", "dy": 25, "fontSize": 12, "color": "#5d6f7d"},
-          "encoding": {"text": {"value": "mL/capita/day"}}
+          "title": "Ranked category amount"
         }
       ]
-    },
-    {
-      "width": "container",
-      "height": 340,
-      "layer": [
-        {
-          "mark": {"type": "bar", "cornerRadiusEnd": 4},
-          "encoding": {
-            "y": {
-              "field": "category",
-              "type": "nominal",
-              "sort": "-x",
-              "title": null
-            },
-            "x": {
-              "field": "ml_per_capita_per_day",
-              "type": "quantitative",
-              "title": "mL per capita per day"
-            },
-            "color": {
-              "field": "category",
-              "type": "nominal",
-              "legend": null,
-              "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
-            },
-            "tooltip": [
-              {"field": "year", "type": "ordinal", "title": "Financial year"},
-              {"field": "category", "type": "nominal", "title": "Category"},
-              {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
-            ]
-          }
-        },
-        {
-          "mark": {"type": "text", "align": "left", "dx": 5, "fontWeight": "bold", "color": "#183242"},
-          "encoding": {
-            "y": {"field": "category", "type": "nominal", "sort": "-x"},
-            "x": {"field": "ml_per_capita_per_day", "type": "quantitative"},
-            "text": {"field": "ml_per_capita_per_day", "type": "quantitative", "format": ".1f"}
-          }
-        }
-      ],
-      "title": "Ranked category amount"
     }
   ],
   "resolve": {"scale": {"color": "shared"}},
