@@ -16,10 +16,10 @@
     "height": 118,
     "layer": [
       {
-        "mark": {"type": "rect", "cornerRadius": 8, "fill": "#ffffff", "stroke": "#ddd3ec"}
+        "mark": {"type": "rect", "cornerRadius": 8, "fill": "#ffffff", "stroke": "#cfe3ef"}
       },
       {
-        "mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 13, "fontWeight": "bold", "color": "#665f72"},
+        "mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 13, "fontWeight": "bold", "color": "#5d6f7d"},
         "encoding": {
           "x": {"value": 12},
           "y": {"value": 10},
@@ -27,7 +27,7 @@
         }
       },
       {
-        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 36, "fontWeight": "bold", "color": "#4b2a78"},
+        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 36, "fontWeight": "bold", "color": "#0f4c75"},
         "encoding": {
           "x": {"value": 12},
           "y": {"value": 58},
@@ -35,7 +35,7 @@
         }
       },
       {
-        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 14, "fontWeight": "bold", "color": "#4b2a78"},
+        "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 14, "fontWeight": "bold", "color": "#0f4c75"},
         "encoding": {
           "x": {"value": 112},
           "y": {"value": 61},
@@ -43,7 +43,7 @@
         }
       },
       {
-        "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 12, "color": "#665f72"},
+        "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 12, "color": "#5d6f7d"},
         "encoding": {
           "x": {"value": 12},
           "y": {"value": 96},
@@ -51,7 +51,7 @@
         }
       },
       {
-        "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 10, "color": "#8a8197"},
+        "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 10, "color": "#78909c"},
         "encoding": {
           "x": {"value": 12},
           "y": {"value": 114},

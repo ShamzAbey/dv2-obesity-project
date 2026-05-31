@@ -22,7 +22,7 @@
               "field": "category",
               "type": "nominal",
               "title": "Category",
-              "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
+              "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
             },
             "tooltip": [
               {"field": "year", "type": "ordinal", "title": "Financial year"},
@@ -39,13 +39,13 @@
               ]
             }
           ],
-          "mark": {"type": "text", "fontSize": 24, "fontWeight": "bold", "color": "#4b2a78"},
+          "mark": {"type": "text", "fontSize": 24, "fontWeight": "bold", "color": "#0f4c75"},
           "encoding": {
             "text": {"field": "total_ml", "type": "quantitative", "format": ".0f"}
           }
         },
         {
-          "mark": {"type": "text", "dy": 25, "fontSize": 12, "color": "#665f72"},
+          "mark": {"type": "text", "dy": 25, "fontSize": 12, "color": "#5d6f7d"},
           "encoding": {"text": {"value": "mL/capita/day"}}
         }
       ]
@@ -72,7 +72,7 @@
               "field": "category",
               "type": "nominal",
               "legend": null,
-              "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd"]}
+              "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
             },
             "tooltip": [
               {"field": "year", "type": "ordinal", "title": "Financial year"},
@@ -82,7 +82,7 @@
           }
         },
         {
-          "mark": {"type": "text", "align": "left", "dx": 5, "fontWeight": "bold", "color": "#261f33"},
+          "mark": {"type": "text", "align": "left", "dx": 5, "fontWeight": "bold", "color": "#183242"},
           "encoding": {
             "y": {"field": "category", "type": "nominal", "sort": "-x"},
             "x": {"field": "ml_per_capita_per_day", "type": "quantitative"},
@@ -96,7 +96,7 @@
   "resolve": {"scale": {"color": "shared"}},
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
   }
 }

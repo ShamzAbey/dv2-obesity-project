@@ -7,7 +7,7 @@
   "data": {"url": "../data/physical_activity.csv"},
   "layer": [
     {
-      "mark": {"type": "line", "stroke": "#4b2a78", "strokeWidth": 2, "strokeDash": [5, 4], "opacity": 0.75},
+      "mark": {"type": "line", "stroke": "#0f4c75", "strokeWidth": 2, "strokeDash": [5, 4], "opacity": 0.75},
       "transform": [
         {
           "regression": "obesity_percent",
@@ -44,7 +44,7 @@
           "field": "state",
           "type": "nominal",
           "title": "State/territory",
-          "scale": {"range": ["#4b2a78", "#6f4bb2", "#8b4fd3", "#a66bd8", "#c29be6", "#5e63c7", "#8d89dd", "#665f72"]}
+          "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7", "#5d6f7d"]}
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
@@ -56,7 +56,7 @@
     },
     {
       "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT'"}],
-      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontWeight": "bold", "color": "#261f33"},
+      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontWeight": "bold", "color": "#183242"},
       "encoding": {
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"},
@@ -65,7 +65,7 @@
     },
     {
       "data": {"values": [{"met_guidelines_percent": 19.4, "obesity_percent": 38.4, "label": "Trend line shows broad association, not causation"}]},
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "color": "#665f72"},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "color": "#5d6f7d"},
       "encoding": {
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"},
@@ -75,7 +75,7 @@
   ],
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }

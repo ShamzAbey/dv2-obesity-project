@@ -1,15 +1,15 @@
 :root{
-    --bg:#f4f0fb;
+    --bg:#eef7fb;
     --card:#ffffff;
-    --panel:#fbf9ff;
-    --muted:#665f72;
-    --text:#261f33;
-    --border:#ddd3ec;
-    --accent:#7c4dbe;
-    --accent-dark:#4b2a78;
-    --risk:#8b4fd3;
-    --food:#a66bd8;
-    --activity:#5e63c7;
+    --panel:#f8fcff;
+    --muted:#5d6f7d;
+    --text:#183242;
+    --border:#cfe3ef;
+    --accent:#2f8fc2;
+    --accent-dark:#0f4c75;
+    --risk:#2f8fc2;
+    --food:#41b6c4;
+    --activity:#1d6fa5;
     --gap:10px;
 }
 
@@ -24,7 +24,7 @@ body {
 
 .hero-section{
     background:
-        linear-gradient(90deg, rgba(38,31,51,0.82) 0%, rgba(75,42,120,0.68) 48%, rgba(75,42,120,0.20) 100%),
+        linear-gradient(90deg, rgba(15,76,117,0.86) 0%, rgba(47,143,194,0.70) 48%, rgba(65,182,196,0.20) 100%),
         url("https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=2200&q=80") center/cover;
     border-bottom:1px solid var(--border);
 }
@@ -50,7 +50,7 @@ body {
 .hero-inner p{
     max-width:760px;
     margin:0;
-    color:#f4effb;
+    color:#eef9fd;
     font-size:1.15rem;
 }
 
@@ -58,7 +58,7 @@ body {
     content:"FIT2179 DV2 | Australian public health data";
     display:inline-block;
     margin-bottom:8px;
-    color:#e6d9f5;
+    color:#d7f0fb;
     font-size:0.78rem;
     font-weight:800;
     letter-spacing:0.08em;
@@ -114,7 +114,7 @@ body {
     border:1px solid var(--border);
     border-top:4px solid var(--accent);
     border-radius:8px;
-    box-shadow:0 6px 18px rgba(70,45,105,0.08);
+    box-shadow:0 6px 18px rgba(15,76,117,0.10);
     padding:8px 10px;
     overflow-x:auto;
     width:100%;
@@ -144,11 +144,11 @@ body {
     padding:10px 12px;
     text-align:center;
     text-decoration:none;
-    box-shadow:0 4px 12px rgba(70,45,105,0.06);
+    box-shadow:0 4px 12px rgba(15,76,117,0.08);
 }
 
 .visual-index a:hover{
-    background:#f7f1ff;
+    background:#eef8fd;
     border-color:var(--accent);
 }
 
@@ -170,7 +170,7 @@ body {
     border-top:4px solid var(--accent);
     border-radius:8px;
     overflow:hidden;
-    box-shadow:0 6px 18px rgba(70,45,105,0.08);
+    box-shadow:0 6px 18px rgba(15,76,117,0.10);
 }
 
 .image-card img{
@@ -209,7 +209,7 @@ body {
     border:1px solid var(--border);
     border-top:4px solid var(--accent);
     border-radius:8px;
-    box-shadow:0 6px 18px rgba(70,45,105,0.08);
+    box-shadow:0 6px 18px rgba(15,76,117,0.10);
     min-height:260px;
     display:flex;
     flex-direction:column;
@@ -242,8 +242,8 @@ body {
 
 .story-section:nth-of-type(5) .section-copy,
 .story-section:nth-of-type(5) .chart-card{
-    border-left-color:#6f4bb2;
-    border-top-color:#6f4bb2;
+    border-left-color:#2a7fb8;
+    border-top-color:#2a7fb8;
 }
 
 .chart{flex:1;min-height:235px}
@@ -255,7 +255,7 @@ body {
     margin:8px 0 0;
     color:var(--muted);
     font-size:0.92rem;
-    border-top:1px solid #eee8f7;
+    border-top:1px solid #dcecf5;
     padding-top:7px;
 }
 

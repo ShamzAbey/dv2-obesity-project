@@ -22,7 +22,7 @@
       "field": "sex",
       "type": "nominal",
       "title": "Sex",
-      "scale": {"range": ["#6f4bb2", "#c29be6"]}
+      "scale": {"range": ["#2a7fb8", "#9bd7ea"]}
     },
     "tooltip": [
       {"field": "age_group", "type": "ordinal", "title": "Age group"},
@@ -33,7 +33,7 @@
   },
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"},
     "legend": {"labelFontSize": 12, "titleFontSize": 12}
   }
 }

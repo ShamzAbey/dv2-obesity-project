@@ -22,7 +22,7 @@
       "field": "obesity_percent",
       "type": "quantitative",
       "legend": null,
-      "scale": {"range": ["#ede2f8", "#a66bd8", "#4b2a78"]}
+      "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"]}
     },
     "tooltip": [
       {"field": "age_group", "type": "ordinal", "title": "Age group"},

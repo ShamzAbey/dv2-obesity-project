@@ -7,7 +7,7 @@
   "transform": [{"filter": "datum.metric == 'Highest adult obesity rate'"}],
   "layer": [
     {
-      "mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 13, "fontWeight": "bold", "color": "#665f72"},
+      "mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 13, "fontWeight": "bold", "color": "#5d6f7d"},
       "encoding": {
         "x": {"value": 8},
         "y": {"value": 6},
@@ -15,7 +15,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 34, "fontWeight": "bold", "color": "#4b2a78"},
+      "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 34, "fontWeight": "bold", "color": "#0f4c75"},
       "encoding": {
         "x": {"value": 8},
         "y": {"value": 48},
@@ -23,7 +23,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 19, "fontWeight": "bold", "color": "#4b2a78"},
+      "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 19, "fontWeight": "bold", "color": "#0f4c75"},
       "encoding": {
         "x": {"value": 82},
         "y": {"value": 50},
@@ -31,7 +31,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 12, "color": "#665f72"},
+      "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 12, "color": "#5d6f7d"},
       "encoding": {
         "x": {"value": 8},
         "y": {"value": 88},

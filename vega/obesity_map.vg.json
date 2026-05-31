@@ -27,7 +27,7 @@
       "field": "obese_percent",
       "type": "quantitative",
       "title": "Adults obese (%)",
-      "scale": {"range": ["#ede2f8", "#a66bd8", "#4b2a78"], "domain": [28, 33, 38]}
+      "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"], "domain": [28, 33, 38]}
     },
     "tooltip": [
       {"field": "state_full", "type": "nominal", "title": "State/territory"},

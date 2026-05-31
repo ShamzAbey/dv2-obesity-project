@@ -14,7 +14,7 @@
           "groupby": ["age_group"]
         }
       ],
-      "mark": {"type": "rule", "stroke": "#c29be6", "strokeWidth": 4},
+      "mark": {"type": "rule", "stroke": "#9bd7ea", "strokeWidth": 4},
       "encoding": {
         "y": {
           "field": "age_group",
@@ -44,7 +44,7 @@
           "field": "sex",
           "type": "nominal",
           "title": "Sex",
-          "scale": {"range": ["#4b2a78", "#c29be6"]}
+          "scale": {"range": ["#0f4c75", "#9bd7ea"]}
         },
         "tooltip": [
           {"field": "age_group", "type": "ordinal", "title": "Age group"},
@@ -57,7 +57,7 @@
   ],
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }

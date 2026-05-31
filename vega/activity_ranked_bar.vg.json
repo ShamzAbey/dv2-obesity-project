@@ -22,7 +22,7 @@
           "field": "band",
           "type": "nominal",
           "legend": {"title": "Risk band", "orient": "bottom"},
-          "scale": {"range": ["#eee5f9", "#d4baf2", "#a879dc"]}
+          "scale": {"range": ["#eee5f9", "#b9e3f2", "#5aaed6"]}
         },
         "tooltip": [
           {"field": "band", "type": "nominal", "title": "Risk band"},
@@ -34,7 +34,7 @@
     {
       "data": {"url": "../data/lifestyle_risk_index.csv"},
       "transform": [{"calculate": "52", "as": "baseline"}],
-      "mark": {"type": "rule", "stroke": "#b58be7", "strokeWidth": 6, "opacity": 0.9},
+      "mark": {"type": "rule", "stroke": "#75c7df", "strokeWidth": 6, "opacity": 0.9},
       "encoding": {
         "y": {
           "field": "state",
@@ -66,7 +66,7 @@
           "field": "risk_index",
           "type": "quantitative",
           "title": "Risk index",
-          "scale": {"range": ["#d8c5f4", "#8b4fd3", "#4b2a78"], "domain": [53, 55, 57]}
+          "scale": {"range": ["#c8eaf6", "#2f8fc2", "#0f4c75"], "domain": [53, 55, 57]}
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
@@ -79,14 +79,14 @@
     },
     {
       "data": {"url": "../data/lifestyle_risk_index.csv"},
-      "mark": {"type": "rule", "stroke": "#4b2a78", "strokeDash": [5, 4], "strokeWidth": 2},
+      "mark": {"type": "rule", "stroke": "#0f4c75", "strokeDash": [5, 4], "strokeWidth": 2},
       "encoding": {
         "x": {"aggregate": "mean", "field": "risk_index", "type": "quantitative"}
       }
     },
     {
       "data": {"url": "../data/lifestyle_risk_index.csv"},
-      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 12, "fontWeight": "bold", "color": "#261f33"},
+      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 12, "fontWeight": "bold", "color": "#183242"},
       "encoding": {
         "y": {
           "field": "state",
@@ -99,7 +99,7 @@
     },
     {
       "data": {"url": "../data/lifestyle_risk_index.csv"},
-      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -142, "fontSize": 11, "fontStyle": "italic", "color": "#4b2a78"},
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -142, "fontSize": 11, "fontStyle": "italic", "color": "#0f4c75"},
       "encoding": {
         "x": {"aggregate": "mean", "field": "risk_index", "type": "quantitative"},
         "text": {"value": "Mean"}
@@ -109,7 +109,7 @@
   "resolve": {"scale": {"color": "independent"}},
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }

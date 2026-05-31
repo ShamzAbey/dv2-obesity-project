@@ -8,7 +8,7 @@
   "transform": [{"calculate": "0", "as": "baseline"}],
   "layer": [
     {
-      "mark": {"type": "rule", "stroke": "#c29be6", "strokeWidth": 4},
+      "mark": {"type": "rule", "stroke": "#9bd7ea", "strokeWidth": 4},
       "encoding": {
         "y": {"field": "state", "type": "ordinal", "sort": "-x", "title": "State/territory"},
         "x": {"field": "baseline", "type": "quantitative", "title": "Adults obese (%)", "scale": {"domain": [0, 40]}},
@@ -25,7 +25,7 @@
       "encoding": {
         "y": {"field": "state", "type": "ordinal", "sort": "-x"},
         "x": {"field": "obese_percent", "type": "quantitative"},
-        "color": {"field": "obese_percent", "type": "quantitative", "legend": null, "scale": {"range": ["#ede2f8", "#a66bd8", "#4b2a78"], "domain": [28, 33, 38]}},
+        "color": {"field": "obese_percent", "type": "quantitative", "legend": null, "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"], "domain": [28, 33, 38]}},
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
@@ -33,13 +33,13 @@
       }
     },
     {
-      "mark": {"type": "rule", "stroke": "#4b2a78", "strokeDash": [4, 4], "strokeWidth": 2},
+      "mark": {"type": "rule", "stroke": "#0f4c75", "strokeDash": [4, 4], "strokeWidth": 2},
       "encoding": {
         "x": {"aggregate": "mean", "field": "obese_percent", "type": "quantitative"}
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 5, "dy": -104, "fontSize": 11, "fontStyle": "italic", "color": "#4b2a78"},
+      "mark": {"type": "text", "align": "left", "dx": 5, "dy": -104, "fontSize": 11, "fontStyle": "italic", "color": "#0f4c75"},
       "encoding": {
         "x": {"aggregate": "mean", "field": "obese_percent", "type": "quantitative"},
         "text": {"value": "Mean"}
@@ -48,6 +48,6 @@
   ],
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#eee8f7"}
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"}
   }
 }
