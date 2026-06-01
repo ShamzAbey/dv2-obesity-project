@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line chart comparing adult obesity percentages across age groups by gender.",
+  "title": "Obesity rate by age group and gender",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/obesity_gender.csv"},
+  "mark": {"type": "line", "point": {"filled": true, "size": 85}, "strokeWidth": 3},
+  "encoding": {
+    "x": {
+      "field": "age_group",
+      "type": "ordinal",
+      "title": "Age group",
+      "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+    },
+    "y": {
+      "field": "obesity_percent",
+      "type": "quantitative",
+      "title": "Adults obese (%)",
+      "scale": {"domain": [10, 45]}
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "title": "Gender",
+      "scale": {"range": ["#0f4c75", "#41b6c4"]}
+    },
+    "tooltip": [
+      {"field": "sex", "type": "nominal", "title": "Gender"},
+      {"field": "age_group", "type": "ordinal", "title": "Age group"},
+      {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}
