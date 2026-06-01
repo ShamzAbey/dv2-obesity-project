@@ -41,7 +41,15 @@
           "field": "population_thousands",
           "type": "quantitative",
           "title": "Population ('000)",
-          "scale": {"range": [180, 2600]}
+          "scale": {"range": [120, 1800]},
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 4,
+            "values": [2000, 4000, 6000, 8000],
+            "titleLimit": 140,
+            "labelLimit": 60
+          }
         },
         "color": {
           "field": "obese_percent",
