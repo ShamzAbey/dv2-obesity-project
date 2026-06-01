@@ -36,7 +36,7 @@ const charts = [
 	["#obesity-age", "vega/obesity_age_annotated.vg.json", embedOpts],
 	["#activity-obesity", "vega/activity_obesity_scatter.vg.json", embedOpts],
 	["#activity-ranking", "vega/activity_ranked_bar.vg.json", embedOpts],
-	["#state-profile", "vega/state_profile_parallel.vg.json", embedOpts],
+	["#state-sankey", "vega/state_sankey_alluvial.vg.json", embedOpts],
 	["#gender-dumbbell", "vega/gender_age_dumbbell.vg.json", embedOpts],
 	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts],
 	["#gender-obesity-boxplot", "vega/gender_obesity_boxplot.vg.json", embedOpts],

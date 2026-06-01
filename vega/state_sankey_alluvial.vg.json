@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sankey-style alluvial chart showing how states move from obesity categories to physical activity categories.",
+  "title": "Sankey-style flow from obesity category to activity category",
+  "width": "container",
+  "height": 340,
+  "layer": [
+    {
+      "data": {"url": "../data/sankey_links.csv"},
+      "mark": {"type": "rule", "opacity": 0.45, "strokeCap": "round"},
+      "encoding": {
+        "x": {"datum": 0.14, "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "x2": {"datum": 0.86},
+        "y": {"field": "source_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "y2": {"field": "target_y"},
+        "strokeWidth": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "States/territories",
+          "scale": {"range": [8, 26]}
+        },
+        "color": {
+          "field": "source",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#41b6c4", "#2f8fc2", "#0f4c75"]}
+        },
+        "tooltip": [
+          {"field": "source", "type": "nominal", "title": "Obesity category"},
+          {"field": "target", "type": "nominal", "title": "Activity category"},
+          {"field": "count", "type": "quantitative", "title": "States/territories"},
+          {"field": "states", "type": "nominal", "title": "States"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/sankey_nodes.csv"},
+      "mark": {"type": "rect", "cornerRadius": 5, "stroke": "#ffffff", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "x2": {"field": "x1"},
+        "y": {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "y2": {"field": "y1"},
+        "color": {
+          "field": "side",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#0f4c75", "#41b6c4"]}
+        },
+        "tooltip": [
+          {"field": "side", "type": "nominal", "title": "Dimension"},
+          {"field": "node", "type": "nominal", "title": "Category"},
+          {"field": "count", "type": "quantitative", "title": "States/territories"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/sankey_nodes.csv"},
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 12, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "text": {"field": "node", "type": "nominal"}
+      }
+    },
+    {
+      "data": {"url": "../data/sankey_nodes.csv"},
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": 15, "fontSize": 11, "color": "#5d6f7d"},
+      "encoding": {
+        "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "text": {"field": "count", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 13, "fontWeight": "bold", "color": "#0f4c75"},
+      "encoding": {
+        "x": {"datum": 0.07, "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "y": {"datum": -0.35, "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "text": {"value": "Obesity category"}
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 13, "fontWeight": "bold", "color": "#0f4c75"},
+      "encoding": {
+        "x": {"datum": 0.93, "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "y": {"datum": -0.35, "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "text": {"value": "Activity category"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}
