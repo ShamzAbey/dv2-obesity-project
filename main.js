@@ -38,47 +38,18 @@ const charts = [
 	["#food-stacked", "vega/food_category_stacked_area.vg.json", embedOpts]
 ];
 
-const animateChartMarks = (container) => {
-	const svg = container.querySelector('svg');
-	if (!svg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-		return;
-	}
-
-	const markElements = svg.querySelectorAll(
-		'g[class*="mark-"] path, g[class*="mark-"] rect, g[class*="mark-"] circle, g[class*="mark-"] text, g[class*="mark-"] line'
-	);
-
-	markElements.forEach((element, index) => {
-		const markGroup = element.closest('g[class*="mark-"]');
-		const groupClass = markGroup ? markGroup.getAttribute('class') || '' : '';
-		const delay = Math.min(index * 18, 420);
-
-		element.style.animationDelay = `${delay}ms`;
-		element.classList.add('chart-mark-entry');
-
-		if (groupClass.includes('mark-line') || groupClass.includes('mark-area')) {
-			element.classList.add('chart-mark-flow');
-		}
-
-		if (groupClass.includes('mark-text')) {
-			element.classList.add('chart-mark-label');
-		}
-	});
-};
-
 charts.forEach(([selector, spec, options]) => {
 	vegaEmbed(selector, spec, options)
 		.then(() => {
 			const container = document.querySelector(selector);
 			if (container) {
-				animateChartMarks(container);
 				container.classList.add('chart-loaded');
 			}
 		})
 		.catch(console.error);
 });
 
-const revealTargets = document.querySelectorAll('.story-section, .chart-card, .image-card, .kpi-card');
+const revealTargets = document.querySelectorAll('.story-section, .chart-card, .kpi-card');
 
 if ('IntersectionObserver' in window) {
 	const revealObserver = new IntersectionObserver((entries) => {
