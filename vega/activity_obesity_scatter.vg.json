@@ -1,26 +1,77 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Physical activity guideline achievement versus adult obesity rates by state and territory, with point size representing ABS population at 30 June 2022.",
-  "title": "Physical activity and obesity by state and territory",
+  "description": "Advanced interactive scatterplot comparing physical activity guideline achievement with adult obesity by state and territory, using ABS state data and population.",
+  "title": "Physical activity, obesity and population by state and territory",
   "width": "container",
-  "height": 340,
+  "height": 380,
   "data": {"url": "../data/physical_activity.csv"},
+  "params": [
+    {
+      "name": "minimum_population",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 9000,
+        "step": 250,
+        "name": "Minimum population ('000): "
+      }
+    },
+    {
+      "name": "state_focus",
+      "select": {"type": "point", "fields": ["state"]},
+      "bind": "legend"
+    }
+  ],
+  "transform": [
+    {"filter": "datum.population_thousands >= minimum_population"}
+  ],
   "layer": [
     {
-      "mark": {"type": "line", "stroke": "#0f4c75", "strokeWidth": 2, "strokeDash": [5, 4], "opacity": 0.75},
       "transform": [
         {
           "regression": "obesity_percent",
           "on": "met_guidelines_percent"
         }
       ],
+      "mark": {"type": "line", "stroke": "#0f4c75", "strokeWidth": 2.4, "strokeDash": [6, 5], "opacity": 0.75},
       "encoding": {
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"}
       }
     },
     {
-      "mark": {"type": "circle", "filled": true, "opacity": 0.84},
+      "transform": [
+        {
+          "aggregate": [
+            {"op": "mean", "field": "met_guidelines_percent", "as": "mean_activity"}
+          ]
+        }
+      ],
+      "mark": {"type": "rule", "stroke": "#5d6f7d", "strokeDash": [3, 4], "opacity": 0.7},
+      "encoding": {
+        "x": {"field": "mean_activity", "type": "quantitative"},
+        "y": {"datum": 28},
+        "y2": {"datum": 39}
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {"op": "mean", "field": "obesity_percent", "as": "mean_obesity"}
+          ]
+        }
+      ],
+      "mark": {"type": "rule", "stroke": "#5d6f7d", "strokeDash": [3, 4], "opacity": 0.7},
+      "encoding": {
+        "y": {"field": "mean_obesity", "type": "quantitative"},
+        "x": {"datum": 19},
+        "x2": {"datum": 26}
+      }
+    },
+    {
+      "mark": {"type": "circle", "filled": true, "stroke": "#ffffff", "strokeWidth": 1.5},
       "encoding": {
         "x": {
           "field": "met_guidelines_percent",
@@ -38,38 +89,50 @@
           "field": "population_thousands",
           "type": "quantitative",
           "title": "Population ('000)",
-          "scale": {"range": [120, 1600]}
+          "scale": {"range": [120, 1700]}
         },
         "color": {
           "field": "state",
           "type": "nominal",
-          "title": "State/territory",
+          "title": "Click legend to highlight",
           "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7", "#5d6f7d"]}
+        },
+        "opacity": {
+          "condition": {"param": "state_focus", "value": 0.92},
+          "value": 0.18
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
           {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"},
           {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT'"}],
-      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontWeight": "bold", "color": "#183242"},
+      "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT' || datum.state == 'Qld'"}],
+      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -9, "fontWeight": "bold", "color": "#183242"},
       "encoding": {
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"},
-        "text": {"field": "state", "type": "nominal"}
+        "text": {"field": "state", "type": "nominal"},
+        "opacity": {
+          "condition": {"param": "state_focus", "value": 1},
+          "value": 0.45
+        }
       }
     },
     {
-      "data": {"values": [{"met_guidelines_percent": 19.4, "obesity_percent": 38.4, "label": "Trend line shows broad association, not causation"}]},
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "color": "#5d6f7d"},
+      "transform": [
+        {"calculate": "datum.met_guidelines_percent < 23 && datum.obesity_percent > 35 ? 'Lower activity, higher obesity' : ''", "as": "story_label"},
+        {"filter": "datum.story_label != ''"}
+      ],
+      "mark": {"type": "text", "align": "left", "dx": 12, "dy": 20, "fontSize": 11, "fontStyle": "italic", "color": "#0f4c75"},
       "encoding": {
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"},
-        "text": {"field": "label", "type": "nominal"}
+        "text": {"field": "story_label", "type": "nominal"}
       }
     }
   ],
