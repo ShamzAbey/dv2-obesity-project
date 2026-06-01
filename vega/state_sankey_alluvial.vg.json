@@ -3,7 +3,7 @@
   "description": "Sankey-style alluvial chart showing how states move from obesity categories to physical activity categories.",
   "title": "Sankey-style flow from obesity category to activity category",
   "width": "container",
-  "height": 340,
+  "height": 310,
   "layer": [
     {
       "data": {"url": "../data/sankey_links.csv"},
@@ -16,7 +16,7 @@
         "strokeWidth": {
           "field": "count",
           "type": "quantitative",
-          "title": "States/territories",
+          "legend": null,
           "scale": {"range": [8, 26]}
         },
         "color": {
@@ -56,7 +56,7 @@
     },
     {
       "data": {"url": "../data/sankey_nodes.csv"},
-      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 12, "fontWeight": "bold", "color": "#183242"},
+      "mark": {"type": "text", "align": "center", "fontSize": 12, "fontWeight": "bold", "color": "#ffffff"},
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
         "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
@@ -65,7 +65,7 @@
     },
     {
       "data": {"url": "../data/sankey_nodes.csv"},
-      "mark": {"type": "text", "align": "left", "dx": 6, "dy": 15, "fontSize": 11, "color": "#5d6f7d"},
+      "mark": {"type": "text", "align": "center", "dy": 15, "fontSize": 11, "color": "#eaf8fc"},
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
         "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
