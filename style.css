@@ -339,6 +339,21 @@ body::before{
     transform:translateY(0) scale(1);
 }
 
+.chart-mark-entry{
+    opacity:0;
+    transform-box:fill-box;
+    transform-origin:center;
+    animation:mark-pop 680ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.chart-mark-flow{
+    animation-name:mark-flow;
+}
+
+.chart-mark-label{
+    animation-name:mark-label;
+}
+
 @keyframes hero-drift{
     from{background-position:center center}
     to{background-position:center 42%}
@@ -347,6 +362,39 @@ body::before{
 @keyframes accent-sweep{
     from{transform:translateX(-100%)}
     to{transform:translateX(100%)}
+}
+
+@keyframes mark-pop{
+    from{
+        opacity:0;
+        transform:translateY(10px) scale(0.94);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes mark-flow{
+    from{
+        opacity:0;
+        transform:translateX(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes mark-label{
+    from{
+        opacity:0;
+        transform:translateY(4px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -363,9 +411,11 @@ body::before{
     .js-enabled .chart-card,
     .js-enabled .image-card,
     .js-enabled .kpi-card,
-    .chart .vega-embed{
+    .chart .vega-embed,
+    .chart-mark-entry{
         opacity:1;
         transform:none;
+        animation:none;
     }
 }
 
