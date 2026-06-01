@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dot map showing physical activity guideline achievement by state and territory using capital coordinates for placement.",
+  "title": "Physical activity dot map by state and territory",
+  "width": "container",
+  "height": 430,
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "../data/australia_states.topojson",
+        "format": {"type": "topojson", "feature": "collection"}
+      },
+      "mark": {"type": "geoshape", "fill": "#e4f3fb", "stroke": "#ffffff", "strokeWidth": 0.8}
+    },
+    {
+      "data": {"url": "../data/state_locations.csv"},
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {"url": "../data/physical_activity.csv"},
+            "key": "state",
+            "fields": ["met_guidelines_percent", "obesity_percent", "population_thousands"]
+          }
+        }
+      ],
+      "mark": {"type": "circle", "size": 260, "opacity": 0.88, "stroke": "#ffffff", "strokeWidth": 1.2},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "color": {
+          "field": "met_guidelines_percent",
+          "type": "quantitative",
+          "title": "Met guidelines (%)",
+          "scale": {"range": ["#d8eef7", "#41b6c4", "#0f4c75"], "domain": [20, 22.5, 25]}
+        },
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met activity guidelines (%)", "format": ".1f"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/state_locations.csv"},
+      "mark": {"type": "text", "dy": -15, "fontSize": 11, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

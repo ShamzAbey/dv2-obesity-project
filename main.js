@@ -29,6 +29,7 @@ const charts = [
 	["#kpi-tiles", "vega/kpi_tiles.vg.json", kpiEmbedOpts],
 	["#state-obesity-ranking", "vega/state_obesity_ranked_bar.vg.json", embedOpts],
 	["#state-symbol-map", "vega/state_symbol_map.vg.json", embedOpts],
+	["#activity-dot-map", "vega/activity_dot_map.vg.json", embedOpts],
 	["#food-overview-detail", "vega/food_overview_detail.vg.json", embedOpts],
 	["#latest-food-category", "vega/latest_food_category_bar.vg.json", embedOpts],
 	["#obesity-age", "vega/obesity_age_annotated.vg.json", embedOpts],
@@ -38,6 +39,7 @@ const charts = [
 	["#gender-dumbbell", "vega/gender_age_dumbbell.vg.json", embedOpts],
 	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts],
 	["#gender-obesity-boxplot", "vega/gender_obesity_boxplot.vg.json", embedOpts],
+	["#obesity-histogram", "vega/obesity_histogram.vg.json", embedOpts],
 	["#food-stacked", "vega/food_category_stacked_area.vg.json", embedOpts]
 ];
 
