@@ -40,7 +40,7 @@ const charts = [
 	["#gender-dumbbell", "vega/gender_age_dumbbell.vg.json", embedOpts],
 	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts],
 	["#gender-obesity-boxplot", "vega/gender_obesity_boxplot.vg.json", embedOpts],
-	["#obesity-histogram", "vega/obesity_histogram.vg.json", embedOpts],
+	["#activity-obesity-binned", "vega/activity_obesity_binned_matrix.vg.json", embedOpts],
 	["#food-stacked", "vega/food_category_stacked_area.vg.json", embedOpts]
 ];
 
