@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Ranked bar chart of latest selected beverage apparent consumption by category from ABS 2023-24 data.",
+  "title": "Ranked selected beverage consumption, 2023-24",
+  "data": {"url": "../data/food_consumption.csv"},
+  "transform": [{"filter": "datum.year == '2023-24'"}],
+  "width": "container",
+  "height": 300,
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 4},
+      "encoding": {
+        "y": {
+          "field": "category",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null
+        },
+        "x": {
+          "field": "ml_per_capita_per_day",
+          "type": "quantitative",
+          "title": "mL per capita per day",
+          "scale": {"domain": [0, 170]}
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
+        },
+        "tooltip": [
+          {"field": "year", "type": "ordinal", "title": "Financial year"},
+          {"field": "category", "type": "nominal", "title": "Category"},
+          {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 5, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "y": {"field": "category", "type": "nominal", "sort": "-x"},
+        "x": {"field": "ml_per_capita_per_day", "type": "quantitative"},
+        "text": {"field": "ml_per_capita_per_day", "type": "quantitative", "format": ".1f"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#dcecf5"}
+  }
+}
