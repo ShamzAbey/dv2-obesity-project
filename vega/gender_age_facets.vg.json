@@ -3,10 +3,10 @@
   "description": "Interactive histogram and strip plot showing the distribution of adult obesity rates across age and gender groups using ABS NHS 2022 BMI proportions.",
   "title": "Distribution of obesity rates across age and gender groups, 2022",
   "data": {"url": "../data/obesity_gender.csv"},
+  "width": "container",
   "vconcat": [
     {
       "height": 210,
-      "transform": [{"filter": {"param": "age_gender_brush"}}],
       "mark": {"type": "bar", "opacity": 0.78, "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
       "encoding": {
         "x": {
@@ -34,12 +34,6 @@
     },
     {
       "height": 115,
-      "params": [
-        {
-          "name": "age_gender_brush",
-          "select": {"type": "interval", "encodings": ["x"]}
-        }
-      ],
       "layer": [
         {
           "mark": {"type": "circle", "filled": true, "opacity": 0.86, "stroke": "#ffffff", "strokeWidth": 1},
@@ -47,7 +41,7 @@
             "x": {
               "field": "obesity_percent",
               "type": "quantitative",
-              "title": "Brush obesity range to filter histogram",
+              "title": "Adults obese (%)",
               "scale": {"domain": [10, 45]}
             },
             "y": {
