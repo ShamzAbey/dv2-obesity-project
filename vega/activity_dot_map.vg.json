@@ -3,7 +3,7 @@
   "description": "Dot map showing physical activity guideline achievement by state and territory using capital coordinates for placement.",
   "title": "Physical activity dot map by state and territory",
   "width": "container",
-  "height": 430,
+  "height": 310,
   "projection": {"type": "mercator"},
   "layer": [
     {

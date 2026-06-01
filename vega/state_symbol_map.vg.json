@@ -3,7 +3,7 @@
   "description": "Proportional symbol map using state and territory capital coordinates for symbol placement, with circle size representing population and colour representing adult obesity rate.",
   "title": "Population-sized obesity symbols by state and territory",
   "width": "container",
-  "height": 430,
+  "height": 310,
   "projection": {"type": "mercator"},
   "layer": [
     {
