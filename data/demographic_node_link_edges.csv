@@ -1,0 +1,15 @@
+source,target,x,y,x2,y2,group
+root,men,8,50,34,29,Men
+root,women,8,50,34,71,Women
+men,men_18_24,34,29,76,8,Men
+men,men_25_34,34,29,76,16,Men
+men,men_35_44,34,29,76,24,Men
+men,men_45_54,34,29,76,32,Men
+men,men_55_64,34,29,76,40,Men
+men,men_65_plus,34,29,76,48,Men
+women,women_18_24,34,71,76,56,Women
+women,women_25_34,34,71,76,64,Women
+women,women_35_44,34,71,76,72,Women
+women,women_45_54,34,71,76,80,Women
+women,women_55_64,34,71,76,88,Women
+women,women_65_plus,34,71,76,96,Women

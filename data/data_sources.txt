@@ -33,4 +33,5 @@ Notes:
 - state_locations.csv contains state and territory capital coordinates used only to place proportional symbols on the map.
 - food_treemap.csv contains a manually calculated treemap layout derived from ABS 2023-24 beverage consumption values.
 - sankey_nodes.csv and sankey_links.csv group ABS state obesity and physical activity values into display categories for a Vega-Lite Sankey-style alluvial diagram.
+- demographic_node_link_nodes.csv and demographic_node_link_edges.csv arrange ABS age and gender obesity values into a Vega-Lite node-link layout.
 - australia_states.topojson is geometry only and does not contain obesity, physical activity or food consumption values.

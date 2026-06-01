@@ -1,0 +1,16 @@
+id,label,group,x,y,obesity_percent,overweight_obese_percent,node_type
+root,Adults,All,8,50,,,Root
+men,Men,Men,34,29,,,Gender
+women,Women,Women,34,71,,,Gender
+men_18_24,18-24,Men,76,8,14.8,42.3,Age group
+men_25_34,25-34,Men,76,16,28.0,66.1,Age group
+men_35_44,35-44,Men,76,24,35.0,74.8,Age group
+men_45_54,45-54,Men,76,32,35.8,77.9,Age group
+men_55_64,55-64,Men,76,40,39.1,78.1,Age group
+men_65_plus,65+,Men,76,48,37.9,78.2,Age group
+women_18_24,18-24,Women,76,56,15.5,41.2,Age group
+women_25_34,25-34,Women,76,64,28.9,51.5,Age group
+women_35_44,35-44,Women,76,72,28.4,58.3,Age group
+women_45_54,45-54,Women,76,80,36.1,67.3,Age group
+women_55_64,55-64,Women,76,88,36.4,69.5,Age group
+women_65_plus,65+,Women,76,96,34.5,67.9,Age group

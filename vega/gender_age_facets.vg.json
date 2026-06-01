@@ -1,89 +1,99 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Interactive histogram and strip plot showing the distribution of adult obesity rates across age and gender groups using ABS NHS 2022 BMI proportions.",
-  "title": "Distribution of obesity rates across age and gender groups, 2022",
-  "data": {"url": "../data/obesity_gender.csv"},
+  "description": "Node-link diagram showing adult obesity by gender and age group using ABS NHS 2022 BMI proportions.",
+  "title": "Node-link diagram of adult obesity by gender and age group, 2022",
   "width": "container",
-  "vconcat": [
+  "height": 380,
+  "layer": [
     {
-      "height": 210,
-      "mark": {"type": "bar", "opacity": 0.78, "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+      "data": {"url": "../data/demographic_node_link_edges.csv"},
+      "mark": {"type": "rule", "strokeWidth": 2.2, "opacity": 0.45},
       "encoding": {
-        "x": {
-          "field": "obesity_percent",
-          "type": "quantitative",
-          "bin": {"step": 5},
-          "title": "Adults obese (%)"
-        },
-        "y": {
-          "aggregate": "count",
-          "type": "quantitative",
-          "title": "Age-sex groups"
-        },
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "x2": {"field": "x2"},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "y2": {"field": "y2"},
         "color": {
-          "field": "sex",
+          "field": "group",
           "type": "nominal",
-          "title": "Gender",
+          "legend": null,
           "scale": {"range": ["#2a7fb8", "#9bd7ea"]}
         },
         "tooltip": [
-          {"field": "sex", "type": "nominal", "title": "Gender"},
-          {"aggregate": "count", "type": "quantitative", "title": "Groups in bin"}
+          {"field": "source", "type": "nominal", "title": "From"},
+          {"field": "target", "type": "nominal", "title": "To"}
         ]
       }
     },
     {
-      "height": 115,
-      "layer": [
-        {
-          "mark": {"type": "circle", "filled": true, "opacity": 0.86, "stroke": "#ffffff", "strokeWidth": 1},
-          "encoding": {
-            "x": {
-              "field": "obesity_percent",
-              "type": "quantitative",
-              "title": "Adults obese (%)",
-              "scale": {"domain": [10, 45]}
-            },
-            "y": {
-              "field": "sex",
-              "type": "nominal",
-              "title": null
-            },
-            "size": {
-              "field": "overweight_obese_percent",
-              "type": "quantitative",
-              "title": "Overweight/obese (%)",
-              "scale": {"range": [80, 420]}
-            },
-            "color": {
-              "field": "sex",
-              "type": "nominal",
-              "legend": null,
-              "scale": {"range": ["#2a7fb8", "#9bd7ea"]}
-            },
-            "tooltip": [
-              {"field": "sex", "type": "nominal", "title": "Gender"},
-              {"field": "age_group", "type": "ordinal", "title": "Age group"},
-              {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
-              {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
-            ]
-          }
+      "data": {"url": "../data/demographic_node_link_nodes.csv"},
+      "transform": [{"filter": "datum.node_type != 'Age group'"}],
+      "mark": {"type": "circle", "filled": true, "size": 980, "stroke": "#ffffff", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#0f4c75", "#2a7fb8", "#9bd7ea"]}
         },
-        {
-          "mark": {"type": "text", "dy": -13, "fontSize": 10, "fontWeight": "bold", "color": "#183242"},
-          "encoding": {
-            "x": {"field": "obesity_percent", "type": "quantitative"},
-            "y": {"field": "sex", "type": "nominal"},
-            "text": {"field": "age_group", "type": "ordinal"}
-          }
-        }
-      ]
+        "tooltip": [
+          {"field": "label", "type": "nominal", "title": "Node"},
+          {"field": "node_type", "type": "nominal", "title": "Type"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/demographic_node_link_nodes.csv"},
+      "transform": [{"filter": "datum.node_type == 'Age group'"}],
+      "mark": {"type": "circle", "filled": true, "stroke": "#ffffff", "strokeWidth": 1.4, "opacity": 0.94},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "size": {
+          "field": "overweight_obese_percent",
+          "type": "quantitative",
+          "title": "Overweight/obese (%)",
+          "scale": {"range": [260, 1050]},
+          "legend": {"orient": "right"}
+        },
+        "color": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"range": ["#d8eef7", "#41b6c4", "#0f4c75"], "domain": [14, 27, 40]}
+        },
+        "tooltip": [
+          {"field": "group", "type": "nominal", "title": "Gender"},
+          {"field": "label", "type": "nominal", "title": "Age group"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/demographic_node_link_nodes.csv"},
+      "mark": {"type": "text", "align": "left", "dx": 13, "fontSize": 12, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "text": {"field": "label", "type": "nominal"}
+      }
+    },
+    {
+      "data": {"url": "../data/demographic_node_link_nodes.csv"},
+      "transform": [{"filter": "datum.node_type == 'Age group'"}],
+      "mark": {"type": "text", "align": "left", "dx": 57, "fontSize": 11, "color": "#5d6f7d"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "text": {"field": "obesity_percent", "type": "quantitative", "format": ".1f"}
+      }
     }
   ],
-  "resolve": {"scale": {"color": "shared"}},
   "config": {
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#dcecf5"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }
