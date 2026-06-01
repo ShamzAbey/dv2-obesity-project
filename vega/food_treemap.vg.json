@@ -5,15 +5,9 @@
   "width": "container",
   "height": 330,
   "data": {"url": "../data/food_treemap.csv"},
-  "params": [
-    {
-      "name": "hover_tile",
-      "select": {"type": "point", "fields": ["category"], "on": "mouseover", "clear": "mouseout"}
-    }
-  ],
   "layer": [
     {
-      "mark": {"type": "rect", "stroke": "#ffffff"},
+      "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 2, "opacity": 0.95},
       "encoding": {
         "x": {
           "field": "x0",
@@ -35,14 +29,6 @@
           "title": "Category",
           "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
         },
-        "strokeWidth": {
-          "condition": {"param": "hover_tile", "value": 5},
-          "value": 2
-        },
-        "opacity": {
-          "condition": {"param": "hover_tile", "value": 1},
-          "value": 0.88
-        },
         "tooltip": [
           {"field": "category", "type": "nominal", "title": "Category"},
           {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
@@ -53,6 +39,7 @@
       "mark": {
         "type": "text",
         "fontWeight": "bold",
+        "fontSize": 14,
         "color": "#ffffff",
         "lineBreak": "|",
         "lineHeight": 15,
@@ -61,16 +48,14 @@
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative"},
         "y": {"field": "label_y", "type": "quantitative"},
-        "fontSize": {"value": 14},
         "text": {"field": "label_short", "type": "nominal"}
       }
     },
     {
-      "mark": {"type": "text", "dy": 28, "fontWeight": "bold", "color": "#ffffff"},
+      "mark": {"type": "text", "dy": 28, "fontSize": 12, "fontWeight": "bold", "color": "#ffffff"},
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative"},
         "y": {"field": "label_y", "type": "quantitative"},
-        "fontSize": {"value": 12},
         "text": {"field": "ml_per_capita_per_day", "type": "quantitative", "format": ".1f"}
       }
     }
