@@ -1,9 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Treemap-style rectangle layout for latest selected beverage consumption categories, using manually calculated areas from ABS 2023-24 values.",
-  "title": "Treemap of latest selected beverage consumption, 2023-24",
+  "autosize": {"type": "fit", "contains": "padding", "resize": true},
   "width": "container",
-  "height": 330,
+  "height": 420,
+  "padding": {"left": 0, "right": 0, "top": 4, "bottom": 0},
   "data": {"url": "../data/food_treemap.csv"},
   "layer": [
     {
@@ -26,7 +27,7 @@
         "color": {
           "field": "category",
           "type": "nominal",
-          "title": "Category",
+          "legend": null,
           "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
         },
         "tooltip": [

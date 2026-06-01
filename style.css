@@ -245,6 +245,7 @@ body::before{
 .chart-map{min-height:350px}
 .chart-map-compact{min-height:300px}
 .chart-tall{min-height:350px}
+.chart-treemap{min-height:430px}
 .chart-short{min-height:300px}
 .chart-card-wide{grid-column:1 / -1}
 .caption{
