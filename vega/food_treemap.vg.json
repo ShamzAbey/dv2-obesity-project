@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Treemap-style rectangle layout for latest selected beverage consumption categories, using manually calculated areas from ABS 2023-24 values.",
+  "title": "Treemap of latest selected beverage consumption, 2023-24",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/food_treemap.csv"},
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "x2": {"field": "x1"},
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {"domain": [100, 0]},
+          "axis": null
+        },
+        "y2": {"field": "y1"},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Category",
+          "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
+        },
+        "tooltip": [
+          {"field": "category", "type": "nominal", "title": "Category"},
+          {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.ml_per_capita_per_day >= 13"}],
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "#ffffff", "lineBreak": " "},
+      "encoding": {
+        "x": {"field": "label_x", "type": "quantitative"},
+        "y": {"field": "label_y", "type": "quantitative"},
+        "text": {"field": "category", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": 16, "fontSize": 11, "fontWeight": "bold", "color": "#ffffff"},
+      "encoding": {
+        "x": {"field": "label_x", "type": "quantitative"},
+        "y": {"field": "label_y", "type": "quantitative"},
+        "text": {"field": "ml_per_capita_per_day", "type": "quantitative", "format": ".1f"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12, "orient": "bottom"}
+  }
+}

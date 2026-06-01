@@ -32,6 +32,7 @@ const charts = [
 	["#activity-dot-map", "vega/activity_dot_map.vg.json", embedOpts],
 	["#food-overview-detail", "vega/food_overview_detail.vg.json", embedOpts],
 	["#latest-food-category", "vega/latest_food_category_bar.vg.json", embedOpts],
+	["#food-treemap", "vega/food_treemap.vg.json", embedOpts],
 	["#obesity-age", "vega/obesity_age_annotated.vg.json", embedOpts],
 	["#activity-obesity", "vega/activity_obesity_scatter.vg.json", embedOpts],
 	["#activity-ranking", "vega/activity_ranked_bar.vg.json", embedOpts],

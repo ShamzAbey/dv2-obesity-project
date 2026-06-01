@@ -31,4 +31,5 @@ Notes:
 - lifestyle_risk_index.csv is a derived index calculated from ABS adult obesity rates and the share not meeting physical activity guidelines.
 - lifestyle_risk_bands.csv contains display bands for the derived lifestyle risk index chart.
 - state_locations.csv contains state and territory capital coordinates used only to place proportional symbols on the map.
+- food_treemap.csv contains a manually calculated treemap layout derived from ABS 2023-24 beverage consumption values.
 - australia_states.topojson is geometry only and does not contain obesity, physical activity or food consumption values.

@@ -1,0 +1,8 @@
+category,ml_per_capita_per_day,x0,x1,y0,y1,label_x,label_y
+Soft drinks,164.8,0,42.58,0,100,21.29,50
+Water,144.6,42.58,100,0,65.07,71.29,32.54
+Fruit and vegetable juices,32.5,42.58,66.65,65.07,100,54.62,82.54
+Fruit and vegetable drinks,15.3,66.65,77.99,65.07,100,72.32,82.54
+Energy drinks,13.1,77.99,87.70,65.07,100,82.85,82.54
+Electrolyte drinks,10.5,87.70,95.48,65.07,100,91.59,82.54
+Cordials,6.2,95.48,100,65.07,100,97.74,82.54
