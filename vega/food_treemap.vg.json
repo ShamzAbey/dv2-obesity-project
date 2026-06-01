@@ -37,15 +37,32 @@
     },
     {
       "transform": [{"filter": "datum.ml_per_capita_per_day >= 13"}],
-      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "#ffffff", "lineBreak": " "},
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "lineBreak": " ",
+        "lineHeight": 14
+      },
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative"},
         "y": {"field": "label_y", "type": "quantitative"},
-        "text": {"field": "category", "type": "nominal"}
+        "text": {"field": "label_short", "type": "nominal"}
       }
     },
     {
-      "mark": {"type": "text", "dy": 16, "fontSize": 11, "fontWeight": "bold", "color": "#ffffff"},
+      "transform": [{"filter": "datum.ml_per_capita_per_day >= 13"}],
+      "mark": {"type": "text", "dy": 24, "fontSize": 11, "fontWeight": "bold", "color": "#ffffff"},
+      "encoding": {
+        "x": {"field": "label_x", "type": "quantitative"},
+        "y": {"field": "label_y", "type": "quantitative"},
+        "text": {"field": "ml_per_capita_per_day", "type": "quantitative", "format": ".1f"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.ml_per_capita_per_day < 13"}],
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#ffffff"},
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative"},
         "y": {"field": "label_y", "type": "quantitative"},
