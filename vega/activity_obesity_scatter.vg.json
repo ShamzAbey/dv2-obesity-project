@@ -5,27 +5,6 @@
   "width": "container",
   "height": 380,
   "data": {"url": "../data/physical_activity.csv"},
-  "params": [
-    {
-      "name": "minimum_population",
-      "value": 0,
-      "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 9000,
-        "step": 250,
-        "name": "Minimum population ('000): "
-      }
-    },
-    {
-      "name": "state_focus",
-      "select": {"type": "point", "fields": ["state"]},
-      "bind": "legend"
-    }
-  ],
-  "transform": [
-    {"filter": "datum.population_thousands >= minimum_population"}
-  ],
   "layer": [
     {
       "transform": [
@@ -94,13 +73,10 @@
         "color": {
           "field": "state",
           "type": "nominal",
-          "title": "Click legend to highlight",
+          "title": "State/territory",
           "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7", "#5d6f7d"]}
         },
-        "opacity": {
-          "condition": {"param": "state_focus", "value": 0.92},
-          "value": 0.18
-        },
+        "opacity": {"value": 0.88},
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
@@ -117,10 +93,7 @@
         "x": {"field": "met_guidelines_percent", "type": "quantitative"},
         "y": {"field": "obesity_percent", "type": "quantitative"},
         "text": {"field": "state", "type": "nominal"},
-        "opacity": {
-          "condition": {"param": "state_focus", "value": 1},
-          "value": 0.45
-        }
+        "opacity": {"value": 1}
       }
     },
     {
