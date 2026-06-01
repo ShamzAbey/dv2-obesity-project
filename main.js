@@ -35,6 +35,7 @@ const charts = [
 	["#activity-ranking", "vega/activity_ranked_bar.vg.json", embedOpts],
 	["#state-profile", "vega/state_profile_parallel.vg.json", embedOpts],
 	["#gender-dumbbell", "vega/gender_age_dumbbell.vg.json", embedOpts],
+	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts],
 	["#food-stacked", "vega/food_category_stacked_area.vg.json", embedOpts]
 ];
 
