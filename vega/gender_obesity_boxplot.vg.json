@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Boxplot showing the distribution of adult obesity percentages across age groups for men and women.",
+  "title": "Distribution of obesity rates across age groups by gender",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/obesity_gender.csv"},
+  "layer": [
+    {
+      "mark": {"type": "boxplot", "extent": "min-max", "size": 58},
+      "encoding": {
+        "x": {"field": "sex", "type": "nominal", "title": "Gender"},
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"domain": [10, 45]}
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#2a7fb8", "#9bd7ea"]}
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "filled": true, "opacity": 0.78, "size": 95, "stroke": "#ffffff", "strokeWidth": 1},
+      "encoding": {
+        "x": {"field": "sex", "type": "nominal"},
+        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "xOffset": {"field": "age_group", "type": "ordinal"},
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#2a7fb8", "#9bd7ea"]}
+        },
+        "tooltip": [
+          {"field": "sex", "type": "nominal", "title": "Gender"},
+          {"field": "age_group", "type": "ordinal", "title": "Age group"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "gridColor": "#dcecf5"}
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map using state and territory capital coordinates for symbol placement, with circle size representing population and colour representing adult obesity rate.",
+  "title": "Population-sized obesity symbols by state and territory",
+  "width": "container",
+  "height": 430,
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "../data/australia_states.topojson",
+        "format": {"type": "topojson", "feature": "collection"}
+      },
+      "mark": {"type": "geoshape", "fill": "#e4f3fb", "stroke": "#ffffff", "strokeWidth": 0.8}
+    },
+    {
+      "data": {"url": "../data/state_locations.csv"},
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {"url": "../data/obesity_state.csv"},
+            "key": "state",
+            "fields": ["obese_percent", "overweight_obese_percent"]
+          }
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {"url": "../data/physical_activity.csv"},
+            "key": "state",
+            "fields": ["population_thousands", "met_guidelines_percent"]
+          }
+        }
+      ],
+      "mark": {"type": "circle", "opacity": 0.82, "stroke": "#ffffff", "strokeWidth": 1.2},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {
+          "field": "population_thousands",
+          "type": "quantitative",
+          "title": "Population ('000)",
+          "scale": {"range": [180, 2600]}
+        },
+        "color": {
+          "field": "obese_percent",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"range": ["#9bd7ea", "#2f8fc2", "#0f4c75"], "domain": [28, 33, 38]}
+        },
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"},
+          {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met activity guidelines (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/state_locations.csv"},
+      "mark": {"type": "text", "dy": -14, "fontSize": 11, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}
