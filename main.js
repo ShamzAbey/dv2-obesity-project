@@ -25,7 +25,7 @@ window.addEventListener('resize', updateScrollProgress);
 updateScrollProgress();
 
 const charts = [
-	["#obesity-map", "vega/obesity_choropleth.vg.json", embedOpts],
+	["#obesity-map", "vega/interactive_health_map.vg.json", embedOpts],
 	["#kpi-tiles", "vega/kpi_tiles.vg.json", kpiEmbedOpts],
 	["#state-obesity-ranking", "vega/state_obesity_ranked_bar.vg.json", embedOpts],
 	["#state-symbol-map", "vega/state_symbol_map.vg.json", embedOpts],
