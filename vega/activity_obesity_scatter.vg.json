@@ -3,7 +3,7 @@
   "description": "Advanced interactive scatterplot comparing physical activity guideline achievement with adult obesity by state and territory, using ABS state data and population.",
   "title": "Physical activity, obesity and population by state and territory",
   "width": "container",
-  "height": 380,
+  "height": 440,
   "data": {"url": "../data/physical_activity.csv"},
   "layer": [
     {
@@ -15,8 +15,16 @@
       ],
       "mark": {"type": "line", "stroke": "#0f4c75", "strokeWidth": 2.4, "strokeDash": [6, 5], "opacity": 0.75},
       "encoding": {
-        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
-        "y": {"field": "obesity_percent", "type": "quantitative"}
+        "x": {
+          "field": "met_guidelines_percent",
+          "type": "quantitative",
+          "scale": {"domain": [20, 25]}
+        },
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "scale": {"domain": [29, 38]}
+        }
       }
     },
     {
@@ -29,9 +37,13 @@
       ],
       "mark": {"type": "rule", "stroke": "#5d6f7d", "strokeDash": [3, 4], "opacity": 0.7},
       "encoding": {
-        "x": {"field": "mean_activity", "type": "quantitative"},
-        "y": {"datum": 28},
-        "y2": {"datum": 39}
+        "x": {
+          "field": "mean_activity",
+          "type": "quantitative",
+          "scale": {"domain": [20, 25]}
+        },
+        "y": {"datum": 29},
+        "y2": {"datum": 38}
       }
     },
     {
@@ -44,9 +56,13 @@
       ],
       "mark": {"type": "rule", "stroke": "#5d6f7d", "strokeDash": [3, 4], "opacity": 0.7},
       "encoding": {
-        "y": {"field": "mean_obesity", "type": "quantitative"},
-        "x": {"datum": 19},
-        "x2": {"datum": 26}
+        "y": {
+          "field": "mean_obesity",
+          "type": "quantitative",
+          "scale": {"domain": [29, 38]}
+        },
+        "x": {"datum": 20},
+        "x2": {"datum": 25}
       }
     },
     {
@@ -56,19 +72,20 @@
           "field": "met_guidelines_percent",
           "type": "quantitative",
           "title": "People aged 15+ meeting physical activity guidelines (%)",
-          "scale": {"domain": [19, 26]}
+          "scale": {"domain": [20, 25]}
         },
         "y": {
           "field": "obesity_percent",
           "type": "quantitative",
           "title": "Adults obese (%)",
-          "scale": {"domain": [28, 39]}
+          "scale": {"domain": [29, 38]}
         },
         "size": {
           "field": "population_thousands",
           "type": "quantitative",
           "title": "Population ('000)",
-          "scale": {"range": [120, 1700]}
+          "scale": {"range": [160, 2600]},
+          "legend": {"orient": "right", "values": [500, 2000, 5000, 8000]}
         },
         "color": {
           "field": "state",
@@ -90,8 +107,16 @@
       "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT' || datum.state == 'Qld'"}],
       "mark": {"type": "text", "align": "left", "dx": 10, "dy": -9, "fontWeight": "bold", "color": "#183242"},
       "encoding": {
-        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
-        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "x": {
+          "field": "met_guidelines_percent",
+          "type": "quantitative",
+          "scale": {"domain": [20, 25]}
+        },
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "scale": {"domain": [29, 38]}
+        },
         "text": {"field": "state", "type": "nominal"},
         "opacity": {"value": 1}
       }
@@ -103,8 +128,16 @@
       ],
       "mark": {"type": "text", "align": "left", "dx": 12, "dy": 20, "fontSize": 11, "fontStyle": "italic", "color": "#0f4c75"},
       "encoding": {
-        "x": {"field": "met_guidelines_percent", "type": "quantitative"},
-        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "x": {
+          "field": "met_guidelines_percent",
+          "type": "quantitative",
+          "scale": {"domain": [20, 25]}
+        },
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "scale": {"domain": [29, 38]}
+        },
         "text": {"field": "story_label", "type": "nominal"}
       }
     }
