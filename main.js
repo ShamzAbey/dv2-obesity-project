@@ -31,11 +31,9 @@ const charts = [
 	["#state-symbol-map", "vega/state_symbol_map.vg.json", embedOpts],
 	["#activity-dot-map", "vega/activity_dot_map.vg.json", embedOpts],
 	["#state-cartogram", "vega/state_tile_cartogram.vg.json", embedOpts],
+	["#state-obesity-boxplot", "vega/state_obesity_boxplot.vg.json", embedOpts],
 	["#food-overview-detail", "vega/food_overview_detail.vg.json", embedOpts],
-	["#latest-food-category", "vega/latest_food_category_donut.vg.json", embedOpts],
-	["#latest-food-ranking", "vega/latest_food_category_ranked_bar.vg.json", embedOpts],
 	["#food-treemap", "vega/food_treemap.vg.json", embedOpts],
-	["#obesity-age", "vega/obesity_age_annotated.vg.json", embedOpts],
 	["#activity-obesity", "vega/activity_obesity_scatter.vg.json", embedOpts],
 	["#activity-ranking", "vega/activity_ranked_bar.vg.json", embedOpts],
 	["#activity-obesity-bin-map", "vega/activity_obesity_bin_map.vg.json", embedOpts],
@@ -44,8 +42,6 @@ const charts = [
 	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts],
 	["#gender-age-dendrogram", "vega/demographic_dendrogram.vg.json", embedOpts],
 	["#obesity-histogram", "vega/obesity_distribution_histogram.vg.json", embedOpts],
-	["#gender-obesity-boxplot", "vega/gender_obesity_boxplot.vg.json", embedOpts],
-	["#gender-age-line", "vega/gender_age_line_chart.vg.json", embedOpts],
 	["#food-stacked", "vega/food_category_stacked_area.vg.json", embedOpts]
 ];
 

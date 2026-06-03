@@ -276,9 +276,17 @@ body::before{
 }
 
 .chart .vega-embed{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
     opacity:0;
     transform:translateY(14px) scale(0.985);
     transition:opacity 560ms ease, transform 560ms ease;
+}
+
+.chart .vega-embed > svg,
+.chart canvas{
+    max-width:100%;
 }
 
 .chart.chart-loaded .vega-embed{

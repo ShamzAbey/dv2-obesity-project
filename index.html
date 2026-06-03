@@ -48,7 +48,7 @@
                 <p>Obesity rates vary between Australian states and territories. A choropleth map helps identify geographic patterns quickly, while interactive tooltips allow users to inspect each state or territory in more detail.</p>
             </div>
             <div class="chart-grid">
-                <div class="chart-card">
+                <div class="chart-card chart-card-wide">
                     <h3>Interactive choropleth map: health indicators by state</h3>
                     <div id="obesity-map" class="chart chart-map"></div>
                     <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity; use the zoom slider to inspect the map. Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON.</p>
@@ -72,10 +72,16 @@
                     <p class="caption">Dot colour shows the percentage meeting physical activity guidelines.</p>
                 </div>
 
-                <div class="chart-card chart-card-wide">
+                <div class="chart-card">
                     <h3>Cartogram: obesity by state and territory</h3>
                     <div id="state-cartogram" class="chart chart-short"></div>
                     <p class="caption">A tile cartogram gives each state and territory equal visual weight while colour shows adult obesity percentage.</p>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Boxplot: state obesity distribution</h3>
+                    <div id="state-obesity-boxplot" class="chart chart-short"></div>
+                    <p class="caption">This boxplot is more meaningful than the age-gender version because it summarises the spread of obesity rates across states and territories, with each point labelled in the tooltip.</p>
                 </div>
             </div>
         </section>
@@ -96,18 +102,6 @@
                     <h3>Stacked contribution by category</h3>
                     <div id="food-stacked" class="chart"></div>
                     <p class="caption">Source: ABS Apparent Consumption of Selected Foodstuffs, Australia, 2023-24. Category colour is nominal; y-values are mL per capita per day.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Latest beverage category share</h3>
-                    <div id="latest-food-category" class="chart chart-short"></div>
-                    <p class="caption">A donut chart shows which selected beverage categories contributed most in the latest ABS financial year.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Ranked latest beverage consumption</h3>
-                    <div id="latest-food-ranking" class="chart chart-short"></div>
-                    <p class="caption">A ranked bar chart shows which beverage categories have the highest mL per capita per day.</p>
                 </div>
 
                 <div class="chart-card chart-card-wide">
@@ -157,12 +151,6 @@
             </div>
             <div class="chart-grid">
                 <div class="chart-card">
-                    <h3>Bar chart: obesity by age group</h3>
-                    <div id="obesity-age" class="chart"></div>
-                    <p class="caption">Source: ABS National Health Survey 2022 Table 8.3 measured BMI proportions. Labels show adult obesity percentage.</p>
-                </div>
-
-                <div class="chart-card">
                     <h3>Gender difference by age group</h3>
                     <div id="gender-dumbbell" class="chart"></div>
                     <p class="caption">Source: ABS National Health Survey 2022 Table 8.3 measured BMI proportions. Dumbbell links show the gap between men and women.</p>
@@ -184,18 +172,6 @@
                     <h3>Histogram: age-gender obesity distribution</h3>
                     <div id="obesity-histogram" class="chart"></div>
                     <p class="caption">The histogram bins obesity rates across age and gender groups and marks the overall mean.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Boxplot: obesity spread across age groups</h3>
-                    <div id="gender-obesity-boxplot" class="chart"></div>
-                    <p class="caption">The boxplot summarises how obesity rates vary across age groups for men and women, with points showing each age group.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Line chart: obesity by gender across age groups</h3>
-                    <div id="gender-age-line" class="chart"></div>
-                    <p class="caption">A line chart shows how obesity changes across age groups for men and women using the same ABS age-gender data.</p>
                 </div>
             </div>
         </section>

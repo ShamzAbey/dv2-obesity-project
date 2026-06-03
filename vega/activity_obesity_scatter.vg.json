@@ -5,6 +5,27 @@
   "width": "container",
   "height": 440,
   "data": {"url": "../data/physical_activity.csv"},
+  "params": [
+    {
+      "name": "minPopulation",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 9000,
+        "step": 500,
+        "name": "Minimum population ('000): "
+      }
+    },
+    {
+      "name": "stateHighlight",
+      "select": {"type": "point", "fields": ["state"]},
+      "bind": "legend"
+    }
+  ],
+  "transform": [
+    {"filter": "datum.population_thousands >= minPopulation"}
+  ],
   "layer": [
     {
       "transform": [
@@ -93,7 +114,10 @@
           "title": "State/territory",
           "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7", "#5d6f7d"]}
         },
-        "opacity": {"value": 0.88},
+        "opacity": {
+          "condition": {"param": "stateHighlight", "value": 0.92},
+          "value": 0.28
+        },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
@@ -118,7 +142,10 @@
           "scale": {"domain": [29, 38]}
         },
         "text": {"field": "state", "type": "nominal"},
-        "opacity": {"value": 1}
+        "opacity": {
+          "condition": {"param": "stateHighlight", "value": 1},
+          "value": 0.35
+        }
       }
     },
     {

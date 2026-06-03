@@ -33,6 +33,30 @@
         "max": 1500,
         "step": 25
       }
+    },
+    {
+      "name": "mapCenter",
+      "value": [134, -27],
+      "bind": {
+        "input": "select",
+        "name": "Map centre: ",
+        "options": [
+          [134, -27],
+          [151.2, -33.9],
+          [144.9, -37.8],
+          [147.3, -42.0],
+          [130.8, -12.5],
+          [115.9, -31.9]
+        ],
+        "labels": [
+          "Australia",
+          "NSW/ACT",
+          "Victoria",
+          "Tasmania",
+          "Northern Territory",
+          "Western Australia"
+        ]
+      }
     }
   ],
   "data": {
@@ -66,7 +90,7 @@
   ],
   "projection": {
     "type": "mercator",
-    "center": [134, -27],
+    "center": {"expr": "mapCenter"},
     "scale": {"expr": "mapScale"}
   },
   "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.7},
