@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of Australian adults meeting fruit and vegetable recommendations by age group using ABS Dietary Behaviour 2022 data.",
+  "title": "Adults meeting fruit and vegetable recommendations by age, 2022",
+  "width": "container",
+  "height": 300,
+  "data": {"url": "../data/adult_diet_recommendations.csv"},
+  "layer": [
+    {
+      "mark": {"type": "rect", "cornerRadius": 4, "stroke": "#ffffff", "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "title": "Age group",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+"]
+        },
+        "y": {
+          "field": "recommendation",
+          "type": "nominal",
+          "title": "Dietary recommendation",
+          "sort": ["Fruit recommendation", "Vegetable recommendation", "Both recommendations"]
+        },
+        "color": {
+          "field": "percent",
+          "type": "quantitative",
+          "title": "Adults (%)",
+          "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"], "domain": [0, 55]}
+        },
+        "tooltip": [
+          {"field": "age_group", "type": "ordinal", "title": "Age group"},
+          {"field": "recommendation", "type": "nominal", "title": "Recommendation"},
+          {"field": "percent", "type": "quantitative", "title": "Adults (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontWeight": "bold", "fontSize": 12},
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+"]
+        },
+        "y": {
+          "field": "recommendation",
+          "type": "nominal",
+          "sort": ["Fruit recommendation", "Vegetable recommendation", "Both recommendations"]
+        },
+        "text": {"field": "percent", "type": "quantitative", "format": ".1f"},
+        "color": {
+          "condition": {"test": "datum.percent > 30", "value": "#ffffff"},
+          "value": "#183242"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "grid": false},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

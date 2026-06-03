@@ -53,24 +53,6 @@
                     <div id="obesity-map" class="chart chart-map"></div>
                     <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity; use the zoom slider and map-centre dropdown to inspect regions. Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON.</p>
                 </div>
-
-                <div class="chart-card">
-                    <h3>Obesity rate ranking: lollipop comparison</h3>
-                    <div id="state-obesity-ranking" class="chart chart-short"></div>
-                    <p class="caption">A lollipop view makes state and territory differences easier to compare than the map alone.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Cartogram: obesity by state and territory</h3>
-                    <div id="state-cartogram" class="chart chart-short"></div>
-                    <p class="caption">A tile cartogram gives each state and territory equal visual weight while colour shows adult obesity percentage.</p>
-                </div>
-
-                <div class="chart-card chart-card-wide">
-                    <h3>Boxplot: state obesity distribution</h3>
-                    <div id="state-obesity-boxplot" class="chart chart-short"></div>
-                    <p class="caption">This boxplot is more meaningful than the age-gender version because it summarises the spread of obesity rates across states and territories, with each point labelled in the tooltip.</p>
-                </div>
             </div>
         </section>
 
@@ -84,6 +66,12 @@
                     <h3>Line chart: selected beverage consumption</h3>
                     <div id="food-overview-detail" class="chart chart-tall"></div>
                     <p class="caption">Source: ABS Apparent Consumption of Selected Foodstuffs, Australia, 2023-24. The lower overview uses interval brushing to filter the detailed chart above.</p>
+                </div>
+
+                <div class="chart-card chart-card-wide">
+                    <h3>Heatmap: fruit and vegetable recommendations by age</h3>
+                    <div id="diet-recommendations" class="chart chart-short"></div>
+                    <p class="caption">Source: ABS Dietary Behaviour, 2022. This chart adds a separate diet-quality dataset instead of repeating obesity or beverage consumption values.</p>
                 </div>
 
                 <div class="chart-card chart-card-wide">
@@ -105,24 +93,6 @@
                     <div id="activity-obesity" class="chart"></div>
                     <p class="caption">Bubble size shows population, with a regression trend line, mean reference lines, labels for key states, and detailed tooltips. Source: ABS National Health Survey: State and territory findings, 2022, and ABS population at 30 June 2022.</p>
                 </div>
-
-                <div class="chart-card">
-                    <h3>Lifestyle risk index</h3>
-                    <div id="activity-ranking" class="chart chart-short"></div>
-                    <p class="caption">The index combines adult obesity with the share not meeting activity guidelines, then compares states against risk bands and the mean.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Bin map: activity-obesity clusters</h3>
-                    <div id="activity-obesity-bin-map" class="chart chart-short"></div>
-                    <p class="caption">The binned map groups states by physical activity and obesity ranges, with points showing the original state values.</p>
-                </div>
-
-                <div class="chart-card chart-card-wide">
-                    <h3>Sankey diagram: obesity category to activity category</h3>
-                    <div id="state-sankey" class="chart"></div>
-                    <p class="caption">Sankey-style links group states by obesity category and physical activity category; link thickness shows the number of states/territories.</p>
-                </div>
             </div>
         </section>
 
@@ -133,27 +103,9 @@
             </div>
             <div class="chart-grid">
                 <div class="chart-card chart-card-wide">
-                    <h3>Gender difference by age group</h3>
-                    <div id="gender-dumbbell" class="chart"></div>
-                    <p class="caption">Source: ABS National Health Survey 2022 Table 8.3 measured BMI proportions. Dumbbell links show the gap between men and women.</p>
-                </div>
-
-                <div class="chart-card chart-card-wide">
                     <h3>Node-link diagram: obesity by gender and age</h3>
                     <div id="gender-age-facets" class="chart"></div>
                     <p class="caption">The node-link diagram connects adults to gender and age groups; age-node colour shows obesity rate and node size shows overweight/obese percentage.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Dendrogram: obesity by gender and age</h3>
-                    <div id="gender-age-dendrogram" class="chart"></div>
-                    <p class="caption">The dendrogram presents the same age-gender hierarchy as a tree, with node colour and size encoding health rates.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Histogram: age-gender obesity distribution</h3>
-                    <div id="obesity-histogram" class="chart"></div>
-                    <p class="caption">The histogram bins obesity rates across age and gender groups and marks the overall mean.</p>
                 </div>
             </div>
         </section>

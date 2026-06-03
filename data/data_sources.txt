@@ -16,11 +16,15 @@ Data sources used in this project
    Used for selected non-alcoholic beverage apparent consumption, 2018-19 to 2023-24.
    URL: https://www.abs.gov.au/statistics/health/food-and-nutrition/apparent-consumption-selected-foodstuffs-australia/latest-release
 
-5. Australian Bureau of Statistics (ABS), National, state and territory population, June 2022.
+5. Australian Bureau of Statistics (ABS), Dietary Behaviour, 2022.
+   Used for adult fruit and vegetable recommendation rates by age group.
+   URL: https://www.abs.gov.au/statistics/health/health-conditions-and-risks/dietary-behaviour/2022
+
+6. Australian Bureau of Statistics (ABS), National, state and territory population, June 2022.
    Used for state/territory estimated resident population in the physical activity scatter plot point sizing.
    URL: https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/jun-2022
 
-6. cartdeco/Australia-json-data, Australian TopoJSON geometry.
+7. cartdeco/Australia-json-data, Australian TopoJSON geometry.
    Used only for local Australian state/territory map geometry. Health rates are joined from CSV files above.
    URL: https://github.com/cartdeco/Australia-json-data
 
@@ -30,6 +34,7 @@ Notes:
 - obesity_age_annotation.csv contains a text-only annotation derived from obesity_age.csv.
 - lifestyle_risk_index.csv is a derived index calculated from ABS adult obesity rates and the share not meeting physical activity guidelines.
 - lifestyle_risk_bands.csv contains display bands for the derived lifestyle risk index chart.
+- adult_diet_recommendations.csv uses ABS Dietary Behaviour 2022 fruit and vegetable recommendation values by adult age group.
 - state_locations.csv contains state and territory capital coordinates used only to place proportional symbols on the map.
 - state_tile_cartogram.csv arranges ABS state and territory obesity values into a manually positioned tile cartogram.
 - food_treemap.csv contains a manually calculated treemap layout derived from ABS 2023-24 beverage consumption values.

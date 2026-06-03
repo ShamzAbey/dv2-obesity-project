@@ -1,0 +1,22 @@
+age_group,recommendation,percent
+18-24,Fruit recommendation,54.9
+18-24,Vegetable recommendation,5.9
+18-24,Both recommendations,4.4
+25-34,Fruit recommendation,42.8
+25-34,Vegetable recommendation,4.3
+25-34,Both recommendations,2.9
+35-44,Fruit recommendation,41.2
+35-44,Vegetable recommendation,4.4
+35-44,Both recommendations,2.9
+45-54,Fruit recommendation,45.9
+45-54,Vegetable recommendation,5.8
+45-54,Both recommendations,3.8
+55-64,Fruit recommendation,49.6
+55-64,Vegetable recommendation,6.4
+55-64,Both recommendations,4.3
+65-74,Fruit recommendation,54.4
+65-74,Vegetable recommendation,5.7
+65-74,Both recommendations,3.9
+75+,Fruit recommendation,54.7
+75+,Vegetable recommendation,3.9
+75+,Both recommendations,2.8

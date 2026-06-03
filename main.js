@@ -27,19 +27,11 @@ updateScrollProgress();
 const charts = [
 	["#obesity-map", "vega/interactive_health_map.vg.json", embedOpts],
 	["#kpi-tiles", "vega/kpi_tiles.vg.json", kpiEmbedOpts],
-	["#state-obesity-ranking", "vega/state_obesity_ranked_bar.vg.json", embedOpts],
-	["#state-cartogram", "vega/state_tile_cartogram.vg.json", embedOpts],
-	["#state-obesity-boxplot", "vega/state_obesity_boxplot.vg.json", embedOpts],
 	["#food-overview-detail", "vega/food_overview_detail.vg.json", embedOpts],
+	["#diet-recommendations", "vega/diet_recommendations_heatmap.vg.json", embedOpts],
 	["#food-treemap", "vega/food_treemap.vg.json", embedOpts],
 	["#activity-obesity", "vega/activity_obesity_scatter.vg.json", embedOpts],
-	["#activity-ranking", "vega/activity_ranked_bar.vg.json", embedOpts],
-	["#activity-obesity-bin-map", "vega/activity_obesity_bin_map.vg.json", embedOpts],
-	["#state-sankey", "vega/state_sankey_alluvial.vg.json", embedOpts],
-	["#gender-dumbbell", "vega/gender_age_dumbbell.vg.json", embedOpts],
-	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts],
-	["#gender-age-dendrogram", "vega/demographic_dendrogram.vg.json", embedOpts],
-	["#obesity-histogram", "vega/obesity_distribution_histogram.vg.json", embedOpts]
+	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts]
 ];
 
 charts.forEach(([selector, spec, options]) => {
