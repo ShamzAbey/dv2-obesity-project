@@ -16,11 +16,10 @@
         "step": 500,
         "name": "Minimum population ('000): "
       }
-    },
-    {
-      "name": "activityBrush",
-      "select": {"type": "interval", "encodings": ["x", "y"]}
     }
+  ],
+  "transform": [
+    {"filter": "datum.population_thousands >= minPopulation"}
   ],
   "layer": [
     {
@@ -110,13 +109,7 @@
           "title": "State/territory",
           "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7", "#5d6f7d"]}
         },
-        "opacity": {
-          "condition": [
-            {"test": "datum.population_thousands < minPopulation", "value": 0.1},
-            {"param": "activityBrush", "value": 0.92}
-          ],
-          "value": 0.3
-        },
+        "opacity": {"value": 0.88},
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
@@ -141,10 +134,7 @@
           "scale": {"domain": [29, 38]}
         },
         "text": {"field": "state", "type": "nominal"},
-        "opacity": {
-          "condition": {"test": "datum.population_thousands >= minPopulation", "value": 1},
-          "value": 0.15
-        }
+        "opacity": {"value": 1}
       }
     },
     {
