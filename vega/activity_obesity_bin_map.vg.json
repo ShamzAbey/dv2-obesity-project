@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "2D binned activity-obesity map showing how states cluster by physical activity guideline achievement and obesity rate.",
+  "title": "Binned activity-obesity risk map by state and territory",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/physical_activity.csv"},
+  "layer": [
+    {
+      "mark": {"type": "rect", "cornerRadius": 4, "stroke": "#ffffff", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {
+          "field": "met_guidelines_percent",
+          "type": "quantitative",
+          "bin": {"step": 1},
+          "title": "People meeting physical activity guidelines (%)",
+          "scale": {"domain": [20, 25]}
+        },
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "bin": {"step": 2},
+          "title": "Adults obese (%)",
+          "scale": {"domain": [29, 38]}
+        },
+        "color": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "States in bin",
+          "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"]}
+        },
+        "tooltip": [
+          {"aggregate": "count", "type": "quantitative", "title": "States in bin"},
+          {"field": "met_guidelines_percent", "type": "quantitative", "bin": {"step": 1}, "title": "Activity bin"},
+          {"field": "obesity_percent", "type": "quantitative", "bin": {"step": 2}, "title": "Obesity bin"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "circle", "filled": true, "size": 150, "stroke": "#ffffff", "strokeWidth": 1, "opacity": 0.9},
+      "encoding": {
+        "x": {
+          "field": "met_guidelines_percent",
+          "type": "quantitative",
+          "scale": {"domain": [20, 25]}
+        },
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "scale": {"domain": [29, 38]}
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7", "#5d6f7d"]}
+        },
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met guidelines (%)", "format": ".1f"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -13, "fontSize": 10, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "x": {"field": "met_guidelines_percent", "type": "quantitative", "scale": {"domain": [20, 25]}},
+        "y": {"field": "obesity_percent", "type": "quantitative", "scale": {"domain": [29, 38]}},
+        "text": {"field": "state", "type": "nominal"}
+      }
+    }
+  ],
+  "resolve": {"scale": {"color": "independent"}},
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#dcecf5"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dendrogram-style hierarchy of adult obesity by gender and age group using ABS NHS 2022 BMI proportions.",
+  "title": "Dendrogram of obesity by gender and age group, 2022",
+  "width": "container",
+  "height": 360,
+  "layer": [
+    {
+      "data": {"url": "../data/demographic_dendrogram_links.csv"},
+      "mark": {"type": "rule", "strokeWidth": 2, "opacity": 0.45},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "x2": {"field": "x2"},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "y2": {"field": "y2"},
+        "color": {
+          "field": "branch",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#2a7fb8", "#9bd7ea"]}
+        }
+      }
+    },
+    {
+      "data": {"url": "../data/demographic_dendrogram_nodes.csv"},
+      "mark": {"type": "circle", "filled": true, "stroke": "#ffffff", "strokeWidth": 1.3},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "size": {
+          "field": "overweight_obese_percent",
+          "type": "quantitative",
+          "title": "Overweight/obese (%)",
+          "scale": {"range": [180, 900]}
+        },
+        "color": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"range": ["#d8eef7", "#41b6c4", "#0f4c75"], "domain": [14, 27, 40]}
+        },
+        "opacity": {
+          "condition": {"test": "isValid(datum.obesity_percent)", "value": 0.95},
+          "value": 0.35
+        },
+        "tooltip": [
+          {"field": "label", "type": "nominal", "title": "Node"},
+          {"field": "node_type", "type": "nominal", "title": "Type"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/demographic_dendrogram_nodes.csv"},
+      "mark": {"type": "text", "align": "left", "dx": 12, "fontSize": 11, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [100, 0]}, "axis": null},
+        "text": {"field": "label", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

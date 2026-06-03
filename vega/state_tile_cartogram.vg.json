@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Tile cartogram of Australian state and territory obesity rates using a manually arranged state grid derived from ABS state obesity values.",
+  "title": "Tile cartogram of adult obesity by state and territory",
+  "width": "container",
+  "height": 310,
+  "data": {"url": "../data/state_tile_cartogram.csv"},
+  "layer": [
+    {
+      "mark": {"type": "rect", "cornerRadius": 6, "stroke": "#ffffff", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "tile_col", "type": "ordinal", "axis": null},
+        "y": {"field": "tile_row", "type": "ordinal", "axis": null, "sort": "ascending"},
+        "color": {
+          "field": "obese_percent",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"range": ["#d8eef7", "#41b6c4", "#0f4c75"], "domain": [28, 33, 38]}
+        },
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"},
+          {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 16, "fontWeight": "bold", "color": "#ffffff"},
+      "encoding": {
+        "x": {"field": "tile_col", "type": "ordinal"},
+        "y": {"field": "tile_row", "type": "ordinal", "sort": "ascending"},
+        "text": {"field": "state", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": 20, "fontSize": 12, "fontWeight": "bold", "color": "#ffffff"},
+      "encoding": {
+        "x": {"field": "tile_col", "type": "ordinal"},
+        "y": {"field": "tile_row", "type": "ordinal", "sort": "ascending"},
+        "text": {"field": "obese_percent", "type": "quantitative", "format": ".1f"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

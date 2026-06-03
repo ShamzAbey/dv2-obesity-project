@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Histogram of adult obesity rates across age and gender groups from ABS NHS 2022 BMI proportions.",
+  "title": "Histogram of obesity rates across age and gender groups",
+  "width": "container",
+  "height": 310,
+  "data": {"url": "../data/obesity_gender.csv"},
+  "layer": [
+    {
+      "mark": {"type": "bar", "opacity": 0.82, "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+      "encoding": {
+        "x": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "bin": {"step": 5},
+          "title": "Adults obese (%)"
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Age-gender groups"
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "title": "Gender",
+          "scale": {"range": ["#2a7fb8", "#9bd7ea"]}
+        },
+        "tooltip": [
+          {"field": "sex", "type": "nominal", "title": "Gender"},
+          {"aggregate": "count", "type": "quantitative", "title": "Groups in bin"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "rule", "stroke": "#0f4c75", "strokeDash": [5, 4], "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "aggregate": "mean",
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "title": "Mean obesity"
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -118, "fontStyle": "italic", "color": "#0f4c75"},
+      "encoding": {
+        "x": {"aggregate": "mean", "field": "obesity_percent", "type": "quantitative"},
+        "y": {"datum": 0},
+        "text": {"value": "Mean"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#dcecf5"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}
