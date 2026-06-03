@@ -18,13 +18,9 @@
       }
     },
     {
-      "name": "stateHighlight",
-      "select": {"type": "point", "fields": ["state"]},
-      "bind": "legend"
+      "name": "activityBrush",
+      "select": {"type": "interval", "encodings": ["x", "y"]}
     }
-  ],
-  "transform": [
-    {"filter": "datum.population_thousands >= minPopulation"}
   ],
   "layer": [
     {
@@ -115,8 +111,11 @@
           "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7", "#5d6f7d"]}
         },
         "opacity": {
-          "condition": {"param": "stateHighlight", "value": 0.92},
-          "value": 0.28
+          "condition": [
+            {"test": "datum.population_thousands < minPopulation", "value": 0.1},
+            {"param": "activityBrush", "value": 0.92}
+          ],
+          "value": 0.3
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
@@ -143,8 +142,8 @@
         },
         "text": {"field": "state", "type": "nominal"},
         "opacity": {
-          "condition": {"param": "stateHighlight", "value": 1},
-          "value": 0.35
+          "condition": {"test": "datum.population_thousands >= minPopulation", "value": 1},
+          "value": 0.15
         }
       }
     },

@@ -122,6 +122,7 @@ body::before{
     display:grid;
     grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:var(--gap);
+    align-items:start;
 }
 
 .kpi-card{
@@ -174,7 +175,7 @@ body::before{
     border-top:4px solid var(--accent);
     border-radius:8px;
     box-shadow:0 6px 18px rgba(15,76,117,0.10);
-    min-height:260px;
+    min-height:220px;
     display:flex;
     flex-direction:column;
     overflow:hidden;
@@ -241,12 +242,12 @@ body::before{
     border-top-color:#2a7fb8;
 }
 
-.chart{flex:1;min-height:220px}
-.chart-map{min-height:350px}
-.chart-map-compact{min-height:300px}
-.chart-tall{min-height:350px}
-.chart-treemap{min-height:430px}
-.chart-short{min-height:300px}
+.chart{flex:1;min-height:200px}
+.chart-map{min-height:390px}
+.chart-map-compact{min-height:260px}
+.chart-tall{min-height:330px}
+.chart-treemap{min-height:360px}
+.chart-short{min-height:250px}
 .chart-card-wide{grid-column:1 / -1}
 .caption{
     margin:6px 0 0;

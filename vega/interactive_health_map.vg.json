@@ -3,7 +3,7 @@
   "description": "Interactive choropleth map with a metric selector and zoom control using real ABS state and territory health risk data.",
   "title": "Interactive health risk map by state and territory",
   "width": "container",
-  "height": 520,
+  "height": 460,
   "params": [
     {
       "name": "selectedMetric",
@@ -25,13 +25,13 @@
     },
     {
       "name": "mapScale",
-      "value": 900,
+      "value": 1150,
       "bind": {
         "input": "range",
         "name": "Zoom: ",
-        "min": 650,
-        "max": 1500,
-        "step": 25
+        "min": 850,
+        "max": 2200,
+        "step": 50
       }
     },
     {

@@ -51,7 +51,7 @@
                 <div class="chart-card chart-card-wide">
                     <h3>Interactive choropleth map: health indicators by state</h3>
                     <div id="obesity-map" class="chart chart-map"></div>
-                    <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity; use the zoom slider to inspect the map. Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON.</p>
+                    <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity; use the zoom slider and map-centre dropdown to inspect regions. Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON.</p>
                 </div>
 
                 <div class="chart-card">
@@ -61,24 +61,12 @@
                 </div>
 
                 <div class="chart-card">
-                    <h3>Proportional symbol map: obesity and population</h3>
-                    <div id="state-symbol-map" class="chart chart-map-compact"></div>
-                    <p class="caption">Circle size shows population; colour shows adult obesity rate.</p>
-                </div>
-
-                <div class="chart-card">
-                    <h3>Dot map: physical activity by state and territory</h3>
-                    <div id="activity-dot-map" class="chart chart-map-compact"></div>
-                    <p class="caption">Dot colour shows the percentage meeting physical activity guidelines.</p>
-                </div>
-
-                <div class="chart-card">
                     <h3>Cartogram: obesity by state and territory</h3>
                     <div id="state-cartogram" class="chart chart-short"></div>
                     <p class="caption">A tile cartogram gives each state and territory equal visual weight while colour shows adult obesity percentage.</p>
                 </div>
 
-                <div class="chart-card">
+                <div class="chart-card chart-card-wide">
                     <h3>Boxplot: state obesity distribution</h3>
                     <div id="state-obesity-boxplot" class="chart chart-short"></div>
                     <p class="caption">This boxplot is more meaningful than the age-gender version because it summarises the spread of obesity rates across states and territories, with each point labelled in the tooltip.</p>
@@ -96,12 +84,6 @@
                     <h3>Line chart: selected beverage consumption</h3>
                     <div id="food-overview-detail" class="chart chart-tall"></div>
                     <p class="caption">Source: ABS Apparent Consumption of Selected Foodstuffs, Australia, 2023-24. The lower overview uses interval brushing to filter the detailed chart above.</p>
-                </div>
-
-                <div class="chart-card chart-card-wide">
-                    <h3>Stacked contribution by category</h3>
-                    <div id="food-stacked" class="chart"></div>
-                    <p class="caption">Source: ABS Apparent Consumption of Selected Foodstuffs, Australia, 2023-24. Category colour is nominal; y-values are mL per capita per day.</p>
                 </div>
 
                 <div class="chart-card chart-card-wide">
