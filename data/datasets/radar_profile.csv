@@ -1,0 +1,25 @@
+profile,metric,order,angle,score
+NSW,Soft drinks proxy,1,0,67.7
+NSW,Fast-food proxy,2,72,55.3
+NSW,Physical inactivity,3,144,75.7
+NSW,Obesity,4,216,30.4
+NSW,Overweight/obese,5,288,63.1
+NSW,Soft drinks proxy,6,360,67.7
+Qld,Soft drinks proxy,1,0,67.9
+Qld,Fast-food proxy,2,72,57.6
+Qld,Physical inactivity,3,144,76.4
+Qld,Obesity,4,216,34.6
+Qld,Overweight/obese,5,288,68.8
+Qld,Soft drinks proxy,6,360,67.9
+Tas,Soft drinks proxy,1,0,68.2
+Tas,Fast-food proxy,2,72,59.1
+Tas,Physical inactivity,3,144,77.1
+Tas,Obesity,4,216,37.0
+Tas,Overweight/obese,5,288,70.5
+Tas,Soft drinks proxy,6,360,68.2
+ACT,Soft drinks proxy,1,0,69.1
+ACT,Fast-food proxy,2,72,57.2
+ACT,Physical inactivity,3,144,79.7
+ACT,Obesity,4,216,29.7
+ACT,Overweight/obese,5,288,64.0
+ACT,Soft drinks proxy,6,360,69.1

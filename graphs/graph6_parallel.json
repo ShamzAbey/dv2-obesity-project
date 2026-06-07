@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Parallel coordinates style comparison of state health indicators.",
+  "title": "Parallel coordinates: state health profile",
+  "width": "container",
+  "height": 440,
+  "data": {"url": "../data/datasets/parallel_profile_long.csv"},
+  "params": [
+    {"name": "statePick", "select": {"type": "point", "fields": ["state"]}, "bind": "legend"}
+  ],
+  "mark": {"type": "line", "point": {"filled": true, "size": 65}, "strokeWidth": 2.8},
+  "encoding": {
+    "x": {
+      "field": "indicator",
+      "type": "ordinal",
+      "title": "Indicator",
+      "sort": ["Obesity", "Overweight/obese", "Physical activity", "Physical inactivity", "Fast-food proxy", "Soft-drink proxy"]
+    },
+    "y": {"field": "value", "type": "quantitative", "title": "Rate or index (%)", "scale": {"domain": [0, 82]}},
+    "detail": {"field": "state", "type": "nominal"},
+    "color": {"field": "state", "type": "nominal", "title": "State/territory", "scale": {"range": ["#0f4c75", "#1d6fa5", "#2f8fc2", "#41b6c4", "#6db8d7", "#2a7fb8", "#9bd7ea", "#5d6f7d"]}},
+    "opacity": {"condition": {"param": "statePick", "value": 0.96}, "value": 0.2},
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "indicator", "type": "nominal", "title": "Indicator"},
+      {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#d9edf7", "labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

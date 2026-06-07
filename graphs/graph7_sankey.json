@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sankey-style alluvial flow made from Vega-Lite rect and rule marks.",
+  "title": "Sankey-style flow: obesity category to physical activity category",
+  "width": "container",
+  "height": 360,
+  "layer": [
+    {
+      "data": {"url": "../data/datasets/sankey_links.csv"},
+      "mark": {"type": "rule", "opacity": 0.5, "strokeCap": "round"},
+      "encoding": {
+        "x": {"datum": 0.14, "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "x2": {"datum": 0.86},
+        "y": {"field": "source_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "y2": {"field": "target_y"},
+        "strokeWidth": {"field": "count", "type": "quantitative", "legend": null, "scale": {"range": [8, 30]}},
+        "color": {"field": "source", "type": "nominal", "legend": null, "scale": {"range": ["#41b6c4", "#2f8fc2", "#0f4c75"]}},
+        "tooltip": [
+          {"field": "source", "type": "nominal", "title": "Obesity category"},
+          {"field": "target", "type": "nominal", "title": "Activity category"},
+          {"field": "count", "type": "quantitative", "title": "States/territories"},
+          {"field": "states", "type": "nominal", "title": "States"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/datasets/sankey_nodes.csv"},
+      "mark": {"type": "rect", "cornerRadius": 6, "stroke": "#ffffff", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "x2": {"field": "x1"},
+        "y": {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "y2": {"field": "y1"},
+        "color": {"field": "side", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#41b6c4"]}},
+        "tooltip": [
+          {"field": "side", "type": "nominal", "title": "Dimension"},
+          {"field": "node", "type": "nominal", "title": "Category"},
+          {"field": "count", "type": "quantitative", "title": "States/territories"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "../data/datasets/sankey_nodes.csv"},
+      "mark": {"type": "text", "align": "center", "fontSize": 12, "fontWeight": "bold", "color": "#ffffff"},
+      "encoding": {
+        "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "text": {"field": "node", "type": "nominal"}
+      }
+    },
+    {
+      "data": {"url": "../data/datasets/sankey_nodes.csv"},
+      "mark": {"type": "text", "align": "center", "dy": 16, "fontSize": 11, "color": "#eaf8fc"},
+      "encoding": {
+        "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
+        "text": {"field": "count", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+}

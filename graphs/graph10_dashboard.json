@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Compact interactive dashboard with state, age, gender, beverage category, and year controls.",
+  "title": "Interactive dashboard: choose a state, demographic group and beverage trend",
+  "params": [
+    {"name": "stateChoice", "value": "Tas", "bind": {"input": "select", "name": "State: ", "options": ["ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]}},
+    {"name": "ageChoice", "value": "55-64", "bind": {"input": "select", "name": "Age: ", "options": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]}},
+    {"name": "sexChoice", "value": "Women", "bind": {"input": "select", "name": "Gender: ", "options": ["Men", "Women"]}},
+    {"name": "categoryChoice", "value": "Soft drinks", "bind": {"input": "select", "name": "Beverage: ", "options": ["Soft drinks", "Water", "Fruit and vegetable juices", "Fruit and vegetable drinks", "Energy drinks", "Electrolyte drinks", "Cordials"]}},
+    {"name": "yearStart", "value": 2018, "bind": {"input": "range", "name": "From year: ", "min": 2018, "max": 2023, "step": 1}}
+  ],
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "width": 530,
+          "height": 260,
+          "data": {"url": "../data/datasets/state_health_profile.csv"},
+          "transform": [
+            {"filter": "datum.state == stateChoice"},
+            {"fold": ["obesity_percent", "overweight_obese_percent", "activity_percent", "fast_food_proxy_index", "soft_drink_proxy_index"], "as": ["indicator", "value"]},
+            {"calculate": "datum.indicator == 'obesity_percent' ? 'Obesity' : datum.indicator == 'overweight_obese_percent' ? 'Overweight/obese' : datum.indicator == 'activity_percent' ? 'Physical activity' : datum.indicator == 'fast_food_proxy_index' ? 'Fast-food proxy' : 'Soft-drink proxy'", "as": "indicator_label"}
+          ],
+          "mark": {"type": "bar", "cornerRadiusEnd": 5},
+          "encoding": {
+            "y": {"field": "indicator_label", "type": "ordinal", "title": null, "sort": ["Obesity", "Overweight/obese", "Physical activity", "Fast-food proxy", "Soft-drink proxy"]},
+            "x": {"field": "value", "type": "quantitative", "title": "Selected state value"},
+            "color": {"field": "indicator_label", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#2a7fb8", "#41b6c4", "#6db8d7", "#9bd7ea"]}},
+            "tooltip": [
+              {"field": "state_full", "type": "nominal", "title": "State/territory"},
+              {"field": "indicator_label", "type": "nominal", "title": "Indicator"},
+              {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"}
+            ]
+          }
+        },
+        {
+          "width": 420,
+          "height": 260,
+          "data": {"url": "../data/datasets/obesity_gender.csv"},
+          "transform": [
+            {"filter": "datum.age_group == ageChoice && datum.sex == sexChoice"},
+            {"fold": ["obesity_percent", "overweight_obese_percent"], "as": ["indicator", "value"]},
+            {"calculate": "datum.indicator == 'obesity_percent' ? 'Adults obese' : 'Overweight/obese'", "as": "indicator_label"}
+          ],
+          "mark": {"type": "bar", "cornerRadiusEnd": 5},
+          "encoding": {
+            "y": {"field": "indicator_label", "type": "ordinal", "title": null},
+            "x": {"field": "value", "type": "quantitative", "title": "Selected age/gender value (%)"},
+            "color": {"field": "indicator_label", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#9bd7ea"]}},
+            "tooltip": [
+              {"field": "age_group", "type": "ordinal", "title": "Age group"},
+              {"field": "sex", "type": "nominal", "title": "Gender"},
+              {"field": "indicator_label", "type": "nominal", "title": "Indicator"},
+              {"field": "value", "type": "quantitative", "title": "Percent", "format": ".1f"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "width": "container",
+      "height": 260,
+      "data": {"url": "../data/datasets/food_consumption.csv"},
+      "transform": [
+        {"filter": "datum.category == categoryChoice && datum.year_start >= yearStart"}
+      ],
+      "mark": {"type": "line", "point": {"filled": true, "size": 75}, "strokeWidth": 3.5},
+      "encoding": {
+        "x": {"field": "year_start", "type": "quantitative", "title": "Financial year beginning", "axis": {"format": "d", "tickMinStep": 1}},
+        "y": {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day"},
+        "color": {"field": "category", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75"]}},
+        "tooltip": [
+          {"field": "year", "type": "ordinal", "title": "Financial year"},
+          {"field": "category", "type": "nominal", "title": "Category"},
+          {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "#cfe3ef"},
+    "axis": {"gridColor": "#d9edf7", "labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

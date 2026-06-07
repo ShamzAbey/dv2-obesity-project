@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Radar-style profile chart built with Vega-Lite layered line, point, rule, and text marks.",
+  "title": "Radar-style lifestyle risk profiles",
+  "width": "container",
+  "height": 470,
+  "params": [
+    {"name": "profileSelect", "select": {"type": "point", "fields": ["profile"]}, "bind": "legend"}
+  ],
+  "layer": [
+    {
+      "data": {"url": "../data/datasets/radar_axes.csv"},
+      "mark": {"type": "rule", "color": "#bddfed", "strokeWidth": 1.4},
+      "encoding": {
+        "x": {"datum": 0, "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "y": {"datum": 0, "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "x2": {"field": "x"},
+        "y2": {"field": "y"}
+      }
+    },
+    {
+      "data": {"url": "../data/datasets/radar_axes.csv"},
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "#0f4c75"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "text": {"field": "metric", "type": "nominal"}
+      }
+    },
+    {
+      "data": {"url": "../data/datasets/radar_profile.csv"},
+      "transform": [
+        {"calculate": "cos(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "x_score"},
+        {"calculate": "sin(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "y_score"}
+      ],
+      "mark": {"type": "line", "strokeWidth": 3, "interpolate": "linear"},
+      "encoding": {
+        "x": {"field": "x_score", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "y": {"field": "y_score", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "order": {"field": "order", "type": "ordinal"},
+        "detail": {"field": "profile", "type": "nominal"},
+        "color": {"field": "profile", "type": "nominal", "title": "Profile", "scale": {"range": ["#0f4c75", "#2f8fc2", "#41b6c4", "#9bd7ea"]}},
+        "opacity": {"condition": {"param": "profileSelect", "value": 0.92}, "value": 0.18}
+      }
+    },
+    {
+      "data": {"url": "../data/datasets/radar_profile.csv"},
+      "transform": [
+        {"filter": "datum.order < 6"},
+        {"calculate": "cos(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "x_score"},
+        {"calculate": "sin(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "y_score"}
+      ],
+      "mark": {"type": "circle", "filled": true, "size": 70, "stroke": "#ffffff", "strokeWidth": 1},
+      "encoding": {
+        "x": {"field": "x_score", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "y": {"field": "y_score", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
+        "color": {"field": "profile", "type": "nominal", "legend": null},
+        "opacity": {"condition": {"param": "profileSelect", "value": 1}, "value": 0.25},
+        "tooltip": [
+          {"field": "profile", "type": "nominal", "title": "State/territory"},
+          {"field": "metric", "type": "nominal", "title": "Indicator"},
+          {"field": "score", "type": "quantitative", "title": "Score / rate", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "legend": {"orient": "right", "labelFontSize": 12, "titleFontSize": 12}}
+}

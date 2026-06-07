@@ -1,0 +1,26 @@
+var_x,var_y,correlation
+Obesity,Obesity,1.00
+Obesity,Income,-0.84
+Obesity,Fast food proxy,0.80
+Obesity,Exercise,0.22
+Obesity,Soft drinks proxy,-0.22
+Income,Obesity,-0.84
+Income,Income,1.00
+Income,Fast food proxy,-0.45
+Income,Exercise,-0.54
+Income,Soft drinks proxy,0.54
+Fast food proxy,Obesity,0.80
+Fast food proxy,Income,-0.45
+Fast food proxy,Fast food proxy,1.00
+Fast food proxy,Exercise,-0.41
+Fast food proxy,Soft drinks proxy,0.42
+Exercise,Obesity,0.22
+Exercise,Income,-0.54
+Exercise,Fast food proxy,-0.41
+Exercise,Exercise,1.00
+Exercise,Soft drinks proxy,-1.00
+Soft drinks proxy,Obesity,-0.22
+Soft drinks proxy,Income,0.54
+Soft drinks proxy,Fast food proxy,0.42
+Soft drinks proxy,Exercise,-1.00
+Soft drinks proxy,Soft drinks proxy,1.00

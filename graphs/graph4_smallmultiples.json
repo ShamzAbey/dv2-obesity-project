@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small multiples comparing adult obesity and overweight/obesity by age and gender.",
+  "title": "Small multiples: age and gender obesity patterns",
+  "data": {"url": "../data/datasets/obesity_gender.csv"},
+  "params": [
+    {"name": "metricPick", "value": "obesity_percent", "bind": {"input": "select", "name": "Metric: ", "options": ["obesity_percent", "overweight_obese_percent"], "labels": ["Adults obese (%)", "Overweight or obese (%)"]}}
+  ],
+  "transform": [{"calculate": "datum[metricPick]", "as": "selected_value"}],
+  "facet": {"column": {"field": "sex", "type": "nominal", "title": null}},
+  "spec": {
+    "width": 430,
+    "height": 280,
+    "layer": [
+      {
+        "mark": {"type": "bar", "cornerRadiusTopLeft": 4, "cornerRadiusTopRight": 4},
+        "encoding": {
+          "x": {"field": "age_group", "type": "ordinal", "title": "Age group", "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]},
+          "y": {"field": "selected_value", "type": "quantitative", "title": "Selected rate (%)", "scale": {"domain": [0, 82]}},
+          "color": {"field": "sex", "type": "nominal", "legend": null, "scale": {"range": ["#2a7fb8", "#9bd7ea"]}},
+          "tooltip": [
+            {"field": "sex", "type": "nominal", "title": "Gender"},
+            {"field": "age_group", "type": "ordinal", "title": "Age group"},
+            {"field": "obesity_percent", "type": "quantitative", "title": "Adults obese (%)", "format": ".1f"},
+            {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight or obese (%)", "format": ".1f"}
+          ]
+        }
+      },
+      {
+        "mark": {"type": "text", "dy": -8, "fontSize": 11, "fontWeight": "bold", "color": "#183242"},
+        "encoding": {
+          "x": {"field": "age_group", "type": "ordinal", "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]},
+          "y": {"field": "selected_value", "type": "quantitative"},
+          "text": {"field": "selected_value", "type": "quantitative", "format": ".1f"}
+        }
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#d9edf7", "labelFontSize": 11, "titleFontSize": 12},
+    "header": {"labelFontSize": 16, "labelFontWeight": "bold"}
+  }
+}

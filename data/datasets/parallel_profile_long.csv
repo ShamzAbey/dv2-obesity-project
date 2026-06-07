@@ -1,0 +1,49 @@
+state,state_full,indicator,value
+NSW,New South Wales,Obesity,30.4
+NSW,New South Wales,Overweight/obese,63.1
+NSW,New South Wales,Physical activity,24.3
+NSW,New South Wales,Physical inactivity,75.7
+NSW,New South Wales,Fast-food proxy,55.3
+NSW,New South Wales,Soft-drink proxy,67.7
+Vic,Victoria,Obesity,30.5
+Vic,Victoria,Overweight/obese,65.3
+Vic,Victoria,Physical activity,24.5
+Vic,Victoria,Physical inactivity,75.5
+Vic,Victoria,Fast-food proxy,55.3
+Vic,Victoria,Soft-drink proxy,67.6
+Qld,Queensland,Obesity,34.6
+Qld,Queensland,Overweight/obese,68.8
+Qld,Queensland,Physical activity,23.6
+Qld,Queensland,Physical inactivity,76.4
+Qld,Queensland,Fast-food proxy,57.6
+Qld,Queensland,Soft-drink proxy,67.9
+SA,South Australia,Obesity,33.3
+SA,South Australia,Overweight/obese,68.0
+SA,South Australia,Physical activity,24.0
+SA,South Australia,Physical inactivity,76.0
+SA,South Australia,Fast-food proxy,56.8
+SA,South Australia,Soft-drink proxy,67.8
+WA,Western Australia,Obesity,31.5
+WA,Western Australia,Overweight/obese,68.0
+WA,Western Australia,Physical activity,23.2
+WA,Western Australia,Physical inactivity,76.8
+WA,Western Australia,Fast-food proxy,56.4
+WA,Western Australia,Soft-drink proxy,68.1
+Tas,Tasmania,Obesity,37.0
+Tas,Tasmania,Overweight/obese,70.5
+Tas,Tasmania,Physical activity,22.9
+Tas,Tasmania,Physical inactivity,77.1
+Tas,Tasmania,Fast-food proxy,59.1
+Tas,Tasmania,Soft-drink proxy,68.2
+NT,Northern Territory,Obesity,34.3
+NT,Northern Territory,Overweight/obese,63.8
+NT,Northern Territory,Physical activity,24.6
+NT,Northern Territory,Physical inactivity,75.4
+NT,Northern Territory,Fast-food proxy,56.9
+NT,Northern Territory,Soft-drink proxy,67.6
+ACT,Australian Capital Territory,Obesity,29.7
+ACT,Australian Capital Territory,Overweight/obese,64.0
+ACT,Australian Capital Territory,Physical activity,20.3
+ACT,Australian Capital Territory,Physical inactivity,79.7
+ACT,Australian Capital Territory,Fast-food proxy,57.2
+ACT,Australian Capital Territory,Soft-drink proxy,69.1

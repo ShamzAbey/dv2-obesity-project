@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap comparing obesity, overweight/obesity, and diet recommendation achievement across age groups.",
+  "title": "Heatmap: age group health and diet behaviour",
+  "width": "container",
+  "height": 330,
+  "data": {"url": "../data/datasets/age_behaviour_heatmap.csv"},
+  "params": [
+    {"name": "hoverCell", "select": {"type": "point", "on": "mouseover", "clear": "mouseout", "fields": ["age_group", "behaviour"]}}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rect", "cornerRadius": 5},
+      "encoding": {
+        "x": {"field": "age_group", "type": "ordinal", "title": "Age group", "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]},
+        "y": {"field": "behaviour", "type": "ordinal", "title": "Behaviour / outcome"},
+        "color": {"field": "percent", "type": "quantitative", "title": "Percent (%)", "scale": {"scheme": "blues", "domain": [0, 75]}},
+        "opacity": {"condition": {"param": "hoverCell", "value": 1}, "value": 0.86},
+        "tooltip": [
+          {"field": "age_group", "type": "ordinal", "title": "Age group"},
+          {"field": "behaviour", "type": "nominal", "title": "Measure"},
+          {"field": "percent", "type": "quantitative", "title": "Percent (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontWeight": "bold", "fontSize": 12},
+      "encoding": {
+        "x": {"field": "age_group", "type": "ordinal", "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]},
+        "y": {"field": "behaviour", "type": "ordinal"},
+        "text": {"field": "percent", "type": "quantitative", "format": ".1f"},
+        "color": {"condition": {"test": "datum.percent > 48", "value": "#ffffff"}, "value": "#183242"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

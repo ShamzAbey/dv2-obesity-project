@@ -1,0 +1,31 @@
+age_group,behaviour,percent
+18-24,Adults obese,14.3
+18-24,Overweight/obese,42.1
+18-24,Met fruit recommendation,36.6
+18-24,Met vegetable recommendation,3.0
+18-24,Met both recommendations,2.1
+25-34,Adults obese,28.2
+25-34,Overweight/obese,58.8
+25-34,Met fruit recommendation,40.0
+25-34,Met vegetable recommendation,6.2
+25-34,Met both recommendations,3.9
+35-44,Adults obese,31.6
+35-44,Overweight/obese,66.7
+35-44,Met fruit recommendation,41.0
+35-44,Met vegetable recommendation,5.2
+35-44,Met both recommendations,3.2
+45-54,Adults obese,35.8
+45-54,Overweight/obese,72.5
+45-54,Met fruit recommendation,42.2
+45-54,Met vegetable recommendation,6.2
+45-54,Met both recommendations,3.9
+55-64,Adults obese,37.7
+55-64,Overweight/obese,73.6
+55-64,Met fruit recommendation,44.6
+55-64,Met vegetable recommendation,6.9
+55-64,Met both recommendations,4.0
+65+,Adults obese,36.2
+65+,Overweight/obese,72.5
+65+,Met fruit recommendation,55.6
+65+,Met vegetable recommendation,9.8
+65+,Met both recommendations,7.0

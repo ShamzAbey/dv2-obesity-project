@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bubble plot connecting a transparent fast-food/convenience proxy index with adult obesity by state and territory.",
+  "title": "Bubble plot: fast-food context proxy and adult obesity",
+  "autosize": {"type": "fit", "contains": "padding", "resize": true},
+  "width": "container",
+  "height": 430,
+  "data": {"url": "../data/datasets/state_health_profile.csv"},
+  "params": [
+    {
+      "name": "riskFilter",
+      "value": "All",
+      "bind": {"input": "select", "name": "Risk band: ", "options": ["All", "Lower", "Middle", "Higher"]}
+    },
+    {
+      "name": "stateLegend",
+      "select": {"type": "point", "fields": ["state"]},
+      "bind": "legend"
+    }
+  ],
+  "transform": [
+    {"filter": "riskFilter == 'All' || datum.risk_band == riskFilter"}
+  ],
+  "layer": [
+    {
+      "transform": [{"regression": "obesity_percent", "on": "fast_food_proxy_index"}],
+      "mark": {"type": "line", "strokeDash": [6, 5], "strokeWidth": 2.5, "color": "#0f4c75"}
+    },
+    {
+      "mark": {"type": "circle", "filled": true, "stroke": "#ffffff", "strokeWidth": 1.2},
+      "encoding": {
+        "x": {
+          "field": "fast_food_proxy_index",
+          "type": "quantitative",
+          "title": "Fast-food / convenience exposure proxy index",
+          "scale": {"zero": false}
+        },
+        "y": {
+          "field": "obesity_percent",
+          "type": "quantitative",
+          "title": "Adults obese (%)",
+          "scale": {"domain": [28, 39]}
+        },
+        "size": {
+          "field": "population_thousands",
+          "type": "quantitative",
+          "title": "Population ('000)",
+          "scale": {"range": [120, 2200]}
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State/territory",
+          "scale": {"range": ["#0f4c75", "#1d6fa5", "#2f8fc2", "#41b6c4", "#6db8d7", "#2a7fb8", "#9bd7ea", "#5d6f7d"]}
+        },
+        "opacity": {"condition": {"param": "stateLegend", "value": 0.95}, "value": 0.22},
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "fast_food_proxy_index", "type": "quantitative", "title": "Fast-food proxy index", "format": ".1f"},
+          {"field": "soft_drink_ml_per_day_2023", "type": "quantitative", "title": "Latest soft drinks mL/day", "format": ".1f"},
+          {"field": "obesity_percent", "type": "quantitative", "title": "Adults obese (%)", "format": ".1f"},
+          {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.state == 'Tas' || datum.state == 'ACT' || datum.state == 'Qld'"}],
+      "mark": {"type": "text", "align": "left", "dx": 9, "dy": -8, "fontWeight": "bold", "color": "#183242"},
+      "encoding": {
+        "x": {"field": "fast_food_proxy_index", "type": "quantitative"},
+        "y": {"field": "obesity_percent", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#d9edf7", "labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}
