@@ -1,9 +1,9 @@
-state,state_full,tile_col,tile_row,obese_percent,overweight_obese_percent,population_thousands
-WA,Western Australia,0,1,31.5,68.0,2785.3
-NT,Northern Territory,1,0,34.3,63.8,250.6
-SA,South Australia,1,1,33.3,68.0,1820.5
-Tas,Tasmania,1,2,37.0,70.5,571.5
-Qld,Queensland,2,0,34.6,68.8,5322.1
-NSW,New South Wales,2,1,30.4,63.1,8153.6
-Vic,Victoria,2,2,30.5,65.3,6613.7
-ACT,Australian Capital Territory,3,1,29.7,64.0,456.7
+state,state_full,tile_col,tile_row,obese_percent,overweight_percent,overweight_obese_percent,population_thousands
+WA,Western Australia,0,1,31.5,36.4,68.0,2785.3
+NT,Northern Territory,1,0,34.3,29.6,63.8,250.6
+SA,South Australia,1,1,33.3,34.5,68.0,1820.5
+Tas,Tasmania,1,2,37.0,33.5,70.5,571.5
+Qld,Queensland,2,0,34.6,34.1,68.8,5322.1
+NSW,New South Wales,2,1,30.4,32.9,63.1,8153.6
+Vic,Victoria,2,2,30.5,34.8,65.3,6613.7
+ACT,Australian Capital Territory,3,1,29.7,34.0,64.0,456.7

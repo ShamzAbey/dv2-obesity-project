@@ -36,7 +36,7 @@ Notes:
 - lifestyle_risk_bands.csv contains display bands for the derived lifestyle risk index chart.
 - adult_diet_recommendations.csv uses ABS Dietary Behaviour 2022 fruit and vegetable recommendation values by adult age group.
 - state_locations.csv contains state and territory capital coordinates used only to place proportional symbols on the map.
-- state_tile_cartogram.csv arranges ABS state and territory obesity values into a manually positioned tile cartogram.
+- state_tile_cartogram.csv arranges ABS state and territory overweight values into a manually positioned tile cartogram.
 - food_treemap.csv contains a manually calculated treemap layout derived from ABS 2023-24 beverage consumption values.
 - sankey_nodes.csv and sankey_links.csv group ABS state obesity and physical activity values into display categories for a Vega-Lite Sankey-style alluvial diagram.
 - demographic_node_link_nodes.csv and demographic_node_link_edges.csv arrange ABS age and gender obesity values into a Vega-Lite node-link layout.

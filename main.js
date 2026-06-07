@@ -27,11 +27,17 @@ updateScrollProgress();
 const charts = [
 	["#obesity-map", "vega/interactive_health_map.vg.json", embedOpts],
 	["#kpi-tiles", "vega/kpi_tiles.vg.json", kpiEmbedOpts],
+	["#state-cartogram", "vega/state_tile_cartogram.vg.json", embedOpts],
 	["#food-overview-detail", "vega/food_overview_detail.vg.json", embedOpts],
 	["#diet-recommendations", "vega/diet_recommendations_heatmap.vg.json", embedOpts],
 	["#food-treemap", "vega/food_treemap.vg.json", embedOpts],
+	["#food-variability", "vega/food_variability_boxplot.vg.json", embedOpts],
 	["#activity-obesity", "vega/activity_obesity_scatter.vg.json", embedOpts],
-	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts]
+	["#activity-dot-map", "vega/activity_dot_map.vg.json", embedOpts],
+	["#state-sankey", "vega/state_sankey_alluvial.vg.json", embedOpts],
+	["#gender-age-facets", "vega/gender_age_facets.vg.json", embedOpts],
+	["#obesity-histogram", "vega/obesity_distribution_histogram.vg.json", embedOpts],
+	["#obesity-age", "vega/obesity_age_annotated.vg.json", embedOpts]
 ];
 
 charts.forEach(([selector, spec, options]) => {

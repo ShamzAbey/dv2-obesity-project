@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Boxplot comparing year-to-year variability in apparent beverage consumption by category using ABS 2018-19 to 2023-24 data.",
+  "title": "Year-to-year beverage consumption variability, 2018-19 to 2023-24",
+  "width": "container",
+  "height": 420,
+  "data": {"url": "../data/food_consumption.csv"},
+  "layer": [
+    {
+      "mark": {"type": "boxplot", "extent": "min-max", "size": 34},
+      "encoding": {
+        "x": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Beverage category",
+          "sort": "-y",
+          "axis": {"labelAngle": -28, "labelLimit": 125}
+        },
+        "y": {
+          "field": "ml_per_capita_per_day",
+          "type": "quantitative",
+          "title": "mL per capita per day"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "filled": true, "size": 52, "opacity": 0.72, "stroke": "#ffffff", "strokeWidth": 0.8},
+      "encoding": {
+        "x": {
+          "field": "category",
+          "type": "nominal",
+          "sort": "-y"
+        },
+        "y": {"field": "ml_per_capita_per_day", "type": "quantitative"},
+        "xOffset": {"field": "year", "type": "ordinal"},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#0f4c75", "#2a7fb8", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#6db8d7"]}
+        },
+        "tooltip": [
+          {"field": "category", "type": "nominal", "title": "Category"},
+          {"field": "year", "type": "ordinal", "title": "Financial year"},
+          {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#dcecf5"}
+  }
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Tile cartogram of Australian state and territory obesity rates using a manually arranged state grid derived from ABS state obesity values.",
-  "title": "Tile cartogram of adult obesity by state and territory",
+  "description": "Tile cartogram of Australian state and territory adult overweight rates using a manually arranged state grid and ABS NHS 2022 values.",
+  "title": "Tile cartogram of adult overweight by state and territory",
   "width": "container",
   "height": 310,
   "data": {"url": "../data/state_tile_cartogram.csv"},
@@ -12,13 +12,14 @@
         "x": {"field": "tile_col", "type": "ordinal", "axis": null},
         "y": {"field": "tile_row", "type": "ordinal", "axis": null, "sort": "ascending"},
         "color": {
-          "field": "obese_percent",
+          "field": "overweight_percent",
           "type": "quantitative",
-          "title": "Adults obese (%)",
-          "scale": {"range": ["#d8eef7", "#41b6c4", "#0f4c75"], "domain": [28, 33, 38]}
+          "title": "Adults overweight (%)",
+          "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"], "domain": [29, 33, 37]}
         },
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "overweight_percent", "type": "quantitative", "title": "Overweight (%)", "format": ".1f"},
           {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
           {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"},
           {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ",.1f"}
@@ -38,7 +39,7 @@
       "encoding": {
         "x": {"field": "tile_col", "type": "ordinal"},
         "y": {"field": "tile_row", "type": "ordinal", "sort": "ascending"},
-        "text": {"field": "obese_percent", "type": "quantitative", "format": ".1f"}
+        "text": {"field": "overweight_percent", "type": "quantitative", "format": ".1f"}
       }
     }
   ],

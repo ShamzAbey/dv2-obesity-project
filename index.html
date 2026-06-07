@@ -49,9 +49,15 @@
             </div>
             <div class="chart-grid">
                 <div class="chart-card chart-card-wide">
-                    <h3>Interactive choropleth map: health indicators by state</h3>
+                    <h3>Choropleth map: adult obesity by state</h3>
                     <div id="obesity-map" class="chart chart-map"></div>
-                    <p class="caption">Use the indicator dropdown to switch between obesity, overweight/obesity, and physical activity; use the zoom slider and map-centre dropdown to inspect regions. Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON.</p>
+                    <p class="caption">Use the zoom slider and map-centre dropdown to inspect obesity patterns. Source: ABS National Health Survey: State and territory findings, 2022. Geometry: local Australian TopoJSON.</p>
+                </div>
+
+                <div class="chart-card chart-card-wide">
+                    <h3>Cartogram: adult overweight by state</h3>
+                    <div id="state-cartogram" class="chart chart-short"></div>
+                    <p class="caption">Each state receives equal tile area, while colour shows the separate adult overweight percentage rather than obesity.</p>
                 </div>
             </div>
         </section>
@@ -74,10 +80,16 @@
                     <p class="caption">Source: ABS Dietary Behaviour, 2022. This chart adds a separate diet-quality dataset instead of repeating obesity or beverage consumption values.</p>
                 </div>
 
-                <div class="chart-card chart-card-wide">
+                <div class="chart-card">
                     <h3>Treemap: latest beverage consumption share</h3>
                     <div id="food-treemap" class="chart chart-treemap"></div>
                     <p class="caption">Rectangle area is proportional to latest ABS mL per capita per day for each beverage category.</p>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Boxplot: beverage consumption variability</h3>
+                    <div id="food-variability" class="chart chart-treemap"></div>
+                    <p class="caption">The boxplot compares the six annual values within each beverage category, showing which categories were stable or variable over time.</p>
                 </div>
             </div>
         </section>
@@ -93,6 +105,18 @@
                     <div id="activity-obesity" class="chart"></div>
                     <p class="caption">Bubble size shows population, with a regression trend line, mean reference lines, labels for key states, and detailed tooltips. Source: ABS National Health Survey: State and territory findings, 2022, and ABS population at 30 June 2022.</p>
                 </div>
+
+                <div class="chart-card">
+                    <h3>Dot map: physical activity achievement</h3>
+                    <div id="activity-dot-map" class="chart chart-map-compact"></div>
+                    <p class="caption">Capital-positioned dots show the percentage meeting physical activity guidelines, separating the activity story from the obesity choropleth.</p>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Sankey-style flow: obesity to activity category</h3>
+                    <div id="state-sankey" class="chart chart-map-compact"></div>
+                    <p class="caption">Flow thickness shows how many states move between obesity categories and physical activity categories.</p>
+                </div>
             </div>
         </section>
 
@@ -106,6 +130,18 @@
                     <h3>Node-link diagram: obesity by gender and age</h3>
                     <div id="gender-age-facets" class="chart"></div>
                     <p class="caption">The node-link diagram connects adults to gender and age groups; age-node colour shows obesity rate and node size shows overweight/obese percentage.</p>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Histogram: obesity-rate distribution</h3>
+                    <div id="obesity-histogram" class="chart chart-short"></div>
+                    <p class="caption">The histogram asks how age-sex obesity rates are distributed overall rather than comparing individual age groups directly.</p>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Annotated bar chart: obesity by age</h3>
+                    <div id="obesity-age" class="chart chart-short"></div>
+                    <p class="caption">National age-group rates identify where adult obesity peaks, with an annotation highlighting the highest-risk group.</p>
                 </div>
             </div>
         </section>

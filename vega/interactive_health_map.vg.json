@@ -1,28 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Interactive choropleth map with a metric selector and zoom control using real ABS state and territory health risk data.",
-  "title": "Interactive health risk map by state and territory",
+  "description": "Interactive choropleth map of adult obesity using ABS state and territory findings, with zoom and map-centre controls.",
+  "title": "Adult obesity rate by state and territory",
   "width": "container",
   "height": 460,
   "params": [
-    {
-      "name": "selectedMetric",
-      "value": "obese_percent",
-      "bind": {
-        "input": "select",
-        "name": "Indicator: ",
-        "options": [
-          "obese_percent",
-          "overweight_obese_percent",
-          "met_guidelines_percent"
-        ],
-        "labels": [
-          "Adults obese (%)",
-          "Adults overweight or obese (%)",
-          "People meeting physical activity guidelines (%)"
-        ]
-      }
-    },
     {
       "name": "mapScale",
       "value": 1150,
@@ -73,20 +55,7 @@
         "fields": ["state", "state_full", "obese_percent", "overweight_obese_percent"]
       }
     },
-    {
-      "lookup": "state",
-      "from": {
-        "data": {"url": "../data/physical_activity.csv"},
-        "key": "state",
-        "fields": ["met_guidelines_percent"]
-      }
-    },
-    {"filter": "isValid(datum.obese_percent)"},
-    {"calculate": "datum[selectedMetric]", "as": "metric_value"},
-    {
-      "calculate": "selectedMetric == 'obese_percent' ? 'Adults obese (%)' : selectedMetric == 'overweight_obese_percent' ? 'Adults overweight or obese (%)' : 'People meeting physical activity guidelines (%)'",
-      "as": "metric_label"
-    }
+    {"filter": "isValid(datum.obese_percent)"}
   ],
   "projection": {
     "type": "mercator",
@@ -96,18 +65,15 @@
   "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.7},
   "encoding": {
     "color": {
-      "field": "metric_value",
+      "field": "obese_percent",
       "type": "quantitative",
-      "title": "Selected indicator (%)",
-      "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"]}
+      "title": "Adults obese (%)",
+      "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"], "domain": [28, 33, 38]}
     },
     "tooltip": [
       {"field": "state_full", "type": "nominal", "title": "State/territory"},
-      {"field": "metric_label", "type": "nominal", "title": "Selected indicator"},
-      {"field": "metric_value", "type": "quantitative", "title": "Value (%)", "format": ".1f"},
       {"field": "obese_percent", "type": "quantitative", "title": "Obese (%)", "format": ".1f"},
-      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"},
-      {"field": "met_guidelines_percent", "type": "quantitative", "title": "Met activity guidelines (%)", "format": ".1f"}
+      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight/obese (%)", "format": ".1f"}
     ]
   },
   "config": {

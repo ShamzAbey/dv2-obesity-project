@@ -25,7 +25,7 @@
           "field": "percent",
           "type": "quantitative",
           "title": "Adults (%)",
-          "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"], "domain": [0, 55]}
+          "scale": {"range": ["#e4f3fb", "#41b6c4", "#0f4c75"], "domain": [0, 60]}
         },
         "tooltip": [
           {"field": "age_group", "type": "ordinal", "title": "Age group"},

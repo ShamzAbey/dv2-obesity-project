@@ -5,22 +5,6 @@
   "width": "container",
   "height": 440,
   "data": {"url": "../data/physical_activity.csv"},
-  "params": [
-    {
-      "name": "minPopulation",
-      "value": 0,
-      "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 9000,
-        "step": 500,
-        "name": "Minimum population ('000): "
-      }
-    }
-  ],
-  "transform": [
-    {"filter": "datum.population_thousands >= minPopulation"}
-  ],
   "layer": [
     {
       "transform": [
