@@ -1,11 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Radar-style profile chart built with Vega-Lite layered line, point, rule, and text marks.",
-  "title": "Radar-style lifestyle risk profiles",
+  "description": "Radar-style profile chart built with Vega-Lite layered line, point, rule, and text marks. A dropdown chooses the state and compares it with the state average.",
+  "title": {
+    "text": "Radar-style state health profile",
+    "subtitle": "Selected state compared with the state/territory average"
+  },
   "width": "container",
   "height": 470,
   "params": [
-    {"name": "profileSelect", "select": {"type": "point", "fields": ["profile"]}, "bind": "legend"}
+    {
+      "name": "profileChoice",
+      "value": "Tas",
+      "bind": {"input": "select", "name": "State profile: ", "options": ["ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]}
+    }
   ],
   "layer": [
     {
@@ -30,6 +37,7 @@
     {
       "data": {"url": "../data/datasets/radar_profile.csv"},
       "transform": [
+        {"filter": "datum.profile == profileChoice || datum.profile == 'State average'"},
         {"calculate": "cos(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "x_score"},
         {"calculate": "sin(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "y_score"}
       ],
@@ -39,14 +47,14 @@
         "y": {"field": "y_score", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
         "order": {"field": "order", "type": "ordinal"},
         "detail": {"field": "profile", "type": "nominal"},
-        "color": {"field": "profile", "type": "nominal", "title": "Profile", "scale": {"range": ["#0f4c75", "#2f8fc2", "#41b6c4", "#9bd7ea"]}},
-        "opacity": {"condition": {"param": "profileSelect", "value": 0.92}, "value": 0.18}
+        "color": {"field": "profile", "type": "nominal", "title": "Profile", "scale": {"range": ["#0f4c75", "#41b6c4"]}},
+        "strokeDash": {"field": "profile", "type": "nominal", "legend": null, "scale": {"domain": ["State average", "ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"], "range": [[6, 5], [], [], [], [], [], [], [], []]}}
       }
     },
     {
       "data": {"url": "../data/datasets/radar_profile.csv"},
       "transform": [
-        {"filter": "datum.order < 6"},
+        {"filter": "datum.order < 7 && (datum.profile == profileChoice || datum.profile == 'State average')"},
         {"calculate": "cos(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "x_score"},
         {"calculate": "sin(datum.angle * 3.141592653589793 / 180) * datum.score", "as": "y_score"}
       ],
@@ -55,9 +63,8 @@
         "x": {"field": "x_score", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
         "y": {"field": "y_score", "type": "quantitative", "scale": {"domain": [-85, 85]}, "axis": null},
         "color": {"field": "profile", "type": "nominal", "legend": null},
-        "opacity": {"condition": {"param": "profileSelect", "value": 1}, "value": 0.25},
         "tooltip": [
-          {"field": "profile", "type": "nominal", "title": "State/territory"},
+          {"field": "profile", "type": "nominal", "title": "Profile"},
           {"field": "metric", "type": "nominal", "title": "Indicator"},
           {"field": "score", "type": "quantitative", "title": "Score / rate", "format": ".1f"}
         ]

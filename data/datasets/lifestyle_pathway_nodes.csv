@@ -1,0 +1,9 @@
+stage,node,count,x0,x1,y0,y1,label_x,label_y
+Sugary drinks,Higher sugary-drink use,4,0.00,0.10,0.0,4.0,0.05,2.0
+Sugary drinks,Lower sugary-drink use,4,0.00,0.10,5.0,9.0,0.05,7.0
+Fruit intake,Met fruit recommendation more often,4,0.30,0.40,0.0,4.0,0.35,2.0
+Fruit intake,Met fruit recommendation less often,4,0.30,0.40,5.0,9.0,0.35,7.0
+Activity,Higher activity,4,0.60,0.70,0.0,4.0,0.65,2.0
+Activity,Lower activity,4,0.60,0.70,5.0,9.0,0.65,7.0
+Obesity,Higher obesity,4,0.90,1.00,0.0,4.0,0.95,2.0
+Obesity,Lower obesity,4,0.90,1.00,5.0,9.0,0.95,7.0

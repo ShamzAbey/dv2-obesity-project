@@ -1,20 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Interactive choropleth map of Australian state and territory health indicators using local TopoJSON and ABS CSV lookup data.",
-  "title": "Interactive Australian health choropleth",
+  "description": "Choropleth map showing adult obesity rates by Australian state and territory using TopoJSON and ABS NHS 2022 state findings.",
+  "title": {
+    "text": "Adult obesity rates by state and territory",
+    "subtitle": "Colour luminance encodes the percentage of adults classified as obese"
+  },
   "autosize": {"type": "fit", "contains": "padding", "resize": true},
   "width": "container",
   "height": 520,
   "params": [
     {
-      "name": "selectedMetric",
-      "value": "obese_percent",
-      "bind": {
-        "input": "select",
-        "name": "Indicator: ",
-        "options": ["obese_percent", "overweight_obese_percent", "overweight_percent"],
-        "labels": ["Adults obese (%)", "Overweight or obese (%)", "Adults overweight (%)"]
-      }
+      "name": "focusState",
+      "value": "All",
+      "bind": {"input": "select", "name": "State filter: ", "options": ["All", "ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]}
     },
     {"name": "mapScale", "value": 1050, "bind": {"input": "range", "name": "Zoom: ", "min": 850, "max": 1700, "step": 25}},
     {"name": "panX", "value": 420, "bind": {"input": "range", "name": "Pan X: ", "min": 280, "max": 620, "step": 5}},
@@ -38,17 +36,17 @@
         "key": "state_code",
         "fields": ["state", "state_full", "obese_percent", "overweight_percent", "overweight_obese_percent"]
       }
-    },
-    {"calculate": "datum[selectedMetric]", "as": "selected_value"}
+    }
   ],
   "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.3},
   "encoding": {
     "color": {
-      "field": "selected_value",
+      "field": "obese_percent",
       "type": "quantitative",
-      "title": "Selected rate (%)",
-      "scale": {"scheme": "blues", "domain": [28, 71]}
+      "title": "Adults obese (%)",
+      "scale": {"scheme": "blues", "domain": [29, 38]}
     },
+    "opacity": {"condition": {"test": "focusState == 'All' || datum.state == focusState", "value": 1}, "value": 0.22},
     "tooltip": [
       {"field": "state_full", "type": "nominal", "title": "State/territory"},
       {"field": "obese_percent", "type": "quantitative", "title": "Adults obese (%)", "format": ".1f"},

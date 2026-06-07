@@ -1,0 +1,17 @@
+state,state_full,sex,sugar_sweetened_daily_percent,obesity_percent,population_thousands
+NSW,New South Wales,Men,12.4,30.4,8153.6
+NSW,New South Wales,Women,6.7,30.4,8153.6
+Vic,Victoria,Men,8.2,30.5,6613.7
+Vic,Victoria,Women,5.9,30.5,6613.7
+Qld,Queensland,Men,14.0,34.6,5322.1
+Qld,Queensland,Women,6.9,34.6,5322.1
+SA,South Australia,Men,14.1,33.3,1820.5
+SA,South Australia,Women,6.5,33.3,1820.5
+WA,Western Australia,Men,12.3,31.5,2785.3
+WA,Western Australia,Women,6.4,31.5,2785.3
+Tas,Tasmania,Men,13.6,37.0,571.5
+Tas,Tasmania,Women,8.7,37.0,571.5
+NT,Northern Territory,Men,15.0,34.3,250.6
+NT,Northern Territory,Women,9.6,34.3,250.6
+ACT,Australian Capital Territory,Men,9.0,29.7,456.7
+ACT,Australian Capital Territory,Women,3.8,29.7,456.7

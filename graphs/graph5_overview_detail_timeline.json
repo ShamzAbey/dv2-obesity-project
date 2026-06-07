@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Overview and detail time series of ABS adults overweight or obese by state/territory, using brushing and legend selection.",
+  "title": {
+    "text": "State weight-status trend over time",
+    "subtitle": "Adults overweight or obese, 2007-08 to 2022"
+  },
+  "data": {"url": "../data/datasets/weight_status_time_state.csv"},
+  "params": [
+    {"name": "stateSelect", "select": {"type": "point", "fields": ["state"]}, "bind": "legend"}
+  ],
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 320,
+      "transform": [
+        {"filter": {"param": "yearBrush"}},
+        {"filter": {"param": "stateSelect"}}
+      ],
+      "mark": {"type": "line", "point": {"filled": true, "size": 70}, "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative", "title": "Survey year", "axis": {"format": "d", "tickMinStep": 1}},
+        "y": {"field": "overweight_obese_percent", "type": "quantitative", "title": "Adults overweight or obese (%)", "scale": {"domain": [50, 73]}},
+        "color": {"field": "state", "type": "nominal", "title": "State/territory", "scale": {"range": ["#0f4c75", "#1d6fa5", "#2f8fc2", "#41b6c4", "#6db8d7", "#2a7fb8", "#9bd7ea", "#5d6f7d"]}},
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State/territory"},
+          {"field": "year", "type": "quantitative", "title": "Survey year", "format": "d"},
+          {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight or obese (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "width": "container",
+      "height": 95,
+      "params": [{"name": "yearBrush", "select": {"type": "interval", "encodings": ["x"]}}],
+      "mark": {"type": "area", "line": {"color": "#0f4c75", "strokeWidth": 2}, "color": "#9bd7ea", "opacity": 0.75},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative", "title": "Brush to filter the detailed trend", "axis": {"format": "d", "tickMinStep": 1}},
+        "y": {"field": "overweight_obese_percent", "aggregate": "mean", "type": "quantitative", "title": "Mean"},
+        "tooltip": [
+          {"field": "year", "type": "quantitative", "title": "Survey year", "format": "d"},
+          {"aggregate": "mean", "field": "overweight_obese_percent", "type": "quantitative", "title": "Mean rate", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "#cfe3ef"},
+    "axis": {"gridColor": "#d9edf7", "labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"orient": "bottom", "labelFontSize": 11, "titleFontSize": 12}
+  }
+}

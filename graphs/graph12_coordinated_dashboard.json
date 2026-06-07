@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Coordinated dashboard with state, age, gender, beverage and year controls. Linked views update from the same parameter set.",
+  "title": {
+    "text": "Coordinated dashboard: explore the story yourself",
+    "subtitle": "Dropdowns and sliders update state profile, demographic risk and beverage trend views"
+  },
+  "params": [
+    {"name": "stateChoice", "value": "Tas", "bind": {"input": "select", "name": "State: ", "options": ["ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]}},
+    {"name": "ageChoice", "value": "55-64", "bind": {"input": "select", "name": "Age: ", "options": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]}},
+    {"name": "sexChoice", "value": "Women", "bind": {"input": "select", "name": "Gender: ", "options": ["Men", "Women"]}},
+    {"name": "categoryChoice", "value": "Soft drinks", "bind": {"input": "select", "name": "Beverage: ", "options": ["Soft drinks", "Water", "Fruit and vegetable juices", "Fruit and vegetable drinks", "Energy drinks", "Electrolyte drinks", "Cordials"]}},
+    {"name": "yearStart", "value": 2018, "bind": {"input": "range", "name": "From year: ", "min": 2018, "max": 2023, "step": 1}}
+  ],
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 150,
+      "data": {"url": "../data/datasets/state_health_profile.csv"},
+      "transform": [
+        {"filter": "datum.state == stateChoice"},
+        {"fold": ["obesity_percent", "inactive_percent", "sugar_drinks_men_percent", "sugar_drinks_women_percent", "fruit_met_percent"], "as": ["metric", "value"]},
+        {"calculate": "datum.metric == 'obesity_percent' ? 'Adults obese' : datum.metric == 'inactive_percent' ? 'Inactive' : datum.metric == 'sugar_drinks_men_percent' ? 'Sugary drinks men' : datum.metric == 'sugar_drinks_women_percent' ? 'Sugary drinks women' : 'Met fruit recommendation'", "as": "metric_label"}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "bar", "cornerRadiusTopLeft": 8, "cornerRadiusTopRight": 8, "cornerRadiusBottomLeft": 8, "cornerRadiusBottomRight": 8},
+          "encoding": {
+            "x": {"field": "metric_label", "type": "ordinal", "title": null, "axis": {"labelAngle": 0}},
+            "y": {"field": "value", "type": "quantitative", "title": "Selected state KPI (%)", "scale": {"domain": [0, 82]}},
+            "color": {"field": "metric_label", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#2f8fc2", "#41b6c4", "#6db8d7", "#9bd7ea"]}},
+            "tooltip": [
+              {"field": "state_full", "type": "nominal", "title": "State/territory"},
+              {"field": "metric_label", "type": "nominal", "title": "KPI"},
+              {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "text", "dy": -8, "fontWeight": "bold", "color": "#183242"},
+          "encoding": {
+            "x": {"field": "metric_label", "type": "ordinal"},
+            "y": {"field": "value", "type": "quantitative"},
+            "text": {"field": "value", "type": "quantitative", "format": ".1f"}
+          }
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "width": 520,
+          "height": 260,
+          "data": {"url": "../data/datasets/obesity_gender.csv"},
+          "transform": [
+            {"filter": "datum.age_group == ageChoice && datum.sex == sexChoice"},
+            {"fold": ["obesity_percent", "overweight_obese_percent"], "as": ["indicator", "value"]},
+            {"calculate": "datum.indicator == 'obesity_percent' ? 'Adults obese' : 'Overweight/obese'", "as": "indicator_label"}
+          ],
+          "mark": {"type": "bar", "cornerRadiusEnd": 5},
+          "encoding": {
+            "y": {"field": "indicator_label", "type": "ordinal", "title": null},
+            "x": {"field": "value", "type": "quantitative", "title": "Selected age/gender value (%)", "scale": {"domain": [0, 82]}},
+            "color": {"field": "indicator_label", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#9bd7ea"]}},
+            "tooltip": [
+              {"field": "age_group", "type": "ordinal", "title": "Age group"},
+              {"field": "sex", "type": "nominal", "title": "Gender"},
+              {"field": "indicator_label", "type": "nominal", "title": "Indicator"},
+              {"field": "value", "type": "quantitative", "title": "Percent", "format": ".1f"}
+            ]
+          }
+        },
+        {
+          "width": 520,
+          "height": 260,
+          "data": {"url": "../data/datasets/food_consumption.csv"},
+          "transform": [
+            {"filter": "datum.category == categoryChoice && datum.year_start >= yearStart"}
+          ],
+          "mark": {"type": "line", "point": {"filled": true, "size": 75}, "strokeWidth": 3.5},
+          "encoding": {
+            "x": {"field": "year_start", "type": "quantitative", "title": "Financial year beginning", "axis": {"format": "d", "tickMinStep": 1}},
+            "y": {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day"},
+            "color": {"field": "category", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75"]}},
+            "tooltip": [
+              {"field": "year", "type": "ordinal", "title": "Financial year"},
+              {"field": "category", "type": "nominal", "title": "Category"},
+              {"field": "ml_per_capita_per_day", "type": "quantitative", "title": "mL per capita per day", "format": ".1f"}
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {"stroke": "#cfe3ef"},
+    "axis": {"gridColor": "#d9edf7", "labelFontSize": 12, "titleFontSize": 12},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

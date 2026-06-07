@@ -1,7 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Correlation matrix showing relationships between state health, economic, diet-proxy, and activity variables.",
-  "title": "Correlation matrix: obesity, income, food context and exercise",
+  "description": "Correlation matrix showing state-level relationships between obesity, income, sugary drinks, inactivity, fruit and vegetable recommendation rates.",
+  "title": {
+    "text": "Correlation matrix: obesity and lifestyle factors",
+    "subtitle": "State-level correlations across real ABS-derived variables"
+  },
   "width": "container",
   "height": 430,
   "data": {"url": "../data/datasets/correlation_matrix.csv"},

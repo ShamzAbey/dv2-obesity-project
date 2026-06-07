@@ -35,8 +35,10 @@ Data sources used in this project
 Notes:
 - All percentages are proportions reported by ABS/AIHW and are manually transcribed from the public tables/text listed above.
 - state_health_profile.csv combines ABS state obesity, weight status, activity, population, beverage and earnings context into one profile table for the bubble plot and dashboard.
-- fast_food_proxy_index is a transparent derived food-context proxy based on sourced inactivity and obesity values; it is labelled as a proxy and not presented as a direct raw fast-food survey count.
-- soft_drink_proxy_index is a transparent derived context index based on sourced ABS soft-drink consumption and state inactivity values.
+- sugar_sweetened_state_2017.csv uses ABS 2017-18 state/territory daily sugar-sweetened drink consumption by sex. This is used as the available unhealthy food/drink geography measure.
+- state_diet_2022.csv uses ABS 2022 state/territory fruit and vegetable recommendation rates.
+- weight_status_time_state.csv and weight_status_time_lookup.csv use ABS state/territory adults overweight or obese rates from 2007-08, 2011-12, 2014-15, 2017-18 and 2022.
+- No direct public state-level fast-food or takeaway-meal frequency dataset was added. A future extension should add that specific dataset if available; this project does not fabricate fast-food rates.
 - correlation_matrix.csv is calculated from the state_health_profile.csv variables.
 - radar_profile.csv, radar_axes.csv and parallel_profile_long.csv reshape state_health_profile.csv for advanced Vega-Lite profile views.
 - age_behaviour_heatmap.csv combines ABS BMI age rates with ABS Dietary Behaviour age rates.

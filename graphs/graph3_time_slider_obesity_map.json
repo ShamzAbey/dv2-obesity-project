@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Time-slider map of overweight/obesity by state using ABS 2007-08 to 2022 state findings. The sourced historical series reports overweight or obese rather than obesity alone.",
+  "title": {
+    "text": "Weight status across states over time",
+    "subtitle": "ABS adults overweight or obese, 2007-08 to 2022"
+  },
+  "autosize": {"type": "fit", "contains": "padding", "resize": true},
+  "width": "container",
+  "height": 520,
+  "params": [
+    {
+      "name": "yearStep",
+      "value": 4,
+      "bind": {"input": "range", "name": "Survey step: 0=2008, 1=2012, 2=2015, 3=2018, 4=2022 ", "min": 0, "max": 4, "step": 1}
+    },
+    {
+      "name": "mapScale",
+      "value": 1050,
+      "bind": {"input": "range", "name": "Zoom: ", "min": 850, "max": 1600, "step": 25}
+    }
+  ],
+  "projection": {"type": "mercator", "center": [134, -28], "scale": {"expr": "mapScale"}},
+  "data": {
+    "url": "../data/datasets/australia_states.topojson",
+    "format": {"type": "topojson", "feature": "australia_states"}
+  },
+  "transform": [
+    {"calculate": "yearStep == 0 ? 2008 : yearStep == 1 ? 2012 : yearStep == 2 ? 2015 : yearStep == 3 ? 2018 : 2022", "as": "selected_year"},
+    {"calculate": "toNumber(datum.properties.STATE_CODE) + '-' + datum.selected_year", "as": "state_year_key"},
+    {
+      "lookup": "state_year_key",
+      "from": {
+        "data": {"url": "../data/datasets/weight_status_time_lookup.csv"},
+        "key": "state_year_key",
+        "fields": ["state", "state_full", "year", "overweight_obese_percent"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.3},
+  "encoding": {
+    "color": {
+      "field": "overweight_obese_percent",
+      "type": "quantitative",
+      "title": "Overweight or obese (%)",
+      "scale": {"scheme": "blues", "domain": [50, 72]}
+    },
+    "tooltip": [
+      {"field": "state_full", "type": "nominal", "title": "State/territory"},
+      {"field": "year", "type": "quantitative", "title": "Survey year", "format": "d"},
+      {"field": "overweight_obese_percent", "type": "quantitative", "title": "Overweight or obese (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

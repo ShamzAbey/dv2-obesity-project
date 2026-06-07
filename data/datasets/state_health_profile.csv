@@ -1,9 +1,9 @@
-state,state_full,obesity_percent,overweight_percent,overweight_obese_percent,activity_percent,inactive_percent,population_thousands,average_weekly_earnings,soft_drink_ml_per_day_2023,energy_drink_ml_per_day_2023,fast_food_proxy_index,soft_drink_proxy_index,risk_band
-NSW,New South Wales,30.4,32.9,63.1,24.3,75.7,8153.6,2084.0,164.8,13.1,55.3,67.7,Lower
-Vic,Victoria,30.5,34.8,65.3,24.5,75.5,6613.7,2013.7,164.8,13.1,55.3,67.6,Lower
-Qld,Queensland,34.6,34.1,68.8,23.6,76.4,5322.1,1994.5,164.8,13.1,57.6,67.9,Higher
-SA,South Australia,33.3,34.5,68.0,24.0,76.0,1820.5,1935.1,164.8,13.1,56.8,67.8,Middle
-WA,Western Australia,31.5,36.4,68.0,23.2,76.8,2785.3,2193.2,164.8,13.1,56.4,68.1,Middle
-Tas,Tasmania,37.0,33.5,70.5,22.9,77.1,571.5,1821.2,164.8,13.1,59.1,68.2,Higher
-NT,Northern Territory,34.3,29.6,63.8,24.6,75.4,250.6,1942.3,164.8,13.1,56.9,67.6,Middle
-ACT,Australian Capital Territory,29.7,34.0,64.0,20.3,79.7,456.7,2248.4,164.8,13.1,57.2,69.1,Higher
+state,state_full,obesity_percent,overweight_obese_percent,activity_percent,inactive_percent,population_thousands,average_weekly_earnings,sugar_drinks_men_percent,sugar_drinks_women_percent,fruit_met_percent,veg_met_percent,both_met_percent
+NSW,New South Wales,30.4,63.1,24.3,75.7,8153.6,2084.0,12.4,6.7,45.5,6.7,4.5
+Vic,Victoria,30.5,65.3,24.5,75.5,6613.7,2013.7,8.2,5.9,44.7,6.4,4.1
+Qld,Queensland,34.6,68.8,23.6,76.4,5322.1,1994.5,14.0,6.9,43.2,4.7,3.7
+SA,South Australia,33.3,68.0,24.0,76.0,1820.5,1935.1,14.1,6.5,41.7,7.6,4.2
+WA,Western Australia,31.5,68.0,23.2,76.8,2785.3,2193.2,12.3,6.4,43.7,7.8,4.8
+Tas,Tasmania,37.0,70.5,22.9,77.1,571.5,1821.2,13.6,8.7,41.1,10.5,6.8
+NT,Northern Territory,34.3,63.8,24.6,75.4,250.6,1942.3,15.0,9.6,40.0,6.4,3.3
+ACT,Australian Capital Territory,29.7,64.0,20.3,79.7,456.7,2248.4,9.0,3.8,41.4,7.7,

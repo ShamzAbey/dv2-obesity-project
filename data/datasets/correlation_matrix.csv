@@ -1,26 +1,50 @@
 var_x,var_y,correlation
 Obesity,Obesity,1.00
 Obesity,Income,-0.84
-Obesity,Fast food proxy,0.80
-Obesity,Exercise,0.22
-Obesity,Soft drinks proxy,-0.22
+Obesity,Sugary drinks men,0.75
+Obesity,Sugary drinks women,0.78
+Obesity,Inactivity,-0.22
+Obesity,Fruit intake,-0.56
+Obesity,Vegetable intake,0.31
 Income,Obesity,-0.84
 Income,Income,1.00
-Income,Fast food proxy,-0.45
-Income,Exercise,-0.54
-Income,Soft drinks proxy,0.54
-Fast food proxy,Obesity,0.80
-Fast food proxy,Income,-0.45
-Fast food proxy,Fast food proxy,1.00
-Fast food proxy,Exercise,-0.41
-Fast food proxy,Soft drinks proxy,0.42
-Exercise,Obesity,0.22
-Exercise,Income,-0.54
-Exercise,Fast food proxy,-0.41
-Exercise,Exercise,1.00
-Exercise,Soft drinks proxy,-1.00
-Soft drinks proxy,Obesity,-0.22
-Soft drinks proxy,Income,0.54
-Soft drinks proxy,Fast food proxy,0.42
-Soft drinks proxy,Exercise,-1.00
-Soft drinks proxy,Soft drinks proxy,1.00
+Income,Sugary drinks men,-0.57
+Income,Sugary drinks women,-0.77
+Income,Inactivity,0.54
+Income,Fruit intake,0.34
+Income,Vegetable intake,-0.23
+Sugary drinks men,Obesity,0.75
+Sugary drinks men,Income,-0.57
+Sugary drinks men,Sugary drinks men,1.00
+Sugary drinks men,Sugary drinks women,0.77
+Sugary drinks men,Inactivity,-0.40
+Sugary drinks men,Fruit intake,-0.42
+Sugary drinks men,Vegetable intake,0.01
+Sugary drinks women,Obesity,0.78
+Sugary drinks women,Income,-0.77
+Sugary drinks women,Sugary drinks men,0.77
+Sugary drinks women,Sugary drinks women,1.00
+Sugary drinks women,Inactivity,-0.61
+Sugary drinks women,Fruit intake,-0.38
+Sugary drinks women,Vegetable intake,0.13
+Inactivity,Obesity,-0.22
+Inactivity,Income,0.54
+Inactivity,Sugary drinks men,-0.40
+Inactivity,Sugary drinks women,-0.61
+Inactivity,Inactivity,1.00
+Inactivity,Fruit intake,-0.30
+Inactivity,Vegetable intake,0.36
+Fruit intake,Obesity,-0.56
+Fruit intake,Income,0.34
+Fruit intake,Sugary drinks men,-0.42
+Fruit intake,Sugary drinks women,-0.38
+Fruit intake,Inactivity,-0.30
+Fruit intake,Fruit intake,1.00
+Fruit intake,Vegetable intake,-0.35
+Vegetable intake,Obesity,0.31
+Vegetable intake,Income,-0.23
+Vegetable intake,Sugary drinks men,0.01
+Vegetable intake,Sugary drinks women,0.13
+Vegetable intake,Inactivity,0.36
+Vegetable intake,Fruit intake,-0.35
+Vegetable intake,Vegetable intake,1.00

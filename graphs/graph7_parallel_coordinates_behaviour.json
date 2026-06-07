@@ -1,7 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Parallel coordinates style comparison of state health indicators.",
-  "title": "Parallel coordinates: state health profile",
+  "description": "Parallel coordinates style comparison of real state health and lifestyle indicators.",
+  "title": {
+    "text": "Parallel coordinates: behaviour profile by state",
+    "subtitle": "Compare obesity, inactivity, sugary drinks, fruit and vegetable recommendation rates"
+  },
   "width": "container",
   "height": 440,
   "data": {"url": "../data/datasets/parallel_profile_long.csv"},
@@ -14,7 +17,7 @@
       "field": "indicator",
       "type": "ordinal",
       "title": "Indicator",
-      "sort": ["Obesity", "Overweight/obese", "Physical activity", "Physical inactivity", "Fast-food proxy", "Soft-drink proxy"]
+      "sort": ["Obesity", "Physical inactivity", "Sugary drinks men", "Sugary drinks women", "Fruit recommendation", "Vegetable recommendation"]
     },
     "y": {"field": "value", "type": "quantitative", "title": "Rate or index (%)", "scale": {"domain": [0, 82]}},
     "detail": {"field": "state", "type": "nominal"},

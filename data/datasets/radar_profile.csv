@@ -1,25 +1,64 @@
 profile,metric,order,angle,score
-NSW,Soft drinks proxy,1,0,67.7
-NSW,Fast-food proxy,2,72,55.3
-NSW,Physical inactivity,3,144,75.7
-NSW,Obesity,4,216,30.4
-NSW,Overweight/obese,5,288,63.1
-NSW,Soft drinks proxy,6,360,67.7
-Qld,Soft drinks proxy,1,0,67.9
-Qld,Fast-food proxy,2,72,57.6
-Qld,Physical inactivity,3,144,76.4
-Qld,Obesity,4,216,34.6
-Qld,Overweight/obese,5,288,68.8
-Qld,Soft drinks proxy,6,360,67.9
-Tas,Soft drinks proxy,1,0,68.2
-Tas,Fast-food proxy,2,72,59.1
-Tas,Physical inactivity,3,144,77.1
-Tas,Obesity,4,216,37.0
-Tas,Overweight/obese,5,288,70.5
-Tas,Soft drinks proxy,6,360,68.2
-ACT,Soft drinks proxy,1,0,69.1
-ACT,Fast-food proxy,2,72,57.2
-ACT,Physical inactivity,3,144,79.7
-ACT,Obesity,4,216,29.7
-ACT,Overweight/obese,5,288,64.0
-ACT,Soft drinks proxy,6,360,69.1
+ACT,Obesity,1,0,29.7
+ACT,Physical inactivity,2,60,79.7
+ACT,Sugary drinks men,3,120,9.0
+ACT,Sugary drinks women,4,180,3.8
+ACT,Fruit recommendation,5,240,41.4
+ACT,Vegetable recommendation,6,300,7.7
+ACT,Obesity,7,360,29.7
+NSW,Obesity,1,0,30.4
+NSW,Physical inactivity,2,60,75.7
+NSW,Sugary drinks men,3,120,12.4
+NSW,Sugary drinks women,4,180,6.7
+NSW,Fruit recommendation,5,240,45.5
+NSW,Vegetable recommendation,6,300,6.7
+NSW,Obesity,7,360,30.4
+NT,Obesity,1,0,34.3
+NT,Physical inactivity,2,60,75.4
+NT,Sugary drinks men,3,120,15.0
+NT,Sugary drinks women,4,180,9.6
+NT,Fruit recommendation,5,240,40.0
+NT,Vegetable recommendation,6,300,6.4
+NT,Obesity,7,360,34.3
+Qld,Obesity,1,0,34.6
+Qld,Physical inactivity,2,60,76.4
+Qld,Sugary drinks men,3,120,14.0
+Qld,Sugary drinks women,4,180,6.9
+Qld,Fruit recommendation,5,240,43.2
+Qld,Vegetable recommendation,6,300,4.7
+Qld,Obesity,7,360,34.6
+SA,Obesity,1,0,33.3
+SA,Physical inactivity,2,60,76.0
+SA,Sugary drinks men,3,120,14.1
+SA,Sugary drinks women,4,180,6.5
+SA,Fruit recommendation,5,240,41.7
+SA,Vegetable recommendation,6,300,7.6
+SA,Obesity,7,360,33.3
+Tas,Obesity,1,0,37.0
+Tas,Physical inactivity,2,60,77.1
+Tas,Sugary drinks men,3,120,13.6
+Tas,Sugary drinks women,4,180,8.7
+Tas,Fruit recommendation,5,240,41.1
+Tas,Vegetable recommendation,6,300,10.5
+Tas,Obesity,7,360,37.0
+Vic,Obesity,1,0,30.5
+Vic,Physical inactivity,2,60,75.5
+Vic,Sugary drinks men,3,120,8.2
+Vic,Sugary drinks women,4,180,5.9
+Vic,Fruit recommendation,5,240,44.7
+Vic,Vegetable recommendation,6,300,6.4
+Vic,Obesity,7,360,30.5
+WA,Obesity,1,0,31.5
+WA,Physical inactivity,2,60,76.8
+WA,Sugary drinks men,3,120,12.3
+WA,Sugary drinks women,4,180,6.4
+WA,Fruit recommendation,5,240,43.7
+WA,Vegetable recommendation,6,300,7.8
+WA,Obesity,7,360,31.5
+State average,Obesity,1,0,32.7
+State average,Physical inactivity,2,60,76.2
+State average,Sugary drinks men,3,120,12.6
+State average,Sugary drinks women,4,180,6.8
+State average,Fruit recommendation,5,240,42.7
+State average,Vegetable recommendation,6,300,7.2
+State average,Obesity,7,360,32.7

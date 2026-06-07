@@ -6,16 +6,18 @@ const embedOptions = {
 };
 
 const graphRegistry = [
-    {selector: "#graph1-map", spec: "graphs/graph1_map.json"},
-    {selector: "#graph2-bubble", spec: "graphs/graph2_bubble.json"},
-    {selector: "#graph3-timeline", spec: "graphs/graph3_timeline.json"},
-    {selector: "#graph4-smallmultiples", spec: "graphs/graph4_smallmultiples.json"},
-    {selector: "#graph5-radar", spec: "graphs/graph5_radar.json"},
-    {selector: "#graph6-parallel", spec: "graphs/graph6_parallel.json"},
-    {selector: "#graph7-sankey", spec: "graphs/graph7_sankey.json"},
-    {selector: "#graph8-heatmap", spec: "graphs/graph8_heatmap.json"},
-    {selector: "#graph9-correlation", spec: "graphs/graph9_correlation.json"},
-    {selector: "#graph10-dashboard", spec: "graphs/graph10_dashboard.json"}
+    {selector: "#graph1-choropleth", spec: "graphs/graph1_choropleth_obesity_map.json"},
+    {selector: "#graph2-symbol-map", spec: "graphs/graph2_proportional_symbol_fastfood_map.json"},
+    {selector: "#graph3-time-map", spec: "graphs/graph3_time_slider_obesity_map.json"},
+    {selector: "#graph4-bubble", spec: "graphs/graph4_bubble_fastfood_vs_obesity.json"},
+    {selector: "#graph5-timeline", spec: "graphs/graph5_overview_detail_timeline.json"},
+    {selector: "#graph6-smallmultiples", spec: "graphs/graph6_small_multiples_demographics.json"},
+    {selector: "#graph7-parallel", spec: "graphs/graph7_parallel_coordinates_behaviour.json"},
+    {selector: "#graph8-sankey", spec: "graphs/graph8_sankey_lifestyle_pathway.json"},
+    {selector: "#graph9-heatmap", spec: "graphs/graph9_heatmap_age_behaviour.json"},
+    {selector: "#graph10-correlation", spec: "graphs/graph10_correlation_matrix.json"},
+    {selector: "#graph11-radar", spec: "graphs/graph11_radar_state_profile.json"},
+    {selector: "#graph12-dashboard", spec: "graphs/graph12_coordinated_dashboard.json"}
 ];
 
 const csvRows = (text) => {

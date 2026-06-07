@@ -19,18 +19,18 @@
         <nav class="top-nav" aria-label="Story navigation">
             <a href="#top" class="brand">FIT2179 DV2</a>
             <div class="nav-links">
-                <a href="#map">Map</a>
-                <a href="#food">Food</a>
-                <a href="#activity">Activity</a>
-                <a href="#demographics">Demographics</a>
-                <a href="#dashboard">Dashboard</a>
+                <a href="#geography">Geography</a>
+                <a href="#change">Change</a>
+                <a href="#behaviour">Behaviour</a>
+                <a href="#demographics">People</a>
+                <a href="#dashboard">Explore</a>
             </div>
         </nav>
 
         <div class="hero-content">
             <p class="eyebrow">Australian public health data story</p>
             <h1>Australian Fast Food &amp; Obesity</h1>
-            <p>Exploring relationships between obesity, food consumption, demographics, and physical activity across Australia.</p>
+            <p>Exploring how diet, activity, demographics, and geography shape obesity patterns across Australia.</p>
         </div>
 
         <a href="#intro" class="scroll-cue" aria-label="Scroll to introduction">
@@ -40,10 +40,22 @@
 
     <main class="page-shell">
         <section id="intro" class="story-card intro-card">
-            <div>
-                <p class="section-kicker">Why it matters</p>
-                <h2>Obesity is shaped by everyday environments</h2>
-                <p>Obesity is increasing across Australia and is influenced by diet, demographics, physical activity, and geographic differences. This project uses Australian government data to help everyday Australians compare state patterns, age and gender differences, and food-consumption signals without needing to read dense statistical tables.</p>
+            <p class="section-kicker">Introduction</p>
+            <h2>Why average Australians should care</h2>
+            <p>Obesity is a major public health issue because it is linked to long-term chronic disease, wellbeing, and pressure on health services. The story is not about blaming individuals. It is about showing how geography, sugary drinks, food environments, physical inactivity, age, and gender combine to create different health-risk patterns across Australia.</p>
+            <div class="framework-grid" aria-label="Munzner what why how framework">
+                <article>
+                    <h3>What</h3>
+                    <p>State polygons, locations, age groups, gender groups, beverage trends, physical activity rates, and BMI categories.</p>
+                </article>
+                <article>
+                    <h3>Why</h3>
+                    <p>Compare places, identify high-risk groups, inspect patterns over time, and explore relationships between lifestyle factors.</p>
+                </article>
+                <article>
+                    <h3>How</h3>
+                    <p>Maps, proportional symbols, brushing, dropdowns, legend filtering, small multiples, Sankey flow, radar profile, and dashboard coordination.</p>
+                </article>
             </div>
         </section>
 
@@ -51,153 +63,210 @@
             <!-- KPI tiles are rendered from data/datasets/kpi_summary.csv by js/main.js. -->
         </section>
 
-        <section id="map" class="story-section">
+        <section id="geography" class="story-section">
             <div class="section-heading">
-                <p class="section-kicker">Geography</p>
-                <h2>Where obesity is highest</h2>
-                <p>Start with the map, then switch indicators and use the zoom/pan controls to inspect how obesity and weight status vary across states and territories.</p>
+                <p class="section-kicker">Section 4 | Geographic pattern</p>
+                <h2>Obesity rates are not evenly distributed</h2>
+                <p>The first view uses a choropleth map to encode adult obesity by state and territory. This is the clearest first step because the task is geographic comparison.</p>
             </div>
             <article class="graph-card">
                 <div class="graph-title">
                     <span>Graph 1</span>
-                    <h3>Interactive choropleth map</h3>
+                    <h3>Choropleth map: adult obesity by state</h3>
                 </div>
-                <div id="graph1-map" class="viz viz-map"></div>
-                <p class="caption">Uses local Australian TopoJSON with ABS National Health Survey values joined from CSV. The dropdown changes the mapped health indicator.</p>
-            </article>
-        </section>
-
-        <section id="food" class="story-section">
-            <div class="section-heading">
-                <p class="section-kicker">Food environment</p>
-                <h2>Food and beverage patterns create context</h2>
-                <p>Direct state-level fast-food tables are limited in the available public data, so the bubble and profile views use transparent food-context proxy indices derived from real ABS beverage, activity, and health measures. The labels make that clear instead of pretending they are raw fast-food counts.</p>
-            </div>
-
-            <article class="graph-card">
-                <div class="graph-title">
-                    <span>Graph 2</span>
-                    <h3>Bubble plot: food-context proxy and obesity</h3>
-                </div>
-                <div id="graph2-bubble" class="viz viz-medium"></div>
-                <p class="caption">Bubble size represents state population. Use the legend and risk-band dropdown to filter the comparison.</p>
-            </article>
-
-            <article class="graph-card">
-                <div class="graph-title">
-                    <span>Graph 3</span>
-                    <h3>Overview + detail time series</h3>
-                </div>
-                <div id="graph3-timeline" class="viz viz-tall"></div>
-                <p class="caption">Brush the lower overview chart and click legend categories to focus the detailed ABS beverage trend above.</p>
-            </article>
-        </section>
-
-        <section id="demographics" class="story-section">
-            <div class="section-heading">
-                <p class="section-kicker">People</p>
-                <h2>Age and gender change the story</h2>
-                <p>Age and gender comparisons reveal patterns that disappear in a single national average. Older age groups generally show higher obesity and overweight/obesity rates.</p>
-            </div>
-
-            <article class="graph-card">
-                <div class="graph-title">
-                    <span>Graph 4</span>
-                    <h3>Small multiples: age and gender</h3>
-                </div>
-                <div id="graph4-smallmultiples" class="viz viz-medium"></div>
-                <p class="caption">Switch between obesity and overweight/obesity to compare how men and women differ across age groups.</p>
-            </article>
-
-            <article class="graph-card">
-                <div class="graph-title">
-                    <span>Graph 5</span>
-                    <h3>Radar chart: selected state profiles</h3>
-                </div>
-                <div id="graph5-radar" class="viz viz-medium"></div>
-                <p class="caption">Radar-style lines compare obesity, weight status, inactivity, and food-context proxy indicators for selected states.</p>
-            </article>
-        </section>
-
-        <section id="activity" class="story-section">
-            <div class="section-heading">
-                <p class="section-kicker">Lifestyle profile</p>
-                <h2>Activity sits beside food and weight status</h2>
-                <p>Physical activity is only one factor, but it helps explain how different places sit within a broader lifestyle-risk profile.</p>
-            </div>
-
-            <article class="graph-card">
-                <div class="graph-title">
-                    <span>Graph 6</span>
-                    <h3>Parallel coordinates profile</h3>
-                </div>
-                <div id="graph6-parallel" class="viz viz-medium"></div>
-                <p class="caption">Use the legend to highlight a state and compare obesity, activity, inactivity, and food-context proxy indicators.</p>
-            </article>
-
-            <article class="graph-card">
-                <div class="graph-title">
-                    <span>Graph 7</span>
-                    <h3>Sankey diagram: obesity to activity category</h3>
-                </div>
-                <div id="graph7-sankey" class="viz viz-medium"></div>
-                <p class="caption">Flow thickness shows how many states fall into each obesity-to-activity category pathway.</p>
+                <div id="graph1-choropleth" class="viz viz-map"></div>
+                <p class="caption">Source: ABS National Health Survey: State and territory findings, 2022. Use the state filter, zoom and pan sliders, and hover tooltips to inspect each state.</p>
             </article>
         </section>
 
         <section class="story-section">
             <div class="section-heading">
-                <p class="section-kicker">Behaviour matrix</p>
-                <h2>Diet and obesity by age</h2>
-                <p>Diet recommendation achievement is low for vegetables across all adult age groups, while obesity and overweight/obesity rise in older groups.</p>
+                <p class="section-kicker">Section 5 | Fast food geography</p>
+                <h2>Unhealthy consumption geography</h2>
+                <p>Direct state-level fast-food consumption was not available in the public tables used here. To avoid fake data, this map uses the real ABS state-level daily sugar-sweetened drink measure as the available unhealthy food/drink indicator.</p>
             </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 2</span>
+                    <h3>Proportional symbol map: sugar-sweetened drinks</h3>
+                </div>
+                <div id="graph2-symbol-map" class="viz viz-map"></div>
+                <p class="caption">Source: ABS National Health Survey: State and territory findings, 2017-18; ABS NHS 2022 for obesity. Circle size shows daily sugar-sweetened drink consumption; colour shows obesity.</p>
+            </article>
+        </section>
 
+        <section id="change" class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 6 | Change over time</p>
+                <h2>Weight status has shifted over survey years</h2>
+                <p>The historical state series available from ABS reports adults overweight or obese. The time-slider map keeps the temporal map idiom while clearly naming the measure.</p>
+            </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 3</span>
+                    <h3>Time-slider map: adults overweight or obese</h3>
+                </div>
+                <div id="graph3-time-map" class="viz viz-map"></div>
+                <p class="caption">Source: ABS NHS State and Territory Findings, 2007-08 to 2022. Move the year slider to compare how the map changes over time.</p>
+            </article>
+        </section>
+
+        <section class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 7 | Unhealthy drinks vs obesity</p>
+                <h2>Consumption and obesity can be compared directly</h2>
+                <p>A bubble plot makes the relationship between daily sugar-sweetened drink consumption and obesity visible, while population size keeps state scale in the story.</p>
+            </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 4</span>
+                    <h3>Bubble plot: sugar-sweetened drinks vs obesity</h3>
+                </div>
+                <div id="graph4-bubble" class="viz viz-medium"></div>
+                <p class="caption">Use the sex dropdown, state dropdown, legend filter, and tooltips. Bubble size represents population.</p>
+            </article>
+        </section>
+
+        <section class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 8 | National trend</p>
+                <h2>Overview first, zoom and filter second</h2>
+                <p>The overview + detail idiom lets readers scan the whole time series, then brush a smaller time window to inspect details for selected states.</p>
+            </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 5</span>
+                    <h3>Overview + detail timeline</h3>
+                </div>
+                <div id="graph5-timeline" class="viz viz-tall"></div>
+                <p class="caption">Source: ABS NHS State and Territory Findings. Brush the bottom chart and use the legend to select states.</p>
+            </article>
+        </section>
+
+        <section id="demographics" class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 9 | Demographic differences</p>
+                <h2>Age and gender reveal hidden structure</h2>
+                <p>Small multiples reduce clutter by separating men and women into comparable panels while keeping shared axes.</p>
+            </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 6</span>
+                    <h3>Small multiples: obesity by age and gender</h3>
+                </div>
+                <div id="graph6-smallmultiples" class="viz viz-medium"></div>
+                <p class="caption">Source: ABS National Health Survey 2022 BMI table. Switch between obesity and overweight/obesity.</p>
+            </article>
+        </section>
+
+        <section id="behaviour" class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 10 | Behaviour profile</p>
+                <h2>Each state has a different health profile</h2>
+                <p>Parallel coordinates allow multiple variables to be compared at once: obesity, inactivity, sugary drinks, fruit, and vegetable recommendation rates.</p>
+            </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 7</span>
+                    <h3>Parallel coordinates: behaviour profile</h3>
+                </div>
+                <div id="graph7-parallel" class="viz viz-medium"></div>
+                <p class="caption">Use the legend to highlight one state across the full set of lifestyle and health indicators.</p>
+            </article>
+        </section>
+
+        <section class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 11 | Lifestyle pathway</p>
+                <h2>From behaviours to risk groups</h2>
+                <p>The Sankey-style view is a custom-built diagram that groups states through measured categories. Flow thickness shows the number of states in each pathway.</p>
+            </div>
             <article class="graph-card">
                 <div class="graph-title">
                     <span>Graph 8</span>
-                    <h3>Heatmap: age group health and diet behaviour</h3>
+                    <h3>Sankey diagram: lifestyle pathway</h3>
                 </div>
-                <div id="graph8-heatmap" class="viz viz-medium"></div>
-                <p class="caption">The heatmap combines ABS measured BMI proportions with ABS dietary behaviour measures by age group.</p>
+                <div id="graph8-sankey" class="viz viz-medium"></div>
+                <p class="caption">Source: ABS state sugary-drink, fruit, activity, and obesity measures. Categories are median splits used for storytelling comparison.</p>
             </article>
+        </section>
 
+        <section class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 12 | Age and behaviour heatmap</p>
+                <h2>Diet quality and obesity change with age</h2>
+                <p>Heatmaps are efficient when the goal is scanning a matrix of age groups and health behaviours.</p>
+            </div>
             <article class="graph-card">
                 <div class="graph-title">
                     <span>Graph 9</span>
+                    <h3>Heatmap: age group health and diet behaviour</h3>
+                </div>
+                <div id="graph9-heatmap" class="viz viz-medium"></div>
+                <p class="caption">Source: ABS National Health Survey 2022 and ABS Dietary Behaviour 2022. Hover for exact percentages.</p>
+            </article>
+        </section>
+
+        <section class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 13 | Relationships between factors</p>
+                <h2>Correlation shows associations, not causes</h2>
+                <p>The correlation matrix summarises state-level relationships. It is exploratory because there are only eight states and territories.</p>
+            </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 10</span>
                     <h3>Correlation matrix</h3>
                 </div>
-                <div id="graph9-correlation" class="viz viz-medium"></div>
-                <p class="caption">Correlations summarise state-level relationships between obesity, income, activity, and transparent food-context proxy variables.</p>
+                <div id="graph10-correlation" class="viz viz-medium"></div>
+                <p class="caption">Variables include obesity, income, sugary drinks, inactivity, fruit recommendation and vegetable recommendation rates.</p>
+            </article>
+        </section>
+
+        <section class="story-section">
+            <div class="section-heading">
+                <p class="section-kicker">Section 14 | State health profile</p>
+                <h2>Profile a state against the average</h2>
+                <p>The radar-style chart gives a compact multi-variable state profile while keeping the state average visible as a reference.</p>
+            </div>
+            <article class="graph-card">
+                <div class="graph-title">
+                    <span>Graph 11</span>
+                    <h3>Radar chart: state health profile</h3>
+                </div>
+                <div id="graph11-radar" class="viz viz-medium"></div>
+                <p class="caption">Use the dropdown to switch between selected states and compare against the state/territory average.</p>
             </article>
         </section>
 
         <section id="dashboard" class="story-section">
             <div class="section-heading">
-                <p class="section-kicker">Explore</p>
-                <h2>Interactive dashboard</h2>
-                <p>Use the controls to choose a state, demographic group, beverage category, and time range. The dashboard is designed as a compact final exploration panel.</p>
+                <p class="section-kicker">Section 15 | Explore yourself</p>
+                <h2>Coordinated dashboard</h2>
+                <p>The final dashboard brings the story together with controls for state, age, gender, beverage category, and year range.</p>
             </div>
-
             <article class="graph-card">
                 <div class="graph-title">
-                    <span>Graph 10</span>
-                    <h3>Interactive multi-view dashboard</h3>
+                    <span>Graph 12</span>
+                    <h3>Coordinated dashboard</h3>
                 </div>
-                <div id="graph10-dashboard" class="viz viz-dashboard"></div>
-                <p class="caption">Dropdowns and sliders update multiple views inside one Vega-Lite dashboard specification.</p>
+                <div id="graph12-dashboard" class="viz viz-dashboard"></div>
+                <p class="caption">State KPIs, demographic bars, and beverage trend views update from dropdowns and sliders.</p>
             </article>
         </section>
 
         <section id="sources" class="story-card sources-card">
-            <p class="section-kicker">Sources</p>
+            <p class="section-kicker">Sources and data honesty</p>
             <h2>Data sources</h2>
             <ul>
                 <li>Australian Bureau of Statistics, National Health Survey 2022 and State and Territory Findings.</li>
+                <li>Australian Bureau of Statistics, National Health Survey State and Territory Findings 2017-18 for sugar-sweetened drink consumption and historical overweight/obesity rates.</li>
                 <li>Australian Bureau of Statistics, Apparent Consumption of Selected Foodstuffs, Australia, 2023-24.</li>
                 <li>Australian Bureau of Statistics, Dietary Behaviour, 2022.</li>
                 <li>Australian Bureau of Statistics, Average Weekly Earnings, Australia.</li>
-                <li>Australian Institute of Health and Welfare, Overweight and Obesity 2024 reporting context.</li>
+                <li>AIHW Overweight and Obesity 2024 reporting context.</li>
             </ul>
+            <p class="source-note">TODO for a future extension: add a public state-level fast-food or takeaway-meal frequency dataset if one is available. This version does not fabricate that field; it uses ABS sugar-sweetened drink consumption as the real unhealthy food/drink geography indicator.</p>
         </section>
     </main>
 

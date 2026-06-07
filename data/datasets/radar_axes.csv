@@ -1,6 +1,7 @@
 metric,angle,x,y
-Soft drinks proxy,0,82.0,0.0
-Fast-food proxy,72,25.34,77.99
-Physical inactivity,144,-66.34,48.2
-Obesity,216,-66.34,-48.2
-Overweight/obese,288,25.34,-77.99
+Obesity,0,82.0,0.0
+Physical inactivity,60,41.0,71.01
+Sugary drinks men,120,-41.0,71.01
+Sugary drinks women,180,-82.0,0.0
+Fruit recommendation,240,-41.0,-71.01
+Vegetable recommendation,300,41.0,-71.01

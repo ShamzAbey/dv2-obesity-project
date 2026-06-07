@@ -1,47 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Sankey-style alluvial flow made from Vega-Lite rect and rule marks.",
-  "title": "Sankey-style flow: obesity category to physical activity category",
+  "description": "Sankey-style alluvial flow showing state counts through measured lifestyle categories: sugary drinks, fruit recommendation achievement, physical activity and obesity.",
+  "title": {
+    "text": "Sankey-style lifestyle pathway",
+    "subtitle": "State counts through sugary drinks, diet quality, activity and obesity categories"
+  },
   "width": "container",
-  "height": 360,
+  "height": 390,
   "layer": [
     {
-      "data": {"url": "../data/datasets/sankey_links.csv"},
-      "mark": {"type": "rule", "opacity": 0.5, "strokeCap": "round"},
+      "data": {"url": "../data/datasets/lifestyle_pathway_links.csv"},
+      "mark": {"type": "rule", "opacity": 0.48, "strokeCap": "round"},
       "encoding": {
-        "x": {"datum": 0.14, "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
-        "x2": {"datum": 0.86},
+        "x": {"field": "source_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
+        "x2": {"field": "target_x"},
         "y": {"field": "source_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
         "y2": {"field": "target_y"},
         "strokeWidth": {"field": "count", "type": "quantitative", "legend": null, "scale": {"range": [8, 30]}},
-        "color": {"field": "source", "type": "nominal", "legend": null, "scale": {"range": ["#41b6c4", "#2f8fc2", "#0f4c75"]}},
+        "color": {"field": "source", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#2f8fc2", "#41b6c4", "#9bd7ea", "#1d6fa5", "#5d6f7d"]}},
         "tooltip": [
-          {"field": "source", "type": "nominal", "title": "Obesity category"},
-          {"field": "target", "type": "nominal", "title": "Activity category"},
+          {"field": "source", "type": "nominal", "title": "From"},
+          {"field": "target", "type": "nominal", "title": "To"},
           {"field": "count", "type": "quantitative", "title": "States/territories"},
           {"field": "states", "type": "nominal", "title": "States"}
         ]
       }
     },
     {
-      "data": {"url": "../data/datasets/sankey_nodes.csv"},
+      "data": {"url": "../data/datasets/lifestyle_pathway_nodes.csv"},
       "mark": {"type": "rect", "cornerRadius": 6, "stroke": "#ffffff", "strokeWidth": 1.5},
       "encoding": {
         "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
         "x2": {"field": "x1"},
         "y": {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
         "y2": {"field": "y1"},
-        "color": {"field": "side", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#41b6c4"]}},
+        "color": {"field": "stage", "type": "nominal", "legend": null, "scale": {"range": ["#0f4c75", "#2f8fc2", "#41b6c4", "#1d6fa5"]}},
         "tooltip": [
-          {"field": "side", "type": "nominal", "title": "Dimension"},
+          {"field": "stage", "type": "nominal", "title": "Stage"},
           {"field": "node", "type": "nominal", "title": "Category"},
           {"field": "count", "type": "quantitative", "title": "States/territories"}
         ]
       }
     },
     {
-      "data": {"url": "../data/datasets/sankey_nodes.csv"},
-      "mark": {"type": "text", "align": "center", "fontSize": 12, "fontWeight": "bold", "color": "#ffffff"},
+      "data": {"url": "../data/datasets/lifestyle_pathway_nodes.csv"},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontWeight": "bold", "color": "#ffffff", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
         "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
@@ -49,8 +52,8 @@
       }
     },
     {
-      "data": {"url": "../data/datasets/sankey_nodes.csv"},
-      "mark": {"type": "text", "align": "center", "dy": 16, "fontSize": 11, "color": "#eaf8fc"},
+      "data": {"url": "../data/datasets/lifestyle_pathway_nodes.csv"},
+      "mark": {"type": "text", "align": "center", "dy": 24, "fontSize": 11, "fontWeight": "bold", "color": "#eaf8fc"},
       "encoding": {
         "x": {"field": "label_x", "type": "quantitative", "scale": {"domain": [0, 1]}, "axis": null},
         "y": {"field": "label_y", "type": "quantitative", "scale": {"domain": [0, 9]}, "axis": null},
