@@ -1,0 +1,10 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {"type":"Feature","properties":{"mag":5.1,"place":"Off NSW coast"},"geometry":{"type":"Point","coordinates":[151.2,-33.0]}},
+    {"type":"Feature","properties":{"mag":4.3,"place":"Tasmania region"},"geometry":{"type":"Point","coordinates":[147.3,-42.0]}},
+    {"type":"Feature","properties":{"mag":3.8,"place":"Queensland coast"},"geometry":{"type":"Point","coordinates":[153.0,-20.5]}},
+    {"type":"Feature","properties":{"mag":2.9,"place":"Northern Territory"},"geometry":{"type":"Point","coordinates":[132.5,-12.5]}},
+    {"type":"Feature","properties":{"mag":4.7,"place":"Victoria offshore"},"geometry":{"type":"Point","coordinates":[145.0,-39.0]}}
+  ]
+}

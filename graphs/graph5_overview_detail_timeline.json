@@ -7,19 +7,29 @@
   },
   "data": {"url": "../data/datasets/weight_status_time_state.csv"},
   "params": [
-    {"name": "stateSelect", "select": {"type": "point", "fields": ["state"]}, "bind": "legend"}
+    {
+      "name": "stateChoice",
+      "value": "All",
+      "bind": {"input": "select", "name": "State: ", "options": ["All", "ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]}
+    },
+    {"name": "yearBrush", "select": {"type": "interval", "encodings": ["x"]}, "views": ["overview"]}
   ],
   "vconcat": [
     {
       "width": "container",
       "height": 320,
       "transform": [
-        {"filter": {"param": "yearBrush"}},
-        {"filter": {"param": "stateSelect"}}
+        {"filter": "stateChoice == 'All' || datum.state == stateChoice"}
       ],
       "mark": {"type": "line", "point": {"filled": true, "size": 70}, "strokeWidth": 3},
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "title": "Survey year", "axis": {"format": "d", "tickMinStep": 1}},
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Survey year",
+          "axis": {"format": "d", "tickMinStep": 1},
+          "scale": {"domain": {"param": "yearBrush"}}
+        },
         "y": {"field": "overweight_obese_percent", "type": "quantitative", "title": "Adults overweight or obese (%)", "scale": {"domain": [50, 73]}},
         "color": {"field": "state", "type": "nominal", "title": "State/territory", "scale": {"range": ["#0f4c75", "#1d6fa5", "#2f8fc2", "#41b6c4", "#6db8d7", "#2a7fb8", "#9bd7ea", "#5d6f7d"]}},
         "tooltip": [
@@ -30,9 +40,9 @@
       }
     },
     {
+      "name": "overview",
       "width": "container",
       "height": 95,
-      "params": [{"name": "yearBrush", "select": {"type": "interval", "encodings": ["x"]}}],
       "mark": {"type": "area", "line": {"color": "#0f4c75", "strokeWidth": 2}, "color": "#9bd7ea", "opacity": 0.75},
       "encoding": {
         "x": {"field": "year", "type": "quantitative", "title": "Brush to filter the detailed trend", "axis": {"format": "d", "tickMinStep": 1}},

@@ -15,28 +15,37 @@
       "bind": {"input": "select", "name": "State filter: ", "options": ["All", "ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]}
     },
     {"name": "mapScale", "value": 1050, "bind": {"input": "range", "name": "Zoom: ", "min": 850, "max": 1700, "step": 25}},
-    {"name": "panX", "value": 420, "bind": {"input": "range", "name": "Pan X: ", "min": 280, "max": 620, "step": 5}},
-    {"name": "panY", "value": 270, "bind": {"input": "range", "name": "Pan Y: ", "min": 120, "max": 430, "step": 5}}
+    {
+      "name": "mapCenter",
+      "value": [134, -28],
+      "bind": {
+        "input": "select",
+        "name": "Map centre: ",
+        "options": [[134, -28], [151.2, -33.9], [144.9, -37.8], [147.3, -42], [130.8, -12.5], [115.9, -31.9]],
+        "labels": ["Australia", "NSW/ACT", "Victoria", "Tasmania", "Northern Territory", "Western Australia"]
+      }
+    }
   ],
   "projection": {
     "type": "mercator",
-    "center": [134, -28],
-    "scale": {"expr": "mapScale"},
-    "translate": [{"expr": "panX"}, {"expr": "panY"}]
+    "center": {"expr": "mapCenter"},
+    "scale": {"expr": "mapScale"}
   },
   "data": {
     "url": "../data/datasets/australia_states.topojson",
-    "format": {"type": "topojson", "feature": "australia_states"}
+    "format": {"type": "topojson", "feature": "collection"}
   },
   "transform": [
+    {"calculate": "toNumber(datum.properties.STATE)", "as": "state_code"},
     {
-      "lookup": "properties.STATE_CODE",
+      "lookup": "state_code",
       "from": {
         "data": {"url": "../data/datasets/obesity_state.csv"},
         "key": "state_code",
         "fields": ["state", "state_full", "obese_percent", "overweight_percent", "overweight_obese_percent"]
       }
-    }
+    },
+    {"filter": "isValid(datum.obese_percent)"}
   ],
   "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.3},
   "encoding": {

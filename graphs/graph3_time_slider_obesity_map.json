@@ -23,11 +23,11 @@
   "projection": {"type": "mercator", "center": [134, -28], "scale": {"expr": "mapScale"}},
   "data": {
     "url": "../data/datasets/australia_states.topojson",
-    "format": {"type": "topojson", "feature": "australia_states"}
+    "format": {"type": "topojson", "feature": "collection"}
   },
   "transform": [
     {"calculate": "yearStep == 0 ? 2008 : yearStep == 1 ? 2012 : yearStep == 2 ? 2015 : yearStep == 3 ? 2018 : 2022", "as": "selected_year"},
-    {"calculate": "toNumber(datum.properties.STATE_CODE) + '-' + datum.selected_year", "as": "state_year_key"},
+    {"calculate": "toNumber(datum.properties.STATE) + '-' + datum.selected_year", "as": "state_year_key"},
     {
       "lookup": "state_year_key",
       "from": {

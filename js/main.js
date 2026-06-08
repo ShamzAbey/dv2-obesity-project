@@ -5,6 +5,8 @@ const embedOptions = {
     defaultStyle: true
 };
 
+const assetVersion = "hd-story-20260608";
+
 const graphRegistry = [
     {selector: "#graph1-choropleth", spec: "graphs/graph1_choropleth_obesity_map.json"},
     {selector: "#graph2-symbol-map", spec: "graphs/graph2_proportional_symbol_fastfood_map.json"},
@@ -19,6 +21,26 @@ const graphRegistry = [
     {selector: "#graph11-radar", spec: "graphs/graph11_radar_state_profile.json"},
     {selector: "#graph12-dashboard", spec: "graphs/graph12_coordinated_dashboard.json"}
 ];
+
+const normalizeSpecUrls = (value) => {
+    if (Array.isArray(value)) {
+        return value.map(normalizeSpecUrls);
+    }
+
+    if (value && typeof value === "object") {
+        return Object.fromEntries(
+            Object.entries(value).map(([key, entry]) => {
+                if (key === "url" && typeof entry === "string" && entry.startsWith("../data/")) {
+                    return [key, entry.replace("../", "")];
+                }
+
+                return [key, normalizeSpecUrls(entry)];
+            })
+        );
+    }
+
+    return value;
+};
 
 const csvRows = (text) => {
     const [headerLine, ...lines] = text.trim().split(/\r?\n/);
@@ -43,7 +65,7 @@ const renderKpis = async () => {
     const container = document.querySelector("#kpis");
     if (!container) return;
 
-    const response = await fetch("data/datasets/kpi_summary.csv");
+    const response = await fetch(`data/datasets/kpi_summary.csv?v=${assetVersion}`);
     const rows = csvRows(await response.text());
 
     container.innerHTML = rows.map((row) => `
@@ -60,16 +82,21 @@ const renderKpis = async () => {
 };
 
 const renderGraphs = () => {
-    graphRegistry.forEach(({selector, spec}) => {
+    graphRegistry.forEach(async ({selector, spec}) => {
         const target = document.querySelector(selector);
         if (!target) return;
 
-        vegaEmbed(selector, spec, embedOptions)
-            .then(() => target.classList.add("viz-loaded"))
-            .catch((error) => {
-                console.error(`Failed to load ${spec}`, error);
-                target.innerHTML = `<p class="caption">This visualisation could not load. Check ${spec} and the linked data paths.</p>`;
-            });
+        try {
+            const response = await fetch(`${spec}?v=${assetVersion}`);
+            if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+
+            const specJson = normalizeSpecUrls(await response.json());
+            await vegaEmbed(selector, specJson, embedOptions);
+            target.classList.add("viz-loaded");
+        } catch (error) {
+            console.error(`Failed to load ${spec}`, error);
+            target.innerHTML = `<p class="caption">This visualisation could not load. ${error.message}</p>`;
+        }
     });
 };
 

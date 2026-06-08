@@ -1,13 +1,13 @@
 source,target,count,states,source_x,target_x,source_y,target_y
-Higher sugary-drink use,Met fruit recommendation more often,1,Qld,0.10,0.30,2.0,2.0
-Higher sugary-drink use,Met fruit recommendation less often,3,"SA, Tas, NT",0.10,0.30,2.0,7.0
-Lower sugary-drink use,Met fruit recommendation more often,3,"NSW, Vic, WA",0.10,0.30,7.0,2.0
-Lower sugary-drink use,Met fruit recommendation less often,1,ACT,0.10,0.30,7.0,7.0
-Met fruit recommendation more often,Higher activity,2,"NSW, Vic",0.40,0.60,2.0,2.0
-Met fruit recommendation more often,Lower activity,2,"Qld, WA",0.40,0.60,2.0,7.0
-Met fruit recommendation less often,Higher activity,2,"SA, NT",0.40,0.60,7.0,2.0
-Met fruit recommendation less often,Lower activity,2,"Tas, ACT",0.40,0.60,7.0,7.0
-Higher activity,Higher obesity,2,"SA, NT",0.70,0.90,2.0,2.0
-Higher activity,Lower obesity,2,"NSW, Vic",0.70,0.90,2.0,7.0
-Lower activity,Higher obesity,2,"Qld, Tas",0.70,0.90,7.0,2.0
-Lower activity,Lower obesity,2,"ACT, WA",0.70,0.90,7.0,7.0
+Higher sugary-drink|use,Met fruit recommendation|more often,1,Qld,0.10,0.30,2.0,2.0
+Higher sugary-drink|use,Met fruit recommendation|less often,3,"SA, Tas, NT",0.10,0.30,2.0,7.0
+Lower sugary-drink|use,Met fruit recommendation|more often,3,"NSW, Vic, WA",0.10,0.30,7.0,2.0
+Lower sugary-drink|use,Met fruit recommendation|less often,1,ACT,0.10,0.30,7.0,7.0
+Met fruit recommendation|more often,Higher|activity,2,"NSW, Vic",0.40,0.60,2.0,2.0
+Met fruit recommendation|more often,Lower|activity,2,"Qld, WA",0.40,0.60,2.0,7.0
+Met fruit recommendation|less often,Higher|activity,2,"SA, NT",0.40,0.60,7.0,2.0
+Met fruit recommendation|less often,Lower|activity,2,"Tas, ACT",0.40,0.60,7.0,7.0
+Higher|activity,Higher|obesity,2,"SA, NT",0.70,0.90,2.0,2.0
+Higher|activity,Lower|obesity,2,"NSW, Vic",0.70,0.90,2.0,7.0
+Lower|activity,Higher|obesity,2,"Qld, Tas",0.70,0.90,7.0,2.0
+Lower|activity,Lower|obesity,2,"ACT, WA",0.70,0.90,7.0,7.0

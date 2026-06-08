@@ -8,9 +8,6 @@
   "width": "container",
   "height": 430,
   "data": {"url": "../data/datasets/correlation_matrix.csv"},
-  "params": [
-    {"name": "hoverCorr", "select": {"type": "point", "on": "mouseover", "clear": "mouseout", "fields": ["var_x", "var_y"]}}
-  ],
   "layer": [
     {
       "mark": {"type": "rect", "cornerRadius": 4},
@@ -18,7 +15,6 @@
         "x": {"field": "var_x", "type": "ordinal", "title": null},
         "y": {"field": "var_y", "type": "ordinal", "title": null},
         "color": {"field": "correlation", "type": "quantitative", "title": "Correlation", "scale": {"scheme": "redblue", "domain": [-1, 1]}},
-        "opacity": {"condition": {"param": "hoverCorr", "value": 1}, "value": 0.88},
         "tooltip": [
           {"field": "var_x", "type": "nominal", "title": "Variable X"},
           {"field": "var_y", "type": "nominal", "title": "Variable Y"},

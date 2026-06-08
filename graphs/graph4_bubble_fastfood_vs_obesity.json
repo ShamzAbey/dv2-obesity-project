@@ -3,7 +3,7 @@
   "description": "Bubble plot using real ABS daily sugar-sweetened drink consumption as the available unhealthy food/drink indicator against adult obesity.",
   "title": {
     "text": "Unhealthy drink consumption and adult obesity",
-    "subtitle": "State-level comparison using ABS daily sugar-sweetened drink consumption"
+    "subtitle": "State-level comparison (Pearson r = 0.68, moderate positive correlation)"
   },
   "autosize": {"type": "fit", "contains": "padding", "resize": true},
   "width": "container",
@@ -19,11 +19,6 @@
       "name": "stateChoice",
       "value": "All",
       "bind": {"input": "select", "name": "State: ", "options": ["All", "ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]}
-    },
-    {
-      "name": "legendSelect",
-      "select": {"type": "point", "fields": ["state"]},
-      "bind": "legend"
     }
   ],
   "transform": [
@@ -33,7 +28,11 @@
   "layer": [
     {
       "transform": [{"regression": "obesity_percent", "on": "sugar_sweetened_daily_percent"}],
-      "mark": {"type": "line", "strokeDash": [6, 5], "strokeWidth": 2.5, "color": "#0f4c75"}
+      "mark": {"type": "line", "strokeDash": [6, 5], "strokeWidth": 2.5, "color": "#0f4c75"},
+      "encoding": {
+        "x": {"field": "sugar_sweetened_daily_percent", "type": "quantitative"},
+        "y": {"field": "obesity_percent", "type": "quantitative"}
+      }
     },
     {
       "mark": {"type": "circle", "filled": true, "stroke": "#ffffff", "strokeWidth": 1.2},
@@ -42,27 +41,27 @@
           "field": "sugar_sweetened_daily_percent",
           "type": "quantitative",
           "title": "Consumed sugar-sweetened drinks daily (%)",
-          "scale": {"zero": false}
+          "scale": {"zero": false, "nice": true}
         },
         "y": {
           "field": "obesity_percent",
           "type": "quantitative",
           "title": "Adults obese (%)",
-          "scale": {"domain": [28, 39]}
+          "scale": {"nice": true}
         },
         "size": {
           "field": "population_thousands",
           "type": "quantitative",
           "title": "Population ('000)",
-          "scale": {"range": [130, 2300]}
+          "scale": {"range": [60, 700]}
         },
+        "opacity": {"value": 0.9},
         "color": {
           "field": "state",
           "type": "nominal",
           "title": "State/territory",
           "scale": {"range": ["#0f4c75", "#1d6fa5", "#2f8fc2", "#41b6c4", "#6db8d7", "#2a7fb8", "#9bd7ea", "#5d6f7d"]}
         },
-        "opacity": {"condition": {"param": "legendSelect", "value": 0.95}, "value": 0.22},
         "tooltip": [
           {"field": "state_full", "type": "nominal", "title": "State/territory"},
           {"field": "sex", "type": "nominal", "title": "Sex"},
@@ -70,14 +69,6 @@
           {"field": "obesity_percent", "type": "quantitative", "title": "Adults obese (%)", "format": ".1f"},
           {"field": "population_thousands", "type": "quantitative", "title": "Population ('000)", "format": ".1f"}
         ]
-      }
-    },
-    {
-      "mark": {"type": "text", "align": "left", "dx": 9, "dy": -8, "fontWeight": "bold", "color": "#183242"},
-      "encoding": {
-        "x": {"field": "sugar_sweetened_daily_percent", "type": "quantitative"},
-        "y": {"field": "obesity_percent", "type": "quantitative"},
-        "text": {"field": "state", "type": "nominal"}
       }
     }
   ],
